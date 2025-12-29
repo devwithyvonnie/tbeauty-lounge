@@ -1,7 +1,6 @@
 export default function Services() {
   return (
     <div className="mx-auto w-11/12 max-w-6xl py-8">
-
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden rounded-[--radius-card]">
         <img
@@ -17,7 +16,7 @@ export default function Services() {
             </h1>
             <p className="mt-3 max-w-2xl text-brand-forest/85">
               Explore every category at a glance. Use the quick links to jump to
-              details, then book with confidence.
+              what you&apos;re looking for, then view full menus and pricing.
             </p>
           </div>
         </div>
@@ -62,7 +61,7 @@ export default function Services() {
             "Sensitive-safe adhesive options",
           ]}
           bookHref="/booking?service=lashes"
-          menuHref="/menu#lashes"
+          menuHref="/services/lashes"
         />
       </Split>
 
@@ -73,12 +72,12 @@ export default function Services() {
           title="Result-driven, calming care"
           blurb="Custom facials, dermaplane, enzyme or light peels, LED therapy and more—built for your skin’s current needs."
           bullets={[
-            "Custom Facial (60–90m)",
-            "Dermaplaning add-ons",
-            "LED Light Therapy & masks",
+            "Custom facials for every skin type",
+            "Dermaplaning & specialty add-ons",
+            "LED Light Therapy & targeted masks",
           ]}
           bookHref="/booking?service=facials"
-          menuHref="/menu#skin"
+          menuHref="/services/Facials"
         />
         <img
           src="/images/services/skin.jpg"
@@ -97,14 +96,14 @@ export default function Services() {
         <ServiceCopy
           eyebrow="COSMETIC INJECTIONS"
           title="Natural, balanced refinement"
-          blurb="Neurotoxin and filler by FNP-C for softening lines, restoring volume, and refining features with a light touch."
+          blurb="Neurotoxin and filler with an emphasis on natural, harmonious results. Always consultation-first and medically guided."
           bullets={[
-            "Neurotoxin (forehead, frown, crow’s feet)",
-            "Filler (lips, cheeks, chin; by consultation)",
-            "Consultation-first, medically guided",
+            "Neurotoxin for fine lines & wrinkles",
+            "Filler for lips, cheeks, chin & more",
+            "PRP & biostimulatory options",
           ]}
           bookHref="/booking?service=injectables"
-          menuHref="/menu#injectables"
+          menuHref="/services/injectables"
         />
       </Split>
 
@@ -115,12 +114,12 @@ export default function Services() {
           title="Smooth with less effort"
           blurb="Face and body packages for the areas you treat most. Consults help choose the best plan for your skin & hair."
           bullets={[
-            "Small / Medium / Large areas",
+            "Small / medium / large areas",
             "Series pricing available",
-            "Shave 24h prior; no waxing",
+            "Shave 24 hours prior; no waxing",
           ]}
           bookHref="/booking?service=laser"
-          menuHref="/menu#laser"
+          menuHref="/services/laser"
         />
         <img
           src="/images/services/laser.jpg"
@@ -139,14 +138,14 @@ export default function Services() {
         <ServiceCopy
           eyebrow="PERMANENT MAKEUP"
           title="Wake up subtly polished"
-          blurb="Brows, liner, and lip blush designed to save time and keep features softly defined. Includes follow-up."
+          blurb="Brows, liner, and lip blush designed to save time and keep features softly defined. Includes a perfecting visit when indicated."
           bullets={[
-            "Powder/Ombré Brows",
-            "Lash-line Enhancement",
-            "Lip Blush with perfecting visit",
+            "Powder / Ombré Brows",
+            "Lash-line enhancement",
+            "Lip Blush with follow-up",
           ]}
           bookHref="/booking?service=pmu"
-          menuHref="/menu#pmu"
+          menuHref="/services/pmu"
         />
       </Split>
 
@@ -157,12 +156,12 @@ export default function Services() {
           title="Feel balanced & supported"
           blurb="Provider-guided weight loss plans, metabolism support, and IV drips for hydration and recovery—personalized to you."
           bullets={[
-            "GLP-1 / peptide consults",
+            "Medical weight loss programs",
             "Energy & immunity IV drips",
-            "Ongoing check-ins with provider",
+            "Vitamin & metabolism injections",
           ]}
           bookHref="/booking?service=wellness"
-          menuHref="/menu#wellness"
+          menuHref="/services/wellness"
         />
         <img
           src="/images/services/wellness.jpg"
@@ -177,14 +176,27 @@ export default function Services() {
 /* ---------- Small presentational helpers ---------- */
 
 function Eyebrow({ children }) {
-  return <p className="text-sm tracking-widest text-brand-forest/70">{children}</p>;
+  return (
+    <p className="text-sm tracking-widest text-brand-forest/70">
+      {children}
+    </p>
+  );
 }
 
-function ServiceCopy({ eyebrow, title, blurb, bullets = [], bookHref, menuHref }) {
+function ServiceCopy({
+  eyebrow,
+  title,
+  blurb,
+  bullets = [],
+  bookHref,
+  menuHref,
+}) {
   return (
     <div>
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="text-2xl font-semibold text-brand-forest md:text-[28px]">{title}</h2>
+      <h2 className="text-2xl font-semibold text-brand-forest md:text-[28px]">
+        {title}
+      </h2>
       <p className="mt-2 max-w-prose text-brand-forest/85">{blurb}</p>
 
       {!!bullets.length && (
@@ -199,11 +211,17 @@ function ServiceCopy({ eyebrow, title, blurb, bullets = [], bookHref, menuHref }
       )}
 
       <div className="mt-5 flex flex-wrap gap-3">
-        <a href={bookHref} className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110">
+        <a
+          href={bookHref}
+          className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
+        >
           Book Now
         </a>
-        <a href={menuHref} className="rounded-full border border-brand-gold px-5 py-2 text-sm text-brand-forest hover:bg-brand-cream/70">
-          View Menu & Pricing
+        <a
+          href={menuHref}
+          className="rounded-full border border-brand-gold px-5 py-2 text-sm text-brand-forest hover:bg-brand-cream/70"
+        >
+          View Menu &amp; Pricing
         </a>
       </div>
     </div>
@@ -224,7 +242,6 @@ function Split({ id, imageLeft = true, children }) {
       id={id}
       className="mt-8 grid overflow-hidden rounded-[--radius-card] bg-white ring-1 ring-black/5 md:grid-cols-2 scroll-mt-24"
       role="region"
-      aria-labelledby={`${id}-title`}
     >
       {imageLeft ? (
         <>

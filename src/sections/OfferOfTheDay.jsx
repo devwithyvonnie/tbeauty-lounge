@@ -21,7 +21,7 @@ const WEEKLY_OFFERS = {
     headline: "Monday Glow",
     sub: "10% off Injectables",
     discount: "10% OFF",
-    ctaLabel: "Book Injectables",
+    ctaLabel: "Call to Book your Offer of the Day",
     href: "/booking?service=injectables",
     image: "/images/offers/injectables.jpg",
   },
@@ -30,7 +30,7 @@ const WEEKLY_OFFERS = {
     headline: "Two-for-Tint Tuesday",
     sub: "Complimentary brow wax with tint",
     discount: "FREE ADD-ON",
-    ctaLabel: "Book Wax + Tint",
+    ctaLabel: "Call to Book your Offer of the Day",
     href: "/booking?service=lash_brow",
     image: "/images/offers/brow.jpg",
   },
@@ -39,7 +39,7 @@ const WEEKLY_OFFERS = {
     headline: "Wellness Wednesday",
     sub: "B-12 Shot on us with any facial",
     discount: "FREE B-12",
-    ctaLabel: "Book Wellness",
+    ctaLabel: "Call to Book your Offer of the Day",
     href: "/booking?service=wellness",
     image: "/images/offers/wellness.jpg",
   },
@@ -48,7 +48,7 @@ const WEEKLY_OFFERS = {
     headline: "Laser Thursday",
     sub: "Small area intro special",
     discount: "$20 OFF",
-    ctaLabel: "Book Laser",
+    ctaLabel: "Call to Book your Offer of the Day",
     href: "/booking?service=laser_small",
     image: "/images/offers/laser.jpg",
   },
@@ -57,7 +57,7 @@ const WEEKLY_OFFERS = {
     headline: "Fresh Friday",
     sub: "Lash lift + tint bundle",
     discount: "BUNDLE SAVE",
-    ctaLabel: "Book Lashes",
+    ctaLabel: "Call to Book your Offer of the Day",
     href: "/booking?service=lash_lift",
     image: "/images/offers/lift.jpg",
   },
@@ -66,7 +66,7 @@ const WEEKLY_OFFERS = {
     headline: "Self-Care Saturday",
     sub: "10% off any package",
     discount: "10% OFF",
-    ctaLabel: "Explore Packages",
+    ctaLabel: "Call to Book your Offer of the Day",
     href: "/services#packages",
     image: "/images/offers/packages.jpg",
   },
@@ -194,7 +194,7 @@ export default function OfferOfTheDay() {
             href={offer.href}
             className="mt-6 inline-block rounded-full bg-brand-forest px-6 py-3 text-white hover:brightness-110"
           >
-            {offer.ctaLabel ?? "Book Now"}
+            {offer.ctaLabel ?? "Call to Book your Offer of the Day"}
           </a>
         </div>
       </div>

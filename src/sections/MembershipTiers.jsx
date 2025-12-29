@@ -5,10 +5,9 @@ export default function MembershipPreview() {
     price: 149,
     discount: "10% off all services",
     perks: [
-      "1 free B-12 shot / month",
       "10% off products",
-      "LED Light Therapy with facial",
-      "Free eyebrow wax",
+      "1/2 off Lash Touch Ups",
+      "1/2 off Facials on Birthday",
     ],
   },
   {
@@ -17,10 +16,9 @@ export default function MembershipPreview() {
     discount: "12% off all services",
     popular: true,
     perks: [
-      "1 free B-12 shot / month",
       "10% off products",
-      "LED Light Therapy with facial",
-      "Free eyebrow & lip wax",
+      "1/2 off Lash Touch Ups",
+      "1/2 off Facials on Birthday",
     ],
   },
   {
@@ -28,10 +26,10 @@ export default function MembershipPreview() {
     price: 249,
     discount: "15% off all services",
     perks: [
-      "2 free B-12 shots / month",
       "10% off products",
-      "LED Light Therapy with facial",
-      "1 free small-area laser hair removal",
+      "1/2 off Lash Touch Ups",
+      "1/2 off Facials on Birthday",
+      "25 units of Daxxify on Birthday"
     ],
   },
 ];

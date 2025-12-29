@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-/** Reusable accordion item */
+/** Reusable accordion item (currently only used for future sections if needed) */
 function Accordion({ title, children, isOpen, onToggle }) {
   return (
     <div className="select-none">
@@ -38,14 +38,22 @@ function Accordion({ title, children, isOpen, onToggle }) {
   );
 }
 
-const ChildLink = ({ href, children }) => (
-  <a
-    href={href} // use anchors so /services#section scrolls correctly
-    className="block rounded px-2 py-1 text-sm opacity-90 hover:bg-white/10 hover:opacity-100"
-  >
-    {children}
-  </a>
-);
+const ChildLink = ({ to, children }) => {
+  const { pathname } = useLocation();
+  const active = pathname === to;
+  return (
+    <Link
+      to={to}
+      className={`block rounded px-2 py-1 text-sm ${
+        active
+          ? 'bg-white/10 font-medium'
+          : 'opacity-90 hover:bg-white/10 hover:opacity-100'
+      }`}
+    >
+      {children}
+    </Link>
+  );
+};
 
 const NavLink = ({ to, children }) => {
   const { pathname } = useLocation();
@@ -68,10 +76,9 @@ export default function Sidebar() {
   // Which accordions are open
   const [open, setOpen] = useState({
     services: false,
-    academy: false,
   });
 
-  // Auto-open Services if URL has a matching hash or path
+  // Auto-open Services if URL points to services or old hash links
   useEffect(() => {
     const hash = location.hash.toLowerCase();
     const path = location.pathname.toLowerCase();
@@ -83,21 +90,24 @@ export default function Sidebar() {
         '#injectables',
         '#laser',
         '#pmu',
+        '#waxtint',
         '#wellness',
       ].includes(hash);
 
-    if (isServices) setOpen((s) => ({ ...s, services: true }));
+    if (isServices) {
+      setOpen((s) => ({ ...s, services: true }));
+    }
   }, [location]);
 
   return (
     <aside
       className="
-    sticky top-6                      
-    h-[calc(100vh-3rem)]              
-    w-full overflow-y-auto
-    rounded-2xl bg-brand-primary px-5 py-6 text-white shadow-lg
-    flex flex-col justify-between
-  "
+        sticky top-6
+        h-[calc(100vh-3rem)]
+        w-full overflow-y-auto
+        rounded-2xl bg-brand-primary px-5 py-6 text-white shadow-lg
+        flex flex-col justify-between
+      "
     >
       {/* Brand */}
       <div>
@@ -111,39 +121,82 @@ export default function Sidebar() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
 
-          {/* SERVICES (collapsible) */}
-          <Accordion
-            title="Services"
-            isOpen={open.services}
-            onToggle={() => setOpen((s) => ({ ...s, services: !s.services }))}
-          >
-            <ChildLink href="/services#lashes">Eyelash Extensions</ChildLink>
-            <ChildLink href="/services#skin">Facials</ChildLink>
-            <ChildLink href="/services#injectables">
-              Cosmetic Injections
-            </ChildLink>
-            <ChildLink href="/services#laser">Laser Hair Removal</ChildLink>
-            <ChildLink href="/services#pmu">Permanent Makeup</ChildLink>
-            <ChildLink href="/services#wellness">Weight Loss Program</ChildLink>
-            <ChildLink href="/services#wellness">
-              IV Therapy & Wellness Shots
-            </ChildLink>
-            <ChildLink href="/services#wellness">Wax & Tint</ChildLink>
-          </Accordion>
+          {/* SERVICES: link + separate expand button */}
+          <div className="mt-2 flex items-center justify-between rounded-md px-2 py-2 hover:bg-white/10">
+            {/* Main Services link (overview page) */}
+            <Link to="/services" className="text-sm font-medium">
+              Services
+            </Link>
 
-          {/* T Beauty Academy (optional collapsible) */}
-          <Accordion
-            title="T Beauty Academy"
-            isOpen={open.academy}
-            onToggle={() => setOpen((s) => ({ ...s, academy: !s.academy }))}
-          >
-            <ChildLink href="/academy#classes">Classes</ChildLink>
-            <ChildLink href="/academy#schedule">Schedule</ChildLink>
-            <ChildLink href="/academy#policies">Policies</ChildLink>
-          </Accordion>
+            {/* Expand/collapse button (no navigation) */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setOpen((s) => ({ ...s, services: !s.services }));
+              }}
+              className={`ml-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/70 transition ${
+                open.services ? 'rotate-45' : ''
+              }`}
+              aria-expanded={open.services}
+              aria-controls="services-submenu"
+              aria-label={
+                open.services ? 'Collapse services' : 'Expand services'
+              }
+            >
+              <span className="-mt-[1px] text-sm leading-none">+</span>
+            </button>
+          </div>
 
+          {/* Services submenu */}
+          <div
+            id="services-submenu"
+            className={`grid overflow-hidden transition-all duration-300 ${
+              open.services
+                ? 'grid-rows-[1fr] opacity-100'
+                : 'grid-rows-[0fr] opacity-70'
+            }`}
+          >
+            <div className="min-h-0">
+              <div className="ml-3 space-y-1 border-l border-white/15 pl-3 pb-2">
+                <ChildLink to="/services/lashes">Eyelash Extensions</ChildLink>
+                <ChildLink to="/services/facials">Facials</ChildLink>
+                <ChildLink to="/services/injectables">
+                  Cosmetic Injections
+                </ChildLink>
+                <ChildLink to="/services/laser">Laser Hair Removal</ChildLink>
+                <ChildLink to="/services/fibroblast">Fibroblast</ChildLink>
+                <ChildLink to="/services/pmu">Permanent Makeup</ChildLink>
+                <ChildLink to="/services/waxtint">Wax &amp; Tint</ChildLink>
+                <ChildLink to="/services/wellness">
+                  IV Therapy &amp; Weight Loss
+                </ChildLink>
+              </div>
+            </div>
+          </div>
+
+          {/* Other top-level pages */}
+          <NavLink to="/memberships">Memberships</NavLink>
+          <NavLink to="/tbeautyacademy">T Beauty Academy</NavLink>
+          <NavLink to="/faq">FAQ</NavLink>
+
+          {/* Promos with subtle badge */}
+          <Link
+            to="/promo"
+            className="block rounded-md px-2 py-1 text-sm opacity-90 hover:opacity-100 hover:bg-white/10"
+          >
+            <span className="inline-flex items-center gap-2">
+              Promos
+              <span className="rounded-full bg-brand-mint/70 px-2 py-[2px] text-[10px] text-brand-forest">
+                New
+              </span>
+            </span>
+          </Link>
+
+          <NavLink to="/cherry">Payment Plan with Cherry</NavLink>
           <NavLink to="/policy">Policy</NavLink>
-          <NavLink to="/contact">Contact Us</NavLink>
+          <NavLink to="/contactus">Contact Us</NavLink>
         </nav>
       </div>
 
@@ -153,21 +206,21 @@ export default function Sidebar() {
           <a
             href="https://instagram.com/tbeautyloungeaz"
             aria-label="Instagram"
-            className="hover:opacity-100 opacity-90"
+            className="opacity-90 hover:opacity-100"
           >
             IG
           </a>
           <a
             href="https://facebook.com/tbeautyloungeaz"
             aria-label="Facebook"
-            className="hover:opacity-100 opacity-90"
+            className="opacity-90 hover:opacity-100"
           >
             FB
           </a>
           <a
             href="#"
             aria-label="Heart"
-            className="hover:opacity-100 opacity-90"
+            className="opacity-90 hover:opacity-100"
           >
             ♥
           </a>
@@ -182,3 +235,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+  
