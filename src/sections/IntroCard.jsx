@@ -7,7 +7,7 @@ export default function IntroCards() {
         <article className="relative overflow-hidden rounded-[--radius-card]">
           {/* background image */}
           <img
-            src="https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=1600&auto=format&fit=crop"
+            src="/images/team/teresa.png"
             alt="Provider portrait"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -23,10 +23,10 @@ export default function IntroCards() {
               and feel their absolute best.
             </p>
             <a
-              href="/about#teresa"
+              href="/services/injectables"
               className="mt-5 inline-block rounded-full border border-brand-gold px-5 py-2 text-sm text-brand-forest hover:bg-brand-cream/70"
             >
-              Learn More
+              Teresa's Services
             </a>
           </div>
         </article>
@@ -35,7 +35,7 @@ export default function IntroCards() {
         <article className="relative overflow-hidden rounded-[--radius-card]">
           {/* background image */}
           <img
-            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop"
+            src="/images/home/building.png"
             alt="T Beauty Lounge exterior"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -46,7 +46,7 @@ export default function IntroCards() {
           <div className="relative z-10 p-6 md:p-8">
             <h3 className="text-2xl font-semibold text-brand-forest">Meet T Beauty Lounge</h3>
             <p className="mt-3 max-w-prose text-brand-forest/85">
-              we believe beauty is more than skin deep—it’s about feeling empowered and 
+              We believe beauty is more than skin deep—it’s about feeling empowered and 
               confident in your own skin. Our journey began with a vision to create a sanctuary 
               where self-care meets innovation. 
             </p>

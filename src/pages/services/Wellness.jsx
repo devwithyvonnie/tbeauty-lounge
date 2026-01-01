@@ -1,4 +1,4 @@
-// src/pages/services/Wellness.jsx
+import { useEffect, useMemo, useState } from 'react';
 import MiniFAQAccordion from '../../components/MiniFAQ';
 
 // 💉 Medical weight loss programs
@@ -8,21 +8,21 @@ const WEIGHT_LOSS_PROGRAMS = [
     name: 'Semaglutide Program',
     description:
       'Includes initial exam and 4 weekly injections per month, with ongoing monitoring and dose adjustments as needed.',
-    price: 375,
     priceNote: '$375 / month',
+    bloodworkFee: 85,
   },
   {
     id: 'tirzepatide',
     name: 'Tirzepatide Program',
     description:
       'Includes initial exam and 4 weekly injections per month, with tailored dosing and regular check-ins.',
-    price: 550,
     priceNote: '$550 / month',
+    bloodworkFee: 85,
   },
 ];
 
-// 💧 IV therapy & wellness shots (example structure – adjust to match your exact menu)
-const WELLNESS_SERVICES = [
+// 💧 IV Therapy
+const IV_SERVICES = [
   {
     id: 'iv-hydration',
     name: 'Hydration IV Drip',
@@ -47,6 +47,10 @@ const WELLNESS_SERVICES = [
     price: 200,
     duration: '45–60 min',
   },
+];
+
+// 💉 Injections (shots)
+const INJECTION_SERVICES = [
   {
     id: 'b12-shot',
     name: 'B-12 Injection',
@@ -89,180 +93,326 @@ const WELLNESS_FAQ = [
   },
 ];
 
+const TABS = [
+  { id: 'weight-loss', label: 'Weight Loss' },
+  { id: 'iv', label: 'IV Therapy' },
+  { id: 'injections', label: 'Injections' },
+];
+
 export default function WellnessPage() {
+  const tabSet = useMemo(() => new Set(TABS.map((t) => t.id)), []);
+  const [active, setActive] = useState('weight-loss');
+
+  // deep link support: /services/wellness#iv
+  useEffect(() => {
+    const hash = (window.location.hash || '').replace('#', '');
+    if (hash && tabSet.has(hash)) setActive(hash);
+  }, [tabSet]);
+
+  const onSelect = (id) => {
+    setActive(id);
+    window.history.replaceState(null, '', `#${id}`);
+  };
+
   return (
-    <div className="mx-auto w-11/12 max-w-5xl py-8">
-      {/* HEADER */}
-      <header>
-        <p className="text-sm tracking-[0.25em] text-brand-forest/70">
-          WELLNESS &amp; WEIGHT LOSS
-        </p>
-        <h1 className="mt-1 text-3xl font-semibold text-brand-forest md:text-4xl">
-          Wellness, IV Therapy &amp; Weight Loss
-        </h1>
-        <p className="mt-3 max-w-2xl text-brand-forest/85">
-          Medically guided programs and wellness support designed to help you
-          feel your best—from weight management to hydration, IV drips, and
-          vitamin injections.
-        </p>
+    <div className="py-8">
+      {/* WIDE HERO (match lashes/facials/pmu) */}
+      <section className="mx-auto w-[96%] max-w-screen-2xl">
+        <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
+          <img
+            src="/images/services/wellness/hero.png"
+            alt="Wellness and IV therapy"
+            className="h-[52vh] w-full object-cover md:h-[60vh]"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-brand-cream/70" />
 
-        <div className="mt-4 flex flex-wrap gap-2 text-xs">
-          <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-            Provider-led care
-          </span>
-          <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-            Lab monitoring as needed
-          </span>
-          <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-            Personalized to your goals
-          </span>
-        </div>
-      </header>
+          <div className="absolute inset-0 flex items-center">
+            <div className="mx-auto w-11/12 max-w-3xl">
+              <p className="text-sm tracking-[0.25em] text-brand-forest/70">
+                WELLNESS &amp; WEIGHT LOSS
+              </p>
 
-      {/* WEIGHT LOSS PROGRAMS */}
-      <section className="mt-8">
-        <div className="flex items-baseline justify-between gap-3">
-          <div>
-            <h2 className="text-xl font-semibold text-brand-forest">
-              Medical Weight Loss Programs
-            </h2>
-            <p className="mt-1 text-sm text-brand-forest/80">
-              Monthly GLP-1–based programs that include your initial exam and
-              four weekly injections per month, with required lab work and
-              regular provider follow-ups.
-            </p>
+              <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-5xl">
+                Wellness, IV Therapy &amp; Weight Loss
+              </h1>
+
+              <p className="mt-4 max-w-2xl text-brand-forest/85">
+                Medically guided programs and wellness support designed to help
+                you feel your best—from weight management to hydration, IV
+                drips, and vitamin injections.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2 text-xs">
+                <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
+                  Provider-led care
+                </span>
+                <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
+                  Lab monitoring as needed
+                </span>
+                <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
+                  Personalized to your goals
+                </span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="/booking?service=wellness"
+                  className="rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
+                >
+                  Book Wellness Visit
+                </a>
+                <a
+                  href="/policy"
+                  className="rounded-full bg-white/80 px-6 py-2.5 text-sm font-medium text-brand-forest ring-1 ring-black/10 hover:bg-white"
+                >
+                  View Policies
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {WEIGHT_LOSS_PROGRAMS.map((prog) => (
-            <article
-              key={prog.id}
-              className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
-            >
-              <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
-              <div className="flex flex-1 flex-col p-4 md:p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-semibold text-brand-forest">
-                      {prog.name}
-                    </h3>
-                    {prog.description && (
-                      <p className="mt-1 text-sm text-brand-forest/80">
-                        {prog.description}
-                      </p>
-                    )}
-                    <ul className="mt-2 space-y-1 text-xs text-brand-forest/75">
-                      <li>
-                        • Initial exam and 4 weekly injections per month
-                      </li>
-                      <li>• Ongoing dose adjustments and monitoring</li>
-                      <li>• Lab work required (billed separately)</li>
-                    </ul>
-                  </div>
-                  <div className="ml-2 shrink-0 text-right text-sm">
-                    <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                      Program fee
-                    </p>
-                    <p className="text-base font-semibold text-brand-forest">
-                      {prog.priceNote}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <p className="mt-4 text-xs text-brand-forest/70">
-          Lab work is required for all new patients and is not included in the
-          monthly program fee. Follow-up exams and labs are required every 3
-          months to safely continue treatment.
-        </p>
       </section>
 
-      {/* WELLNESS & IV SERVICES */}
-      <section className="mt-10">
-        <div className="flex items-baseline justify-between gap-3">
-          <div>
-            <h2 className="text-xl font-semibold text-brand-forest">
-              IV Therapy &amp; Wellness Injections
-            </h2>
-            <p className="mt-1 text-sm text-brand-forest/80">
-              Drips and injections designed to support hydration, energy,
-              immunity, and overall wellness. Final recommendations are always
-              tailored to you.
-            </p>
+      {/* WIDER CONTENT */}
+      <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
+        {/* Sticky Tabs (no-scroll switching) */}
+        <section className="mt-8">
+          <div className="sticky top-3 z-20">
+            <div className="rounded-2xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow-sm p-3">
+              <div className="-mx-1 overflow-x-auto">
+                <div className="px-1 flex gap-2 min-w-max">
+                  {TABS.map((t) => {
+                    const isActive = t.id === active;
+                    return (
+                      <button
+                        key={t.id}
+                        type="button"
+                        onClick={() => onSelect(t.id)}
+                        className={[
+                          'rounded-full px-4 py-2 text-sm transition whitespace-nowrap',
+                          isActive
+                            ? 'bg-brand-forest text-white'
+                            : 'bg-brand-cream text-brand-forest hover:bg-brand-cream/70',
+                        ].join(' ')}
+                        aria-pressed={isActive}
+                      >
+                        {t.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {WELLNESS_SERVICES.map((svc) => (
-            <article
-              key={svc.id}
-              className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
-            >
-              <div className="h-1 bg-gradient-to-r from-brand-gold via-brand-mint to-brand-gold" />
-              <div className="flex flex-1 flex-col p-4 md:p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-semibold text-brand-forest">
-                      {svc.name}
-                    </h3>
-                    {svc.description && (
-                      <p className="mt-1 text-sm text-brand-forest/80">
-                        {svc.description}
-                      </p>
-                    )}
-                    <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
-                      {svc.duration && (
-                        <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
-                          {svc.duration}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <div className="ml-2 shrink-0 text-right text-sm">
-                    {typeof svc.price === 'number' ? (
-                      <>
+        {/* WEIGHT LOSS TAB */}
+        {active === 'weight-loss' ? (
+          <section className="mt-6">
+            <div>
+              <h2 className="text-xl font-semibold text-brand-forest">
+                Medical Weight Loss Programs
+              </h2>
+              <p className="mt-1 text-sm text-brand-forest/80">
+                Monthly GLP-1–based programs that include your initial exam and
+                four weekly injections per month, with required lab work and
+                regular provider follow-ups.
+              </p>
+            </div>
+
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              {WEIGHT_LOSS_PROGRAMS.map((prog, idx) => (
+                <article
+                  key={prog.id}
+                  className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
+                >
+                  <div
+                    className={[
+                      'h-1 bg-gradient-to-r',
+                      idx % 2 === 0
+                        ? 'from-brand-mint via-brand-gold to-brand-mint'
+                        : 'from-brand-gold via-brand-mint to-brand-gold',
+                    ].join(' ')}
+                  />
+                  <div className="flex flex-1 flex-col p-4 md:p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-lg font-semibold text-brand-forest">
+                          {prog.name}
+                        </h3>
+                        {prog.description ? (
+                          <p className="mt-1 text-sm text-brand-forest/80">
+                            {prog.description}
+                          </p>
+                        ) : null}
+
+                        <ul className="mt-2 space-y-1 text-xs text-brand-forest/75">
+                          <li>• Provider-prescribed GLP-1 medication</li>
+                          <li>• Monthly check-ins & dose optimization</li>
+                          <li>• Ongoing monitoring for safe progression</li>
+                        </ul>
+                      </div>
+
+                      <div className="ml-2 shrink-0 text-right text-sm">
                         <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                          Starting at
+                          Program fee
                         </p>
                         <p className="text-base font-semibold text-brand-forest">
-                          ${svc.price}
+                          {prog.priceNote}
                         </p>
-                      </>
-                    ) : null}
-                    {svc.priceNote && (
-                      <p className="text-xs text-brand-forest/70">
-                        {svc.priceNote}
-                      </p>
-                    )}
+
+                        <p className="mt-1 text-xs text-brand-forest/70">
+                          + ${prog.bloodworkFee} bloodwork
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+                </article>
+              ))}
+            </div>
 
-      {/* MINI FAQ – WELLNESS */}
-      <MiniFAQAccordion title="Wellness & Weight Loss FAQ" faqs={WELLNESS_FAQ} />
+            <section className="mt-6 flex items-start gap-3 rounded-2xl bg-white/80 ring-1 ring-black/5 p-5">
+              <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-mint/30 text-sm">
+                i
+              </span>
+              <p className="text-sm text-brand-forest/80 max-w-3xl">
+                Lab work is required for all new patients and is not included in
+                the monthly program fee. Follow-up exams and labs are required
+                every <strong>3 months</strong> to safely continue treatment.
+              </p>
+            </section>
+          </section>
+        ) : null}
 
-      {/* CTA */}
-      <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-        <p className="text-xs md:text-sm text-brand-forest/80">
-          Curious which wellness option is right for you? Book a{' '}
-          <span className="font-medium">wellness consultation</span> and our
-          provider will help you choose a safe, personalized plan.
-        </p>
-        <a
-          href="/booking?service=wellness"
-          className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-        >
-          Book Wellness Visit
-        </a>
-      </section>
+        {/* IV THERAPY TAB */}
+        {active === 'iv' ? (
+          <section className="mt-6">
+            <div>
+              <h2 className="text-xl font-semibold text-brand-forest">
+                IV Therapy
+              </h2>
+              <p className="mt-1 text-sm text-brand-forest/80">
+                Drips designed to support hydration, energy, immunity, and
+                overall wellness. Final recommendations are always tailored to
+                you.
+              </p>
+            </div>
+
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              {IV_SERVICES.map((svc, idx) => (
+                <ServiceCard
+                  key={svc.id}
+                  svc={svc}
+                  accent={idx % 2 ? 'mint' : 'gold'}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {/* INJECTIONS TAB */}
+        {active === 'injections' ? (
+          <section className="mt-6">
+            <div>
+              <h2 className="text-xl font-semibold text-brand-forest">
+                Injections
+              </h2>
+              <p className="mt-1 text-sm text-brand-forest/80">
+                Quick wellness shots and provider-guided options. We’ll review
+                your goals and health history to recommend the safest fit.
+              </p>
+            </div>
+
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              {INJECTION_SERVICES.map((svc, idx) => (
+                <ServiceCard
+                  key={svc.id}
+                  svc={svc}
+                  accent={idx % 2 ? 'gold' : 'mint'}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {/* FAQ TAB */}
+        {active === 'faq' ? (
+          <section className="mt-6">
+            <MiniFAQAccordion
+              title="Wellness & Weight Loss FAQ"
+              faqs={WELLNESS_FAQ}
+            />
+          </section>
+        ) : null}
+
+        {/* CTA */}
+        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
+          <p className="text-xs md:text-sm text-brand-forest/80">
+            Curious which wellness option is right for you? Book a{' '}
+            <span className="font-medium">wellness consultation</span> and our
+            provider will help you choose a safe, personalized plan.
+          </p>
+          <a
+            href="/booking?service=wellness"
+            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
+          >
+            Book Wellness Visit
+          </a>
+        </section>
+      </div>
     </div>
+  );
+}
+
+function ServiceCard({ svc, accent = 'mint' }) {
+  const bar =
+    accent === 'gold'
+      ? 'from-brand-gold via-brand-mint to-brand-gold'
+      : 'from-brand-mint via-brand-gold to-brand-mint';
+
+  return (
+    <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
+      <div className={`h-1 bg-gradient-to-r ${bar}`} />
+      <div className="flex flex-1 flex-col p-4 md:p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-lg font-semibold text-brand-forest">
+              {svc.name}
+            </h3>
+            {svc.description ? (
+              <p className="mt-1 text-sm text-brand-forest/80">
+                {svc.description}
+              </p>
+            ) : null}
+
+            <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
+              {svc.duration ? (
+                <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
+                  {svc.duration}
+                </span>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="ml-2 shrink-0 text-right text-sm">
+            {typeof svc.price === 'number' ? (
+              <>
+                <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
+                  Starting at
+                </p>
+                <p className="text-base font-semibold text-brand-forest">
+                  ${svc.price}
+                </p>
+              </>
+            ) : null}
+
+            {svc.priceNote ? (
+              <p className="text-xs text-brand-forest/70">{svc.priceNote}</p>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }

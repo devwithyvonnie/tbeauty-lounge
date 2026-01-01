@@ -2,15 +2,30 @@
 
 /* Brand tokens for T Beauty Lounge */
 @theme {
-  --color-brand-primary: #7c9a6d;  /* sage green */
-  --color-brand-mint:    #e9f6df;  /* light mint */
-  --color-brand-gold:    #d4af37;  /* warm gold */
-  --color-brand-cream:   #f9f6f1;  /* soft cream */
-  --color-brand-forest:  #4a5a3d;  /* deep green */
+  --color-brand-primary: #7c9a6d;
+  /* sage green */
+  --color-brand-mint: #e9f6df;
+  /* light mint */
+  --color-brand-gold: #d4af37;
+  /* warm gold */
+  --color-brand-cream: #f9f6f1;
+  /* soft cream */
+  --color-brand-forest: #4a5a3d;
+  /* deep green */
 
   /* Optional semantic tokens (nice for consistency) */
-  --color-bg:            var(--color-brand-cream);
-  --color-text:          #0f1410;
-  --color-accent:        var(--color-brand-gold);
-  --color-muted:         #ece8de;
+  --color-bg: #FAF9F6;
+  --color-text: #0f1410;
+  --color-accent: var(--color-brand-gold);
+  --color-muted: #ece8de;
+
+  /* Surfaces (UI layers) */
+  --color-surface: #ffffff;
+  /* main cards */
+  --color-surface-2: #fbfaf7;
+  /* subtle alt surface (optional) */
+  --color-border: #e9e4d8;
+  /* warm border */
+  --color-muted-text: #556157;
+  /* neutral-muted (not green) */
 }

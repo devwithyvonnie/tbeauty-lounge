@@ -9,6 +9,8 @@ const SERVICES = [
   "Lashes",
   "PMU",
   "Wax & Tint",
+  "Fibroblast",
+  "T Beauty Academy",
 ];
 
 export default function Contact() {
@@ -50,39 +52,53 @@ export default function Contact() {
     form.consent;
 
   return (
-    <div className="mx-auto w-11/12 max-w-6xl py-8">
-      {/* ===== HERO ===== */}
-      <header className="rounded-[--radius-card] bg-brand-cream/70 p-6 md:p-10 ring-1 ring-black/5">
-        <p className="text-sm tracking-[0.25em] text-brand-forest/70">
-          CONTACT US
-        </p>
-        <h1 className="mt-2 text-3xl md:text-5xl font-semibold text-brand-forest leading-tight">
-          We&apos;re here to help
-        </h1>
-        <p className="mt-4 max-w-2xl text-brand-forest/85">
-          Have a question, need help choosing a service, or ready to book? Reach
-          out anytime and our team will guide you.
-        </p>
+    <div className="py-8">
+      {/* WIDE HERO */}
+      <section className="mx-auto w-[96%] max-w-screen-2xl">
+        <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
+          <img
+            src="/images/contact-us.png"
+            className="h-[52vh] w-full object-cover md:h-[60vh]"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-brand-cream/70" />
 
-        {/* CTAs */}
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="https://www.vagaro.com/tbeautylounge/book-now"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book on Vagaro
-          </a>
-          <a
-            href="tel:6232138996"
-            className="rounded-full border border-brand-forest/30 bg-white/60 px-6 py-2.5 text-sm text-brand-forest hover:bg-white"
-          >
-            Call 623-213-8996
-          </a>
+          <div className="absolute inset-0 flex items-center">
+            <div className="mx-auto w-11/12 max-w-3xl">
+              <p className="text-sm tracking-[0.25em] text-brand-forest/70">
+                Contact Us
+              </p>
+
+              <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-5xl">
+                We’re Here to Help
+              </h1>
+
+              <p className="mt-4 max-w-2xl text-brand-forest/85">
+                Have a question, need help choosing a service, or ready to book? Reach out anytime and our team will guide you.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                href="https://www.vagaro.com/tbeautylounge/book-now"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-brand-gold px-7 py-3 text-white font-semibold shadow-sm hover:brightness-95"
+              >
+                Book an Appointment
+              </a>
+              <a
+                href="tel:6232138996"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold bg-white/55 px-7 py-3 text-brand-forest font-semibold hover:bg-brand-cream/70"
+              >
+               Call us
+              </a>
+              </div>
+	</div>
+          </div>
         </div>
-      </header>
+      </section>
 
+      <main className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8"> 
       {/* ===== INFO CARDS ===== */}
       <section className="mt-6 grid gap-4 md:grid-cols-2">
         <InfoCard title="Call or Text">
@@ -318,6 +334,8 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      </main>
     </div>
   );
 }

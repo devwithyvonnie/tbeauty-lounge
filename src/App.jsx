@@ -2,6 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
 import Sidebar from "./components/Sidebar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -9,6 +10,7 @@ import Lashes from "./pages/services/Lashes";
 import Facials from "./pages/services/Facials";
 import WaxTint from "./pages/services/WaxTint";
 import Injectables from "./pages/services/Injectables";
+import JapaneseHeadSpa from "./pages/services/HeadSpa";
 import Laser from "./pages/services/Laser";
 import PMU from "./pages/services/PMU";
 import Fibroblast from "./pages/services/Fibroblast";
@@ -20,6 +22,8 @@ import Policy from "./pages/Policy";
 import FAQ from "./pages/FAQ";
 import Promo from "./pages/Promo";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/PrivacyPolicy";
+import Terms from "./pages/T&C";
 
 
 function MainRoutes() {
@@ -37,12 +41,15 @@ function MainRoutes() {
       <Route path="/services/fibroblast" element={<Fibroblast />} />
       <Route path="/services/pmu" element={<PMU />} />
       <Route path="/services/wellness" element={<Wellness />} />
+      <Route path="/services/headspa" element={<JapaneseHeadSpa />} />
       <Route path="/tbeautyacademy" element={<Academy />} />
       <Route path="/cherry" element={<Cherry />} />
       <Route path="/policy" element={<Policy />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/promo" element={<Promo />} />
       <Route path="/contactus" element={<Contact />} />
+      <Route path="/privacypolicy" element={<Privacy />} />
+      <Route path="/termsandcondition" element={<Terms />} />
     </Routes>
   );
 }
@@ -71,6 +78,7 @@ export default function App() {
             <main className="min-h-screen">
               <MainRoutes />
             </main>
+            <Footer />
           </div>
         </div>
       </div>

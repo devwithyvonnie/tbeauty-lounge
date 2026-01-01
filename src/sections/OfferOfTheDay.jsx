@@ -1,92 +1,118 @@
 import { useEffect, useMemo, useState } from "react";
 
 /** ---------------------------
- * Configure your weekly offers
+ * Offer configuration
  * ---------------------------
  * One entry per weekday (0=Sun ... 6=Sat).
- * You can change titles, copy, discount, links & images here anytime.
+ *
+ * Sat–Tue are Gift Card focused.
+ * Wed/Thu/Fri are service promos.
  */
 const WEEKLY_OFFERS = {
-  0: { // Sunday
+  0: {
+    // Sunday (Gift Card)
+    type: "giftcard",
     title: "Offer of the Day",
-    headline: "Sunday Serenity",
-    sub: "35% off Facials",
-    discount: "35% OFF",
-    ctaLabel: "Book Facial",
-    href: "/booking?service=facial",
-    image: "/images/offers/facial.jpg", // put file in /public/images/offers
+    headline: "Sunday Gift Card Bonus",
+    sub: "Treat someone (or yourself) with a little extra value today.",
+    perk: "Buy $100, get a $25 bonus",
+    discount: "+$25 BONUS",
+    ctaLabel: "Shop Gift Cards",
+    href: "/gift-cards",
+    image: "/images/offers/giftcard.png",
+    finePrint: "$25 bonus must be used by the last day of the purchase month.",
   },
-  1: { // Monday
+  1: {
+    // Monday (Gift Card)
+    type: "giftcard",
     title: "Offer of the Day",
-    headline: "Monday Glow",
-    sub: "10% off Injectables",
-    discount: "10% OFF",
-    ctaLabel: "Call to Book your Offer of the Day",
-    href: "/booking?service=injectables",
-    image: "/images/offers/injectables.jpg",
+    headline: "Monday Gift Card Perk",
+    sub: "Perfect for gifting or planning your next visit.",
+    perk: "Buy $100, get a $15 bonus",
+    discount: "+$15 BONUS",
+    ctaLabel: "Shop Gift Cards",
+    href: "/gift-cards",
+    image: "/images/offers/giftcard.png",
+    finePrint: "$15 bonus must be used by the last day of the purchase month.",
   },
-  2: { // Tuesday
+  2: {
+    // Tuesday (Gift Card)
+    type: "giftcard",
     title: "Offer of the Day",
-    headline: "Two-for-Tint Tuesday",
-    sub: "Complimentary brow wax with tint",
-    discount: "FREE ADD-ON",
-    ctaLabel: "Call to Book your Offer of the Day",
-    href: "/booking?service=lash_brow",
-    image: "/images/offers/brow.jpg",
+    headline: "Tuesday Gift Card Treat",
+    sub: "Stock up for birthdays, holidays, or your future self-care.",
+    perk: "Buy $100, get a $15 bonus",
+    discount: "+$15 BONUS",
+    ctaLabel: "Shop Gift Cards",
+    href: "/gift-cards",
+    image: "/images/offers/giftcard.png",
+    finePrint: "$15 bonus must be used by the last day of the purchase month.",
   },
-  3: { // Wednesday
+  3: {
+    // Wednesday
+    type: "service",
     title: "Offer of the Day",
     headline: "Wellness Wednesday",
-    sub: "B-12 Shot on us with any facial",
-    discount: "FREE B-12",
-    ctaLabel: "Call to Book your Offer of the Day",
-    href: "/booking?service=wellness",
-    image: "/images/offers/wellness.jpg",
+    sub: "15% off Hydrodiamond Facials",
+    discount: "15% OFF",
+    ctaLabel: "Book Hydrodiamond",
+    href: "/booking?service=hydradiamond",
+    image: "/images/offers/hydrodiamond.png",
+    details: "Limited availability • While appointments last",
   },
-  4: { // Thursday
+  4: {
+    // Thursday
+    type: "service",
     title: "Offer of the Day",
     headline: "Laser Thursday",
-    sub: "Small area intro special",
+    sub: "$20 off Small Area Laser Hair Removal",
     discount: "$20 OFF",
-    ctaLabel: "Call to Book your Offer of the Day",
+    ctaLabel: "Call to Book Today’s Offer",
     href: "/booking?service=laser_small",
-    image: "/images/offers/laser.jpg",
+    image: "/images/offers/laser.png",
+    details: "New clients welcome • Ask us which areas qualify",
   },
-  5: { // Friday
+  5: {
+    // Friday
+    type: "service",
     title: "Offer of the Day",
     headline: "Fresh Friday",
-    sub: "Lash lift + tint bundle",
-    discount: "BUNDLE SAVE",
-    ctaLabel: "Call to Book your Offer of the Day",
-    href: "/booking?service=lash_lift",
-    image: "/images/offers/lift.jpg",
+    sub: "Lash Lift & Tint for $100",
+    discount: "$100",
+    ctaLabel: "Call to Book Today’s Offer",
+    href: "/booking?service=lash_lift_tint",
+    image: "/images/offers/lift.png",
+    details: "One session • Limited slots",
   },
-  6: { // Saturday
+  6: {
+    // Saturday (Gift Card)
+    type: "giftcard",
     title: "Offer of the Day",
-    headline: "Self-Care Saturday",
-    sub: "10% off any package",
-    discount: "10% OFF",
-    ctaLabel: "Call to Book your Offer of the Day",
-    href: "/services#packages",
-    image: "/images/offers/packages.jpg",
+    headline: "Saturday Gift Card Bonus",
+    sub: "Give the gift of self-care — and get a little extra today.",
+    perk: "Buy $100, get a $25 bonus",
+    discount: "+$25 BONUS",
+    ctaLabel: "Shop Gift Cards",
+    href: "/gift-cards",
+    image: "/images/offers/giftcard.png",
+    finePrint: "$25 bonus must be used by the last day of the purchase month.",
   },
 };
 
 /** -----------------------------------------
  * Optional: single-day overrides (YYYY-MM-DD)
- * -----------------------------------------
- * Useful for holidays, anniversaries, flash promos.
- * If a date exists here, it replaces the weekday offer.
- */
+ * ----------------------------------------- */
 const DATE_OVERRIDES = {
-  // "2025-12-24": {
-  //   title: "Holiday Glow",
-  //   headline: "Christmas Eve Treat",
+  // "2026-01-01": {
+  //   type: "giftcard",
+  //   title: "New Year Bonus",
+  //   headline: "Start Fresh",
   //   sub: "Gift card bonus today only",
-  //   discount: "+15% BONUS",
-  //   ctaLabel: "Buy Gift Card",
+  //   discount: "GIFT CARD BONUS",
+  //   ctaLabel: "Shop Gift Cards",
   //   href: "/gift-cards",
-  //   image: "/images/offers/holiday.jpg",
+  //   image: "/images/offers/giftcard.png",
+  //   finePrint: "Bonus applies to gift card purchases made today only.",
   // },
 };
 
@@ -100,7 +126,7 @@ function getTodayKey(d = new Date()) {
 function msUntilNextMidnight() {
   const now = new Date();
   const next = new Date(now);
-  next.setHours(24, 0, 0, 0); // tonight at 24:00 local
+  next.setHours(24, 0, 0, 0);
   return next.getTime() - now.getTime();
 }
 
@@ -108,8 +134,7 @@ function useCountdownToMidnight() {
   const [msLeft, setMsLeft] = useState(msUntilNextMidnight());
 
   useEffect(() => {
-    const tick = () => setMsLeft(msUntilNextMidnight());
-    const id = setInterval(tick, 1000);
+    const id = setInterval(() => setMsLeft(msUntilNextMidnight()), 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -135,15 +160,20 @@ export default function OfferOfTheDay() {
     const today = new Date();
     const todayKey = getTodayKey(today);
 
-    // 1) Date override?
     if (DATE_OVERRIDES[todayKey]) return DATE_OVERRIDES[todayKey];
 
-    // 2) Weekly rotation
-    const day = frozenDay ?? today.getDay(); // 0-6
+    const day = frozenDay ?? today.getDay();
     return WEEKLY_OFFERS[day];
   }, [frozenDay]);
 
   if (!offer) return null;
+
+  const countdownBlocks = [
+    { v: days, label: "DAYS" },
+    { v: hrs, label: "HRS" },
+    { v: mins, label: "MINS" },
+    { v: secs, label: "SECS" },
+  ];
 
   return (
     <section className="mx-auto w-11/12 max-w-6xl py-10">
@@ -153,49 +183,93 @@ export default function OfferOfTheDay() {
           <img
             src={offer.image}
             alt={offer.headline}
-            className="h-64 w-full object-cover md:h-full"
+            className="h-72 w-full object-cover md:h-full"
+            loading="lazy"
           />
-          {/* torn-edge style hint via gradient (optional) */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-brand-cream/90 to-transparent" />
+
+          {/* Soft overlay for readability */}
+          <div className="pointer-events-none absolute inset-0 bg-black/10" />
+
+          {/* Top badges */}
+          <div className="absolute left-4 top-4 flex flex-wrap gap-2">
+            <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-brand-forest">
+              Today only
+            </span>
+            {offer.discount ? (
+              <span className="rounded-full bg-brand-mint px-3 py-1 text-xs font-semibold text-brand-forest">
+                {offer.discount}
+              </span>
+            ) : null}
+          </div>
+
+          {/* Bottom fade */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-brand-cream/95 to-transparent" />
         </div>
 
         {/* Text + countdown */}
-        <div className="rounded-[--radius-card] bg-white p-6 md:p-8">
-          <p className="text-sm tracking-widest text-brand-forest/70">{offer.title}</p>
-          <h3 className="mt-1 text-3xl font-semibold text-brand-forest">{offer.headline}</h3>
-          <p className="mt-1 text-brand-forest/80">{offer.sub}</p>
+        <div className="rounded-[--radius-card] bg-white p-6 md:p-8 shadow-sm ring-1 ring-black/5">
+          <p className="text-xs tracking-[0.28em] text-brand-forest/70">
+            {offer.title}
+          </p>
+
+          <h3 className="mt-2 text-3xl font-semibold text-brand-forest">
+            {offer.headline}
+          </h3>
+
+          <p className="mt-2 text-brand-forest/80">{offer.sub}</p>
+
+          {/* Gift Card extra line (optional) */}
+          {offer.type === "giftcard" && offer.perk ? (
+            <div className="mt-4 rounded-2xl bg-brand-cream/70 p-4 ring-1 ring-black/5">
+              <p className="text-sm font-semibold text-brand-forest">
+                🎁 {offer.perk}
+              </p>
+              {offer.finePrint ? (
+                <p className="mt-1 text-xs text-brand-forest/70">
+                  {offer.finePrint}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
+          {/* Service detail line (optional) */}
+          {offer.type === "service" && offer.details ? (
+            <p className="mt-3 text-sm text-brand-forest/70">{offer.details}</p>
+          ) : null}
 
           {/* Countdown */}
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2">
-              {[
-                { v: days, label: "DAYS" },
-                { v: hrs, label: "HRS" },
-                { v: mins, label: "MINS" },
-                { v: secs, label: "SECS" },
-              ].map((b, i) => (
-                <div key={i} className="text-center">
-                  <div className="rounded-md bg-brand-forest px-3 py-2 font-mono text-lg text-white">
-                    {String(b.v).padStart(2, "0")}
-                  </div>
-                  <div className="mt-1 text-[10px] tracking-wide text-brand-forest/70">{b.label}</div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm font-medium text-brand-forest/80">
+                Ends at midnight
+              </p>
 
-            {offer.discount && (
-              <span className="ml-2 rounded-full bg-brand-mint px-3 py-1 text-xs text-brand-forest">
-                {offer.discount}
-              </span>
-            )}
+              <div className="flex items-center gap-2">
+                {countdownBlocks.map((b, i) => (
+                  <div key={i} className="text-center">
+                    <div className="rounded-md bg-brand-forest px-3 py-2 font-mono text-lg text-white">
+                      {String(b.v).padStart(2, "0")}
+                    </div>
+                    <div className="mt-1 text-[10px] tracking-wide text-brand-forest/70">
+                      {b.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <a
             href={offer.href}
-            className="mt-6 inline-block rounded-full bg-brand-forest px-6 py-3 text-white hover:brightness-110"
+            className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-brand-forest px-6 py-3 text-white hover:brightness-110 md:w-auto"
           >
-            {offer.ctaLabel ?? "Call to Book your Offer of the Day"}
+            {offer.ctaLabel ?? "Call to Book Today’s Offer"}
           </a>
+
+          {/* Small helper text (optional) */}
+          <p className="mt-3 text-xs text-brand-forest/60">
+            Questions? Call or text us and we’ll help you book the offer.
+          </p>
         </div>
       </div>
     </section>

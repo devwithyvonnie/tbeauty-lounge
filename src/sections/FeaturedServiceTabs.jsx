@@ -7,10 +7,10 @@ const CATEGORIES = [
     blurb:
       "From classic to mega volume, plus lash lifts & tints. Designed to enhance your eye shape with comfortable, long-wear results.",
     image:
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1400&auto=format&fit=crop",
+      "/images/home/eyelash.png",
     duration: "90–120 mins",
     notes: "best in a series • low maintenance options",
-    href: "/services#lashes",
+    href: "/services/lashes",
   },
   {
     id: "skin",
@@ -18,10 +18,10 @@ const CATEGORIES = [
     blurb:
       "Our custom facials blend gentle exfoliation, targeted treatment masks, and soothing massage to calm inflammation and restore your natural glow. Whether you’re managing breakouts, dryness, or sensitivity, we tailor each step to your skin type and goals. Expect clean, non-irritating ingredients, quiet ambiance, and results you can see and feel—without downtime.",
     image:
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1400&auto=format&fit=crop",
+      "/images/home/facial.png",
     duration: "60–120 mins",
     notes: "little to no downtime",
-    href: "/services#skin",
+    href: "/services/facials",
   },
   {
     id: "injectables",
@@ -29,10 +29,10 @@ const CATEGORIES = [
     blurb:
       "Natural-looking neurotoxin and filler treatments performed by our FNP-C to soften lines, restore volume, and refine contours.",
     image:
-      "https://images.unsplash.com/photo-1608248597279-d8b89e4fb13d?q=80&w=1400&auto=format&fit=crop",
+      "/images/home/injectables.png",
     duration: "30–60 mins",
     notes: "results build over time • consultation included",
-    href: "/services#injectables",
+    href: "/services/injectables",
   },
   {
     id: "laser",
@@ -40,10 +40,10 @@ const CATEGORIES = [
     blurb:
       "Smooth, long-term reduction for face and body with packages for the areas you treat most.",
     image:
-      "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?q=80&w=1400&auto=format&fit=crop",
+      "/images/home/laser.png",
     duration: "15–60 mins",
     notes: "series recommended • shave 24h prior",
-    href: "/services#laser",
+    href: "/services/laser",
   },
   {
     id: "pmu",
@@ -51,10 +51,10 @@ const CATEGORIES = [
     blurb:
       "Brow, liner, and lip enhancements that save time daily and keep your features softly defined.",
     image:
-      "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1400&auto=format&fit=crop",
+      "/images/home/permanentmakeup.png",
     duration: "2–3 hrs",
     notes: "includes follow-up • custom color mapping",
-    href: "/services#pmu",
+    href: "/services/pmu",
   },
   {
     id: "wellness",
@@ -62,10 +62,10 @@ const CATEGORIES = [
     blurb:
       "Provider-guided programs, metabolism support, and IV drips to help you feel balanced and energized.",
     image:
-      "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1400&auto=format&fit=crop",
+      "/images/home/ivtherapy.png",
     duration: "30–60 mins",
     notes: "lab-informed plans • monitored by provider",
-    href: "/services#wellness",
+    href: "/services/wellness",
   },
 ];
 

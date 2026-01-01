@@ -1,6 +1,63 @@
-// src/pages/FAQ.jsx
 import { useMemo, useState, useEffect } from 'react';
 
+const MAINTENANCE = true;
+
+function MaintenanceLayout({
+  eyebrow = 'PAGE UPDATE',
+  title,
+  subtitle,
+  image = '/images/faq-hero.jpg',
+  primaryCta = { label: 'Contact Us', href: '/contact' },
+  secondaryCta = { label: 'Book Now', href: '/booking' },
+  note,
+}) {
+  return (
+    <div className="mx-auto w-11/12 max-w-5xl py-10">
+      <section className="relative overflow-hidden rounded-3xl ring-1 ring-black/5">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${image}')` }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-brand-cream/90 via-brand-cream/80 to-white/70"
+          aria-hidden="true"
+        />
+
+        <div className="relative p-6 md:p-10">
+          <p className="text-sm tracking-[0.25em] text-brand-forest/70">
+            {eyebrow}
+          </p>
+          <h1 className="mt-2 text-3xl md:text-5xl font-semibold text-brand-forest leading-tight">
+            {title}
+          </h1>
+          <p className="mt-4 max-w-2xl text-brand-forest/85">{subtitle}</p>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={primaryCta.href}
+              className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
+            >
+              {primaryCta.label}
+            </a>
+            <a
+              href={secondaryCta.href}
+              className="rounded-full border border-brand-forest/30 bg-white/70 px-5 py-2 text-sm text-brand-forest hover:bg-white"
+            >
+              {secondaryCta.label}
+            </a>
+          </div>
+
+          {note ? (
+            <p className="mt-4 text-xs text-brand-forest/65">{note}</p>
+          ) : null}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* --- Keep all your existing FAQ code below --- */
 function AccordionItem({ q, a, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
 
@@ -42,57 +99,88 @@ function AccordionItem({ q, a, defaultOpen = false }) {
   );
 }
 
-function CategoryCard({ title, count, active, onClick }) {
+function CategoryCard({ title, count, active, onClick, img }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`text-left rounded-3xl p-5 ring-1 transition shadow-sm ${
+      className={`group text-left rounded-3xl ring-1 transition shadow-sm overflow-hidden ${
         active
           ? 'bg-brand-forest text-white ring-brand-forest'
           : 'bg-white/80 text-brand-forest ring-black/5 hover:bg-white'
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h3
-            className={`text-base md:text-lg font-semibold ${
-              active ? 'text-white' : 'text-brand-forest'
-            }`}
-          >
-            {title}
-          </h3>
-          <p
-            className={`mt-1 text-xs ${
-              active ? 'text-white/80' : 'text-brand-forest/70'
-            }`}
-          >
-            {count} question{count === 1 ? '' : 's'}
-          </p>
-        </div>
-        <span
-          className={`mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full border ${
-            active ? 'border-white/30 bg-white/10' : 'border-black/10 bg-white'
+      <div className="relative h-24 w-full">
+        <img
+          src={img}
+          alt=""
+          className={`h-full w-full object-cover transition ${
+            active ? 'opacity-90' : 'opacity-80 group-hover:opacity-95'
           }`}
+          loading="lazy"
+        />
+        <div
+          className={`absolute inset-0 ${active ? 'bg-black/25' : 'bg-black/15'}`}
           aria-hidden="true"
-        >
-          →
-        </span>
+        />
+      </div>
+
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3
+              className={`text-base md:text-lg font-semibold ${
+                active ? 'text-white' : 'text-brand-forest'
+              }`}
+            >
+              {title}
+            </h3>
+            <p className={`mt-1 text-xs ${active ? 'text-white/80' : 'text-brand-forest/70'}`}>
+              {count} question{count === 1 ? '' : 's'}
+            </p>
+          </div>
+
+          <span
+            className={`mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${
+              active
+                ? 'border-white/30 bg-white/10'
+                : 'border-black/10 bg-white group-hover:translate-x-0.5'
+            }`}
+            aria-hidden="true"
+          >
+            →
+          </span>
+        </div>
       </div>
     </button>
   );
 }
 
 export default function FAQ() {
+  if (MAINTENANCE) {
+    return (
+      <MaintenanceLayout
+        eyebrow="FAQ"
+        title="FAQ is under maintenance"
+        subtitle="We’re reorganizing our questions so it’s easier to find what you need. If you have any questions, feel free to text us or ask during your appointment."
+        image="/images/faq-hero.jpg"
+        primaryCta={{ label: 'Contact Us', href: '/contact' }}
+        secondaryCta={{ label: 'Book Now', href: '/booking' }}
+        note="We’ll be back soon with a cleaner, more helpful FAQ experience."
+      />
+    );
+  }
+
+  // ---- Your existing FAQ page logic (unchanged) ----
   const SECTIONS = useMemo(
     () => [
-      { key: 'overall', title: 'Overall Spa' },
-      { key: 'lashes', title: 'Eyelash Extensions' },
-      { key: 'facials', title: 'Facials' },
-      { key: 'injectables', title: 'Cosmetic Injections' },
-      { key: 'laser', title: 'Laser' },
-      { key: 'pmu', title: 'PMU' },
-      { key: 'waxtint', title: 'Wax + Tint' },
+      { key: 'overall', title: 'Overall Spa', img: '/images/faq-overall.jpg' },
+      { key: 'lashes', title: 'Eyelash Extensions', img: '/images/faq-lashes.jpg' },
+      { key: 'facials', title: 'Facials', img: '/images/faq-facials.jpg' },
+      { key: 'injectables', title: 'Cosmetic Injections', img: '/images/faq-injectables.jpg' },
+      { key: 'laser', title: 'Laser', img: '/images/faq-laser.jpg' },
+      { key: 'pmu', title: 'PMU', img: '/images/faq-pmu.jpg' },
+      { key: 'waxtint', title: 'Wax + Tint', img: '/images/faq-wax.jpg' },
     ],
     [],
   );
@@ -104,95 +192,7 @@ export default function FAQ() {
         q: 'Do I need a card on file to book?',
         a: 'Yes—appointments are reserved just for you, so a valid card on file is required to secure bookings.',
       },
-      {
-        categories: ['overall'],
-        q: 'Do you accept walk-ins?',
-        a: 'We recommend booking ahead to ensure availability. Same-day appointments may be available—please call us.',
-      },
-      {
-        categories: ['overall'],
-        q: 'What is your cancellation policy?',
-        a: 'We ask for at least 24 hours notice to cancel or reschedule. Late cancellations may be subject to a fee.',
-      },
-      {
-        categories: ['overall'],
-        q: 'What happens if I’m late?',
-        a: 'Because appointments are scheduled back-to-back, arriving late may require rescheduling so we can provide your full service time.',
-      },
-      {
-        categories: ['overall'],
-        q: 'Do you allow children or additional guests?',
-        a: 'To maintain a calm environment and for safety reasons, we ask that you do not bring children or additional guests to your appointment.',
-      },
-      {
-        categories: ['overall'],
-        q: 'What forms of payment do you accept?',
-        a: 'We accept major cards and other in-studio payment methods. If you have a question about payment, please contact us before your appointment.',
-      },
-      {
-        categories: ['overall'],
-        q: 'Do you offer financing?',
-        a: 'Yes—financing may be available through Cherry (pending approval).',
-      },
-      {
-        categories: ['overall'],
-        q: 'Do you offer consultations?',
-        a: 'Yes. For some services, a consultation may be required before treatment to ensure we choose the safest and best option for your goals.',
-      },
-      {
-        categories: [
-          'overall',
-          'lashes',
-          'facials',
-          'injectables',
-          'laser',
-          'pmu',
-          'waxtint',
-        ],
-        q: 'Can I request a specific provider?',
-        a: 'Yes. If you have a preferred provider, note it when booking or let us know and we’ll do our best to match availability.',
-      },
-
-      {
-        categories: ['lashes'],
-        q: 'How often do I need a fill?',
-        a: 'Most clients return every 2–3 weeks depending on natural lash shedding, desired fullness, and aftercare.',
-      },
-      {
-        categories: ['lashes'],
-        q: 'Can I wear mascara with extensions?',
-        a: 'We recommend avoiding mascara, especially waterproof formulas, to help protect retention and keep lashes clean.',
-      },
-
-      {
-        categories: ['facials'],
-        q: 'How often should I get a facial?',
-        a: 'Many clients benefit from monthly facials, but we’ll recommend a schedule based on your skin goals and sensitivity.',
-      },
-
-      {
-        categories: ['injectables'],
-        q: 'Is there downtime after injections?',
-        a: 'Downtime varies. Some clients experience mild swelling or bruising, and your provider will review aftercare and timing before treatment.',
-      },
-
-      {
-        categories: ['laser'],
-        q: 'Do I need to avoid sun before laser treatments?',
-        a: 'Typically yes—sun exposure can affect safety and results. We’ll provide prep instructions based on your treatment.',
-      },
-
-      {
-        categories: ['pmu'],
-        q: 'How long does permanent makeup last?',
-        a: 'Results vary by skin type and lifestyle. Many clients schedule touch-ups as recommended by their provider to maintain pigment.',
-      },
-
-      {
-        categories: ['waxtint'],
-        q: 'How long do brow tints typically last?',
-        a: 'Tint longevity varies, but many clients enjoy results for a few weeks depending on skin type, cleansing routine, and sun exposure.',
-      },
+      // ... keep the rest of your FAQS array exactly as-is ...
     ],
     [],
   );
@@ -210,7 +210,7 @@ export default function FAQ() {
   );
 
   const [query, setQuery] = useState('');
-  const [selectedKey, setSelectedKey] = useState(null); // <-- start hidden
+  const [selectedKey, setSelectedKey] = useState(null);
 
   const q = query.trim().toLowerCase();
   const isMatch = (item) => {
@@ -244,22 +244,34 @@ export default function FAQ() {
 
   return (
     <div className="mx-auto w-11/12 max-w-5xl py-10">
-      <header className="rounded-3xl bg-brand-cream/70 p-6 md:p-10 ring-1 ring-black/5">
-        <p className="text-sm tracking-[0.25em] text-brand-forest/70">FAQ</p>
-        <h1 className="mt-2 text-3xl md:text-5xl font-semibold text-brand-forest leading-tight">
-          Frequently Asked Questions
-        </h1>
-        <p className="mt-4 max-w-2xl text-brand-forest/85">
-          Choose a service category, or start with the most common questions.
-        </p>
+      {/* ... keep the rest of your FAQ JSX exactly as you already have it ... */}
+      <header className="relative overflow-hidden rounded-3xl ring-1 ring-black/5">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/faq-hero.jpg')" }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-brand-cream/90 via-brand-cream/80 to-white/70"
+          aria-hidden="true"
+        />
+        <div className="relative p-6 md:p-10">
+          <p className="text-sm tracking-[0.25em] text-brand-forest/70">FAQ</p>
+          <h1 className="mt-2 text-3xl md:text-5xl font-semibold text-brand-forest leading-tight">
+            Frequently Asked Questions
+          </h1>
+          <p className="mt-4 max-w-2xl text-brand-forest/85">
+            Choose a service category, or start with the most common questions.
+          </p>
 
-        <div className="mt-6">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search (ex: fills, downtime, cancellation, financing)..."
-            className="w-full rounded-2xl bg-white/80 px-4 py-3 text-sm text-brand-forest outline-none ring-1 ring-black/10 focus:ring-2 focus:ring-brand-forest/40"
-          />
+          <div className="mt-6">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search (ex: fills, downtime, cancellation, financing)..."
+              className="w-full rounded-2xl bg-white/80 px-4 py-3 text-sm text-brand-forest outline-none ring-1 ring-black/10 focus:ring-2 focus:ring-brand-forest/40"
+            />
+          </div>
         </div>
       </header>
 
@@ -286,6 +298,7 @@ export default function FAQ() {
             <CategoryCard
               key={s.key}
               title={s.title}
+              img={s.img}
               count={counts.get(s.key) || 0}
               active={selectedKey === s.key}
               onClick={() => setSelectedKey(s.key)}
@@ -294,7 +307,6 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* Selected Category — hidden until selected */}
       {selectedKey && (
         <section className="mt-10">
           <div className="flex items-end justify-between gap-4">
@@ -302,8 +314,7 @@ export default function FAQ() {
               {selectedSection?.title}
             </h2>
             <span className="text-xs text-brand-forest/60">
-              {selectedItems.length} result
-              {selectedItems.length === 1 ? '' : 's'}
+              {selectedItems.length} result{selectedItems.length === 1 ? '' : 's'}
             </span>
           </div>
 
@@ -314,7 +325,7 @@ export default function FAQ() {
                   key={`${selectedKey}-${item.q}`}
                   q={item.q}
                   a={item.a}
-                  defaultOpen={!!q} // auto-open while searching
+                  defaultOpen={!!q}
                 />
               ))
             ) : (
@@ -328,7 +339,6 @@ export default function FAQ() {
         </section>
       )}
 
-      {/* Most Asked — hide once a category is selected */}
       {!selectedKey && (
         <section className="mt-10">
           <div className="flex items-end justify-between gap-4">
@@ -336,8 +346,7 @@ export default function FAQ() {
               Most Asked
             </h2>
             <span className="text-xs text-brand-forest/60">
-              {mostAskedItems.length} result
-              {mostAskedItems.length === 1 ? '' : 's'}
+              {mostAskedItems.length} result{mostAskedItems.length === 1 ? '' : 's'}
             </span>
           </div>
 
@@ -362,7 +371,6 @@ export default function FAQ() {
         </section>
       )}
 
-      {/* CTA */}
       <div className="mt-10 rounded-3xl bg-white/80 p-6 md:p-8 ring-1 ring-black/5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold text-brand-forest">
