@@ -14,35 +14,12 @@ const PMU_GROUPS = [
         name: "Powder / Ombré Brows",
         description:
           "Softly shaded brows with a gentle gradient for a natural, “filled-in” look. Ideal for most skin types.",
-        price: 450,
-        duration: "2.5–3 hrs",
-      },
-      {
-        id: "microblading",
-        name: "Microblading",
-        description:
-          "Fine, hairstroke-style brows designed to mimic natural hairs for a subtle enhancement.",
-        price: 450,
-        duration: "2–3 hrs",
-      },
-      {
-        id: "combo",
-        name: "Combo Brows",
-        description:
-          "A mix of hairstrokes and shading to add both definition and density.",
         price: 500,
-        duration: "2.5–3 hrs",
-      },
-      {
-        id: "nano",
-        name: "Nano Brows",
-        description:
-          "Machine-stroked brows with ultra-fine detail and beautiful longevity.",
-        price: 550,
-        duration: "3 hrs",
+        duration: "2 hrs",
       },
     ],
   },
+
   {
     id: "eyes",
     title: "Lash Line & Eyeliner",
@@ -50,31 +27,32 @@ const PMU_GROUPS = [
       "Define the eyes with subtle lash enhancement or bolder eyeliner looks designed for your eye shape.",
     services: [
       {
-        id: "lash-line",
-        name: "Lash Line Enhancement",
+        id: "top-eyeliner",
+        name: "Top Eyeliner",
         description:
-          "Pigment placed at the base of the lashes to create the look of fuller, darker lash roots.",
-        price: 300,
-        duration: "1.5–2 hrs",
-      },
-      {
-        id: "classic-eyeliner",
-        name: "Classic Eyeliner",
-        description:
-          "Clean, defined liner tailored to your preferred thickness and style.",
-        price: 350,
+          "Defined top liner customized to your preferred thickness and shape.",
+        priceRange: [350], // $350–$400
         duration: "2 hrs",
       },
       {
-        id: "designer-eyeliner",
-        name: "Winged / Designer Eyeliner",
+        id: "bottom-eyeliner",
+        name: "Bottom Eyeliner",
         description:
-          "A more dramatic liner with a wing or specialty design for extra lift and definition.",
-        price: 425,
-        duration: "2–2.5 hrs",
+          "Soft definition along the lower lash line for subtle enhancement.",
+        price: 180,
+        duration: "2 hrs",
+      },
+      {
+        id: "top-bottom-eyeliner",
+        name: "Top & Bottom Eyeliner",
+        description:
+          "Complete eyeliner definition for both upper and lower lash lines.",
+        price: 500,
+        duration: "2 hrs",
       },
     ],
   },
+
   {
     id: "lips",
     title: "Lips",
@@ -82,15 +60,16 @@ const PMU_GROUPS = [
       "Restore soft color and shape to the lips with natural-looking tint that heals beautifully.",
     services: [
       {
-        id: "lip-blush",
-        name: "Lip Blush",
+        id: "full-lips",
+        name: "Full Lips",
         description:
-          "Soft wash of color to enhance natural lip tone and definition. Heals to a sheer, tinted finish.",
-        price: 450,
-        duration: "2–3 hrs",
+          "Full lip color to enhance tone, define shape, and create an even, long-lasting look.",
+        price: 600,
+        duration: "2 hrs",
       },
     ],
   },
+
   {
     id: "touchups",
     title: "Touch-Ups & Maintenance",
@@ -98,55 +77,41 @@ const PMU_GROUPS = [
       "Most permanent makeup is a two-step process. Touch-ups help refine color, shape, and longevity.",
     services: [
       {
-        id: "perfecting",
-        name: "6–8 Week Perfecting Session",
+        id: "correction",
+        name: "Correction",
         description:
-          "Refinement visit following your initial appointment. Included when booked on time.",
-        price: 0,
-        duration: "60–90 min",
-      },
-      {
-        id: "3-6mo",
-        name: "3–6 Month Touch-Up",
-        description:
-          "Ideal for those who want extra depth, color, or small adjustments after initial healing.",
+          "Adjustments to shape/tone for previous work before proceeding with a new PMU service.",
         price: 150,
       },
       {
-        id: "annual-boost",
-        name: "Annual Color Boost",
+        id: "touch-up",
+        name: "Touch Up",
         description:
-          "Keeps brows, liner, or lips looking fresh every 12–18 months, depending on your skin and lifestyle.",
-        price: 200,
-      },
-      {
-        id: "18mo-plus",
-        name: "18+ Month Refresh",
-        description:
-          "For work that has significantly faded or needs major refresh. Pricing reviewed at consultation.",
-        priceNote: "Consultation required",
+          "Maintenance visit to refresh color and definition after healing or as needed.",
+        price: 300,
       },
     ],
   },
+
   {
     id: "removal",
-    title: "Removal & Correction",
+    title: "Removal",
     intro:
-      "If you have old or undesired PMU, we can often lighten or lift pigment to make room for new work.",
+      "Tattoo removal pricing varies by area. Sessions and expected results will be reviewed at consultation.",
     services: [
       {
-        id: "saline-removal",
-        name: "Saline PMU Removal (per session)",
+        id: "tattoo-removal-face",
+        name: "Tattoo Removal – Face",
         description:
-          "Gentle saline lightening to lift and break down unwanted pigment in brows, lips, or liner.",
-        price: 150,
+          "Removal service for smaller areas on the face. Pricing per session.",
+        price: 180,
       },
       {
-        id: "brow-lightening",
-        name: "Brow Lightening / Color Correction",
+        id: "tattoo-removal-body",
+        name: "Tattoo Removal – Body",
         description:
-          "Helps soften brows that are too dark, cool-toned, or saturated before new PMU is applied.",
-        price: 120,
+          "Removal service for body areas. Pricing per session.",
+        price: 300,
       },
     ],
   },
