@@ -20,13 +20,13 @@ const LASH_SETS = [
     tagline: "Fluffy, full lash line with dimension.",
     vibe: ["Full", "Fluffy"],
     prices: { full: 140, fill2: 70, fill3: 85 },
+    badge: "Most popular",
   },
   {
     name: "Volume Hybrid",
     tagline: "Bold fullness with a wispy finish.",
     vibe: ["Glam", "Photo Ready"],
     prices: { full: 160, fill2: 80, fill3: 95 },
-    badge: "Most requested glam set",
   },
   {
     name: "Extra Volume",
@@ -38,8 +38,19 @@ const LASH_SETS = [
     name: "Mega Volume",
     tagline: "Maximum density and drama.",
     vibe: ["Ultra Glam"],
-    prices: { full: 170, fill2: 85, fill3: 100 },
+    prices: { full: 170, fill2: 90, fill3: 110 },
   },
+  {
+  id: "wispy-volume",
+  name: "Wispy Volume Lashes",
+  tagline: "Soft, textured volume with wispy peaks for a dramatic yet airy finish.",
+  vibe: ["Wispy", "Ultra Glam"],
+  prices: {
+    full: 150,
+    fill2: 90,
+    fill3: 110,
+  },
+},
 ];
 
 const LASH_EXTRAS = [
