@@ -56,17 +56,6 @@ const CATEGORIES = [
     notes: "includes follow-up • custom color mapping",
     href: "/services/pmu",
   },
-  {
-    id: "wellness",
-    title: "IV Therapy & Weight Loss",
-    blurb:
-      "Provider-guided programs, metabolism support, and IV drips to help you feel balanced and energized.",
-    image:
-      "/images/home/ivtherapy.png",
-    duration: "30–60 mins",
-    notes: "lab-informed plans • monitored by provider",
-    href: "/services/wellness",
-  },
 ];
 
 export default function FeaturedServiceTabs() {

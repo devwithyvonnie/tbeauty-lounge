@@ -197,27 +197,6 @@ export default function Services() {
           />
         </Split>
 
-        {/* ===== WELLNESS (image R / text L) ===== */}
-        <Split id="wellness" imageLeft={false}>
-          <ServiceCopy
-            eyebrow="IV THERAPY & WEIGHT LOSS"
-            title="Feel balanced & supported"
-            blurb="Provider-guided weight loss plans, metabolism support, and IV drips for hydration and recovery—personalized to you."
-            bullets={[
-              'Medical weight loss programs',
-              'Energy & immunity IV drips',
-              'Vitamin & metabolism injections',
-            ]}
-            bookHref="/booking?service=wellness"
-            menuHref="/services/wellness"
-          />
-          <img
-            src="/images/services/ivtherapy.png"
-            alt="IV therapy"
-            className="h-full w-full object-cover"
-          />
-        </Split>
-
         {/* ===== BOTTOM CTA ===== */}
         <section className="mt-10 rounded-[--radius-card] bg-brand-cream/60 p-6 ring-1 ring-black/5 md:p-8">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">

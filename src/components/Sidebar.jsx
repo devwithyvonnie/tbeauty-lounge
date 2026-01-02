@@ -51,7 +51,6 @@ export default function Sidebar() {
     { to: "/services/waxtint", label: "Wax & Tint" },
     { to: "/services/laser", label: "Laser Hair Removal" },
     { to: "/services/pmu", label: "Permanent Makeup" },
-    { to: "/services/wellness", label: "IV Therapy & Weight Loss" },
     { to: "/services/headspa", label: "Japanese Head Spa" },
   ];
 
