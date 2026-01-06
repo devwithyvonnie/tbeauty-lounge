@@ -6,8 +6,7 @@ const CATEGORIES = [
     title: "Eyelash Extensions",
     blurb:
       "From classic to mega volume, plus lash lifts & tints. Designed to enhance your eye shape with comfortable, long-wear results.",
-    image:
-      "/images/home/eyelash.png",
+    image: "/images/home/eyelash.png",
     duration: "90–120 mins",
     notes: "best in a series • low maintenance options",
     href: "/services/lashes",
@@ -17,8 +16,7 @@ const CATEGORIES = [
     title: "Facials",
     blurb:
       "Our custom facials blend gentle exfoliation, targeted treatment masks, and soothing massage to calm inflammation and restore your natural glow. Whether you’re managing breakouts, dryness, or sensitivity, we tailor each step to your skin type and goals. Expect clean, non-irritating ingredients, quiet ambiance, and results you can see and feel—without downtime.",
-    image:
-      "/images/home/facial.png",
+    image: "/images/home/facial.png",
     duration: "60–120 mins",
     notes: "little to no downtime",
     href: "/services/facials",
@@ -28,8 +26,7 @@ const CATEGORIES = [
     title: "Cosmetic Injections",
     blurb:
       "Natural-looking neurotoxin and filler treatments performed by our FNP-C to soften lines, restore volume, and refine contours.",
-    image:
-      "/images/home/injectables.png",
+    image: "/images/home/injectables.png",
     duration: "30–60 mins",
     notes: "results build over time • consultation included",
     href: "/services/injectables",
@@ -39,8 +36,7 @@ const CATEGORIES = [
     title: "Laser Hair Removal",
     blurb:
       "Smooth, long-term reduction for face and body with packages for the areas you treat most.",
-    image:
-      "/images/home/laser.png",
+    image: "/images/home/laser.png",
     duration: "15–60 mins",
     notes: "series recommended • shave 24h prior",
     href: "/services/laser",
@@ -50,13 +46,20 @@ const CATEGORIES = [
     title: "Permanent Makeup",
     blurb:
       "Brow, liner, and lip enhancements that save time daily and keep your features softly defined.",
-    image:
-      "/images/home/permanentmakeup.png",
+    image: "/images/home/permanentmakeup.png",
     duration: "2–3 hrs",
     notes: "includes follow-up • custom color mapping",
     href: "/services/pmu",
   },
 ];
+
+function Badge({ children }) {
+  return (
+    <span className="rounded-full bg-brand-mint/25 px-3 py-1 text-[11px] md:text-[13px] font-medium text-brand-forest ring-1 ring-brand-mint/30">
+      {children}
+    </span>
+  );
+}
 
 export default function FeaturedServiceTabs() {
   // Hash → preselect category (e.g., #injectables)
@@ -64,12 +67,11 @@ export default function FeaturedServiceTabs() {
     const h = (typeof window !== "undefined" ? window.location.hash : "")
       .replace("#", "")
       .toLowerCase();
-    return CATEGORIES.find((c) => c.id === h)?.id || "skin"; // default to Facials
+    return CATEGORIES.find((c) => c.id === h)?.id || "skin";
   }, []);
   const [active, setActive] = useState(initial);
 
   useEffect(() => {
-    // Update when hash changes (optional)
     const onHash = () => {
       const h = window.location.hash.replace("#", "");
       if (CATEGORIES.some((c) => c.id === h)) setActive(h);
@@ -81,12 +83,16 @@ export default function FeaturedServiceTabs() {
   const current = CATEGORIES.find((c) => c.id === active) ?? CATEGORIES[0];
 
   return (
-    <section className="mx-auto w-11/12 max-w-6xl py-10">
+    <section className="mx-auto w-[92%] max-w-7xl py-8 md:py-10">
       {/* Heading */}
       <div className="text-center">
-        <p className="text-sm tracking-widest text-brand-forest/70">OUR SERVICES</p>
-        <h2 className="mt-1 text-2xl font-semibold text-brand-forest">
-          Where beauty meets science, tailored to your unique needs
+        <p className="text-[11px] tracking-[0.22em] text-brand-forest/60">
+          OUR SERVICES
+        </p>
+        <h2 className="mt-2 text-xl md:text-2xl font-semibold text-brand-forest">
+          Where beauty meets science,
+          <br className="hidden sm:block" />
+          tailored to your unique needs
         </h2>
       </div>
 
@@ -94,7 +100,7 @@ export default function FeaturedServiceTabs() {
       <div
         role="tablist"
         aria-label="Service Categories"
-        className="mt-5 flex flex-wrap justify-center gap-2"
+        className="mt-4 flex flex-wrap justify-center gap-2"
       >
         {CATEGORIES.map((cat) => {
           const isActive = active === cat.id;
@@ -106,61 +112,63 @@ export default function FeaturedServiceTabs() {
               aria-controls={`panel-${cat.id}`}
               id={`tab-${cat.id}`}
               onClick={() => setActive(cat.id)}
-              className={`rounded-full px-4 py-2 text-sm transition
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold
-                ${
-                  isActive
-                    ? "bg-brand-forest text-white"
-                    : "bg-brand-mint text-brand-forest hover:bg-brand-mint/80"
-                }`}
+              className={[
+                "rounded-full px-4 py-2 text-[12px] md:text-sm transition",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold",
+                isActive
+                  ? "bg-brand-forest text-white"
+                  : "bg-brand-mint/25 text-brand-forest hover:bg-brand-mint/35",
+              ].join(" ")}
             >
-              {cat.title.split(" ")[0].includes("IV") ? cat.title : cat.title}
+              {cat.title}
             </button>
           );
         })}
       </div>
 
-      {/* Content panel */}
-      <div
+      {/* Unified card (best on mobile). Splits into 2 columns on md+ */}
+      <article
         id={`panel-${current.id}`}
         role="tabpanel"
         aria-labelledby={`tab-${current.id}`}
-        className="mt-6 grid items-stretch gap-6 md:grid-cols-[1fr_1.1fr]"
+        className="mt-6 overflow-hidden rounded-[--radius-card] bg-white shadow-sm ring-1 ring-black/5"
       >
-        {/* Image card */}
-        <div className="relative overflow-hidden rounded-[--radius-card]">
-          <img
-            src={current.image}
-            alt={current.title}
-            className="h-64 w-full object-cover md:h-full"
-          />
-        </div>
-
-        {/* Copy card */}
-        <div className="relative overflow-hidden rounded-[--radius-card] bg-white p-6 md:p-8">
-          <h3 className="text-2xl font-semibold text-brand-forest">
-            {current.title}
-          </h3>
-          <p className="mt-3 max-w-prose text-brand-forest/85">{current.blurb}</p>
-
-          {/* Badges row */}
-          <div className="mt-4 flex flex-wrap gap-3 text-xs md:text-[13px]">
-            <span className="rounded-full bg-brand-mint px-3 py-1 text-brand-forest">
-              {current.duration}
-            </span>
-            <span className="rounded-full bg-brand-mint px-3 py-1 text-brand-forest">
-              {current.notes}
-            </span>
+        <div className="grid md:grid-cols-[1.1fr_1fr]">
+          {/* Image */}
+          <div className="relative">
+            <img
+              src={current.image}
+              alt={current.title}
+              className="h-56 w-full object-cover sm:h-64 md:h-full"
+            />
+            {/* optional gradient for polish */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-black/0 to-transparent" />
           </div>
 
-          <a
-            href={current.href}
-            className="mt-6 inline-block rounded-full bg-brand-forest px-5 py-2 text-sm text-white hover:brightness-110"
-          >
-            Explore More
-          </a>
+          {/* Copy */}
+          <div className="p-5 md:p-8">
+            <h3 className="text-xl md:text-2xl font-semibold text-brand-forest">
+              {current.title}
+            </h3>
+
+            <p className="mt-3 text-sm md:text-base text-brand-forest/85 leading-relaxed">
+              {current.blurb}
+            </p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Badge>{current.duration}</Badge>
+              <Badge>{current.notes}</Badge>
+            </div>
+
+            <a
+              href={current.href}
+              className="mt-5 inline-flex items-center justify-center rounded-full bg-brand-forest px-5 py-2.5 text-sm font-medium text-white hover:brightness-110"
+            >
+              Explore {current.title}
+            </a>
+          </div>
         </div>
-      </div>
+      </article>
     </section>
   );
 }

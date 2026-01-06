@@ -4,7 +4,6 @@ import SocialProof from '../sections/SocialProof';
 import IntroCards from '../sections/IntroCard';
 import FeaturedServiceTabs from '../sections/FeaturedServiceTabs';
 import MembershipTiers from '../sections/MembershipTiers';
-import OfferOfTheDay from '../sections/OfferOfTheDay';
 
 function SectionHeader({ title, desc }) {
   return (
@@ -21,16 +20,21 @@ function SectionHeader({ title, desc }) {
   );
 }
 
-function StatCard({ value, label }) {
+function Divider() {
+  return <div className="h-px bg-white/15" />;
+}
+
+function TrustRow({ value, label }) {
   return (
-    <div className="rounded-[--radius-card] bg-brand-primary text-white px-5 py-4 text-center shadow-sm border border-white/10">
-      <div className="text-xl md:text-2xl font-semibold leading-tight">
-        {value}
+    <div className="flex items-center justify-between px-5 py-4">
+      <div className="text-base font-semibold">{value}</div>
+      <div className="text-xs text-white/85 text-right max-w-[60%] leading-snug">
+        {label}
       </div>
-      <div className="mt-1 text-xs md:text-sm text-white/85">{label}</div>
     </div>
   );
 }
+
 
 function Hero() {
   return (
@@ -70,14 +74,6 @@ function Hero() {
               >
                 Book Now
               </a>
-
-              {/* Internal route */}
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center rounded-full border border-brand-gold bg-white/55 px-7 py-3 text-brand-forest font-semibold hover:bg-brand-cream/70"
-              >
-                Services
-              </Link>
             </div>
           </div>
         </div>
@@ -95,31 +91,29 @@ export default function Home() {
       {/* CONSTRAINED CONTENT */}
       <main className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
         {/* STATS */}
-        <section className="grid gap-3 md:gap-4 md:grid-cols-3">
-          <StatCard value="10+ years" label="Experience you can trust" />
-          <StatCard value="5K+ clients" label="Satisfied customers served" />
-          <StatCard value="100%" label="Personalized care plans" />
-        </section>
+        <section className="rounded-[--radius-card] bg-brand-primary text-white shadow-sm border border-white/10 overflow-hidden">
+  <TrustRow value="10+ years" label="Experience you can trust" />
+  <Divider />
+  <TrustRow value="5K+ clients" label="Satisfied customers served" />
+  <Divider />
+  <TrustRow value="100%" label="Personalized care plans" />
+</section>
+
 
         {/* INTRO */}
-          <IntroCards />
+        <IntroCards />
 
         {/* FEATURED SERVICES */}
-          <FeaturedServiceTabs />
+        <FeaturedServiceTabs />
 
         {/* MEMBERSHIPS */}
-          <MembershipTiers />
+        <MembershipTiers />
 
         {/* MINI FAQ */}
         <section className="space-y-3">
-          <SectionHeader
-            title="Questions before you book?"
-          />
+          <SectionHeader title="Questions before you book?" />
           <MiniFAQ />
         </section>
-
-        {/* OFFER */}
-        <OfferOfTheDay />
 
         {/* SOCIAL PROOF */}
         <section className="space-y-3">

@@ -12,10 +12,6 @@ export default function MiniFAQAccordion({ title = "Quick FAQ", faqs }) {
   return (
     <section className="mt-12 rounded-2xl bg-white p-6 ring-1 ring-black/5">
       <h2 className="text-xl font-semibold text-brand-forest">{title}</h2>
-      <p className="mt-1 mb-4 text-sm text-brand-forest/75">
-        The questions we get asked the most — tap to expand an answer.
-      </p>
-
       <div className="divide-y divide-brand-cream/70">
         {faqs.map((item, idx) => {
           const isOpen = openIndex === idx;

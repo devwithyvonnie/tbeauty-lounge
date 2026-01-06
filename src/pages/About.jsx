@@ -2,19 +2,23 @@ export default function About() {
   return (
     <div className="py-8">
       {/* WIDE HERO */}
-      <section className="mx-auto w-[96%] max-w-screen-2xl">
-        <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
+      {/* WIDE HERO (match Home scale) */}
+      <section className="mx-auto w-[92%] max-w-7xl">
+        <div className="relative overflow-hidden rounded-[--radius-card] ring-1 ring-black/5">
           <img
             src="/images/about/hero.png"
             alt="Eyelash extensions"
-            className="h-[52vh] w-full object-cover md:h-[60vh]"
+            className="h-[52vh] w-full object-cover md:h-[58vh]"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-brand-cream/70" />
+
+          {/* lighter overlay + subtle depth gradient */}
+          <div className="absolute inset-0 bg-brand-cream/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/15" />
 
           <div className="absolute inset-0 flex items-center">
-            <div className="mx-auto w-11/12 max-w-3xl">
-              <p className="text-sm tracking-[0.25em] text-brand-forest/70">
+            <div className="mx-auto w-[92%] max-w-3xl">
+              <p className="text-[11px] tracking-[0.25em] text-brand-forest/70">
                 T BEAUTY LOUNGE • GOODYEAR, AZ
               </p>
 
@@ -27,7 +31,7 @@ export default function About() {
                 different.
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
                   href="https://www.vagaro.com/tbeautylounge/book-now"
                   target="_blank"
@@ -36,9 +40,10 @@ export default function About() {
                 >
                   Book an Appointment
                 </a>
+
                 <a
                   href="/services"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-gold bg-white/55 px-7 py-3 text-brand-forest font-semibold hover:bg-brand-cream/70"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-gold bg-white/70 px-7 py-3 text-brand-forest font-semibold hover:bg-brand-cream/70"
                 >
                   Browse Services
                 </a>
@@ -92,7 +97,7 @@ export default function About() {
               href="/services/injectables"
               className="btn-primary mt-5 inline-block"
             >
-              Learn more about Teresa’s services
+              View Teresa’s Treatments <span aria-hidden="true">→</span>
             </a>
           </div>
 
@@ -122,7 +127,7 @@ export default function About() {
               unique goals, ensuring a personalized experience every time.
             </p>
             <a href="/services" className="btn-primary mt-5 inline-block">
-              Explore our services
+              Explore Our Services <span aria-hidden="true">→</span>
             </a>
           </div>
         </Split>
@@ -179,37 +184,11 @@ export default function About() {
               clients, celebrating your milestones, and supporting your journey
               toward beauty and confidence.
             </p>
-            <a href="/contact" className="btn-secondary mt-5 inline-block">
-              Say hello
+            <a href="/contactus" className="btn-secondary mt-5 inline-block">
+              Contact Our Team <span aria-hidden="true">→</span>
             </a>
           </div>
         </Split>
-
-        {/* Bottom CTA card (nice “enhanced” finish before footer) */}
-        <section className="mt-10 rounded-[--radius-card] bg-brand-cream ring-1 ring-black/5 overflow-hidden">
-          <div className="p-7 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-            <div>
-              <p className="text-sm tracking-widest text-brand-forest/70">
-                READY WHEN YOU ARE
-              </p>
-              <h3 className="mt-2 text-xl md:text-2xl font-semibold text-brand-forest">
-                Let’s create a plan that fits your goals
-              </h3>
-              <p className="mt-2 text-brand-forest/85 max-w-prose">
-                Book a consultation or explore our services to find your perfect
-                match.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a href="/contact" className="btn-primary inline-block">
-                Contact us
-              </a>
-              <a href="/services" className="btn-secondary inline-block">
-                View services
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );

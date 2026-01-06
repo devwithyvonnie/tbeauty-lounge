@@ -1,92 +1,93 @@
-import { useEffect, useMemo, useState } from "react";
-import MiniFAQ from "../../components/MiniFAQ";
+import { useEffect, useMemo, useState } from 'react';
+import MiniFAQ from '../../components/MiniFAQ';
 
 const LASH_SETS = [
   {
-    name: "Classic",
-    tagline: "Soft, natural enhancement.",
-    vibe: ["Natural", "Everyday"],
+    name: 'Classic',
+    tagline: 'Soft, natural enhancement.',
+    vibe: ['Natural', 'Everyday'],
     prices: { full: 130, fill2: 65, fill3: 80 },
-    badge: "Great for first-timers",
+    badge: 'Great for first-timers',
   },
   {
-    name: "Classic Hybrid",
-    tagline: "A little extra fullness with soft texture.",
-    vibe: ["Natural+", "Date Night"],
+    name: 'Classic Hybrid',
+    tagline: 'A little extra fullness with soft texture.',
+    vibe: ['Natural+', 'Date Night'],
     prices: { full: 140, fill2: 70, fill3: 85 },
   },
   {
-    name: "Volume",
-    tagline: "Fluffy, full lash line with dimension.",
-    vibe: ["Full", "Fluffy"],
+    name: 'Volume',
+    tagline: 'Fluffy, full lash line with dimension.',
+    vibe: ['Full', 'Fluffy'],
     prices: { full: 140, fill2: 70, fill3: 85 },
-    badge: "Most popular",
+    badge: 'Most popular',
   },
   {
-    name: "Volume Hybrid",
-    tagline: "Bold fullness with a wispy finish.",
-    vibe: ["Glam", "Photo Ready"],
+    name: 'Volume Hybrid',
+    tagline: 'Bold fullness with a wispy finish.',
+    vibe: ['Glam', 'Photo Ready'],
     prices: { full: 160, fill2: 80, fill3: 95 },
   },
   {
-    name: "Extra Volume",
-    tagline: "Bigger, denser, ultra-fluffy.",
-    vibe: ["Full Glam"],
+    name: 'Extra Volume',
+    tagline: 'Bigger, denser, ultra-fluffy.',
+    vibe: ['Full Glam'],
     prices: { full: 155, fill2: 77, fill3: 92 },
   },
   {
-    name: "Mega Volume",
-    tagline: "Maximum density and drama.",
-    vibe: ["Ultra Glam"],
+    name: 'Mega Volume',
+    tagline: 'Maximum density and drama.',
+    vibe: ['Ultra Glam'],
     prices: { full: 170, fill2: 90, fill3: 110 },
   },
   {
-  id: "wispy-volume",
-  name: "Wispy Volume Lashes",
-  tagline: "Soft, textured volume with wispy peaks for a dramatic yet airy finish.",
-  vibe: ["Wispy", "Ultra Glam"],
-  prices: {
-    full: 150,
-    fill2: 90,
-    fill3: 110,
+    id: 'wispy-volume',
+    name: 'Wispy Volume Lashes',
+    tagline:
+      'Soft, textured volume with wispy peaks for a dramatic yet airy finish.',
+    vibe: ['Wispy', 'Ultra Glam'],
+    prices: {
+      full: 150,
+      fill2: 90,
+      fill3: 110,
+    },
   },
-},
 ];
 
 const LASH_EXTRAS = [
   {
-    name: "Extra Length / Extra Volume",
+    name: 'Extra Length / Extra Volume',
     description:
-      "For extra long or extra full designs that require more time and product.",
+      'For extra long or extra full designs that require more time and product.',
     price: 10,
   },
   {
-    name: "Extra Wispy",
+    name: 'Extra Wispy',
     description:
-      "For extra long or extra full designs that require more time and product.",
+      'For extra long or extra full designs that require more time and product.',
     price: 15,
   },
   {
-    name: "Foreign Fill",
+    name: 'Foreign Fill',
     description:
-      "Filling lashes applied at another studio. Includes extra time to assess and refine.",
+      'Filling lashes applied at another studio. Includes extra time to assess and refine.',
     price: 20,
   },
   {
-    name: "Lash Removal",
-    description: "Gentle professional removal to protect your natural lashes.",
+    name: 'Lash Removal',
+    description: 'Gentle professional removal to protect your natural lashes.',
     price: 20,
   },
   {
-    name: "Color Lashes",
-    description: "Subtle color, glitter, or themed designs. Priced per look.",
+    name: 'Color Lashes',
+    description: 'Subtle color, glitter, or themed designs. Priced per look.',
     price: 15,
   },
 ];
 
 const TABS = [
-  { id: "sets", label: "Lash Sets" },
-  { id: "extras", label: "Extras & Upgrades" },
+  { id: 'sets', label: 'Lash Sets' },
+  { id: 'extras', label: 'Extras & Upgrades' },
 ];
 
 export default function LashesPage() {
@@ -96,14 +97,14 @@ export default function LashesPage() {
 
   // allow deep linking: /services/lashes#extras
   useEffect(() => {
-    const hash = (window.location.hash || "").replace("#", "");
+    const hash = (window.location.hash || '').replace('#', '');
     if (hash && tabSet.has(hash)) setActive(hash);
   }, [tabSet]);
 
   const onSelect = (id) => {
     setActive(id);
     // update hash without scroll jump
-    window.history.replaceState(null, "", `#${id}`);
+    window.history.replaceState(null, '', `#${id}`);
   };
 
   return (
@@ -182,11 +183,11 @@ export default function LashesPage() {
                         type="button"
                         onClick={() => onSelect(t.id)}
                         className={[
-                          "rounded-full px-4 py-2 text-sm transition whitespace-nowrap",
+                          'rounded-full px-4 py-2 text-sm transition whitespace-nowrap',
                           isActive
-                            ? "bg-brand-forest text-white"
-                            : "bg-brand-cream text-brand-forest hover:bg-brand-cream/70",
-                        ].join(" ")}
+                            ? 'bg-brand-forest text-white'
+                            : 'bg-brand-cream text-brand-forest hover:bg-brand-cream/70',
+                        ].join(' ')}
                         aria-pressed={isActive}
                       >
                         {t.label}
@@ -200,7 +201,7 @@ export default function LashesPage() {
         </section>
 
         {/* TAB: SETS */}
-        {active === "sets" ? (
+        {active === 'sets' ? (
           <section className="mt-6">
             <div className="mt-3 grid gap-4 md:grid-cols-2">
               {LASH_SETS.map((set) => (
@@ -246,8 +247,14 @@ export default function LashesPage() {
                     <div className="mt-4 rounded-xl bg-brand-cream/70 px-3 py-3">
                       <dl className="space-y-2 text-sm text-brand-forest/90 md:grid md:grid-cols-3 md:gap-3 md:space-y-0">
                         <PriceItem label="Full Set" value={set.prices.full} />
-                        <PriceItem label="2 Week Fill" value={set.prices.fill2} />
-                        <PriceItem label="3 Week Fill" value={set.prices.fill3} />
+                        <PriceItem
+                          label="2 Week Fill"
+                          value={set.prices.fill2}
+                        />
+                        <PriceItem
+                          label="3 Week Fill"
+                          value={set.prices.fill3}
+                        />
                       </dl>
                     </div>
 
@@ -267,7 +274,7 @@ export default function LashesPage() {
         ) : null}
 
         {/* TAB: EXTRAS */}
-        {active === "extras" ? (
+        {active === 'extras' ? (
           <section className="mt-6">
             <div>
               <h2 className="text-xl font-semibold text-brand-forest">
@@ -313,50 +320,61 @@ export default function LashesPage() {
           </section>
         ) : null}
 
-        {/* TAB: FAQ */}
-        {active === "faq" ? (
-          <section className="mt-6">
-            <MiniFAQ
-              title="Lash Extension FAQ"
-              faqs={[
-                {
-                  q: "How often do I need fills?",
-                  a: "We recommend every 2–3 weeks with at least 40–50% of your extensions remaining. After 3+ weeks or very low retention, a full set may be needed.",
-                },
-                {
-                  q: "Do lash extensions damage my natural lashes?",
-                  a: "When applied properly with safe isolation and lengths that match your natural lashes, they should not cause damage.",
-                },
-                {
-                  q: "Can I book a fill if my lashes were done somewhere else?",
-                  a: "Yes — foreign fills are welcome. We may need extra time to assess the work and retention, so a small foreign-fill fee may apply.",
-                },
-                {
-                  q: "How should I prepare for my appointment?",
-                  a: "Arrive with clean lashes and no eye makeup or mascara. Avoid oil-based products around the eye area and limit caffeine so you can fully relax.",
-                },
-                {
-                  q: "How long do appointments take?",
-                  a: "Full sets typically take longer than fills. Timing varies by lash type, your natural lashes, and the final design—your provider will confirm when booking.",
-                },
-              ]}
-            />
-          </section>
-        ) : null}
+        {/* FAQ (always at bottom, not a tab) */}
+        <section className="mt-10">
+          <div className="rounded-[--radius-card] bg-white ring-1 ring-black/5 shadow-sm p-6 md:p-8">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <h2 className="mt-2 text-xl font-semibold text-brand-forest">
+                  Lash Extension FAQ
+                </h2>
+                <p className="mt-1 text-sm text-brand-forest/75">
+                  Quick answers before you book. If you still have questions,
+                  text us or ask at your appointment.
+                </p>
+              </div>
 
-        {/* CTA */}
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-          <p className="text-xs md:text-sm text-brand-forest/80">
-            Not sure which set or upgrades you need? Book a{" "}
-            <span className="font-medium">lash consultation</span> and we’ll map
-            out the perfect look for your natural lashes and lifestyle.
-          </p>
-          <a
-            href="/booking?service=lashes"
-            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book Lash Appointment
-          </a>
+              <a
+                href="/faq"
+                className="hidden sm:inline-block text-sm text-brand-forest underline underline-offset-4 hover:opacity-80"
+              >
+                View all FAQs
+              </a>
+            </div>
+
+            <div className="mt-5">
+              <MiniFAQ
+                title={null}
+                faqs={[
+                  {
+                    q: 'How often do I need fills?',
+                    a: 'We recommend every 2–3 weeks with at least 40–50% of your extensions remaining. After 3+ weeks or very low retention, a full set may be needed.',
+                  },
+                  {
+                    q: 'Do lash extensions damage my natural lashes?',
+                    a: 'When applied properly with safe isolation and lengths that match your natural lashes, they should not cause damage.',
+                  },
+                  {
+                    q: 'Can I book a fill if my lashes were done somewhere else?',
+                    a: 'Yes — foreign fills are welcome. We may need extra time to assess the work and retention, so a small foreign-fill fee may apply.',
+                  },
+                  {
+                    q: 'How should I prepare for my appointment?',
+                    a: 'Arrive with clean lashes and no eye makeup or mascara. Avoid oil-based products around the eye area and limit caffeine so you can fully relax.',
+                  },
+                ]}
+              />
+            </div>
+
+            <div className="mt-4 text-center sm:hidden">
+              <a
+                href="/faq"
+                className="inline-block text-sm text-brand-forest underline underline-offset-4 hover:opacity-80"
+              >
+                View all FAQs
+              </a>
+            </div>
+          </div>
         </section>
       </div>
     </div>

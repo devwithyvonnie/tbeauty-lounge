@@ -2,6 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './index.css';
 import Sidebar from './components/Sidebar';
+import MobileNav from './components/MobileNav';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -54,23 +55,17 @@ function MainRoutes() {
 export default function App() {
   return (
     <div className="bg-bg text-text">
+      {/* MOBILE NAV (hamburger + book + drawer) */}
+      <MobileNav />
+
       <div className="md:px-6 md:py-6">
         <div className="md:grid md:grid-cols-[260px_1fr] md:gap-6">
+          {/* DESKTOP SIDEBAR */}
           <div className="hidden md:block">
             <Sidebar />
           </div>
 
           <div>
-            <div className="md:hidden sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-black/5 px-4 py-3 flex justify-between">
-              <span className="font-semibold">T Beauty Lounge</span>
-              <a
-                href="/services"
-                className="rounded-full bg-brand-primary text-white px-4 py-2"
-              >
-                Book
-              </a>
-            </div>
-
             <main className="min-h-screen">
               <MainRoutes />
             </main>
