@@ -17,7 +17,22 @@ const NEUROTOXIN_SECTION = {
       priceDisplay: "$14 / unit",
       duration: "30–45 min",
       note:
-        "Forehead, frown lines, crow’s feet, and more. Average treatment ranges 20–60 units depending on area.",
+        "Forehead, frown lines, crow’s feet, and more. Final dosing is determined during consultation.",
+    },
+    {
+      label: "Daxxify",
+      priceDisplay: "$9 / unit",
+      duration: "30–45 min",
+      note:
+        "A long-lasting neurotoxin option. Final dosing is determined during consultation.",
+    },
+    {
+      label: "Daxxify (Over 100u)",
+      priceDisplay: "$7.25 / unit",
+      duration: "30–45 min",
+      chips: ["Bulk tier"],
+      note:
+        "Applies to large treatment plans. Your provider will confirm eligibility and dosing.",
     },
     {
       label: "Dysport",
@@ -26,35 +41,21 @@ const NEUROTOXIN_SECTION = {
       note:
         "Alternative neurotoxin with a different unit conversion. Great for larger areas like the forehead.",
     },
-    {
-      label: "Daxxify",
-      priceDisplay: "$9 / unit",
-      duration: "30–45 min",
-      note:
-        "A long-lasting neurotoxin option that may provide extended smoothing results compared to traditional formulas.",
-    },
   ],
   footnote:
-    "Final dosing and pricing are determined in consultation based on your anatomy, muscle movement, and treatment goals.",
+    "Final dosing and total price are determined in consultation based on your anatomy, muscle movement, and goals.",
 };
 
-// 💉 Fillers & skin boosters
+// 💉 Fillers & skin boosters (from your menu)
 const FILLER_SECTION = {
   id: "fillers",
   name: "Fillers & Skin Boosters",
   tagline:
-    "Subtle volume, contour, and hydration for lips, cheeks, and more—focused on balanced, natural-looking results.",
+    "Subtle volume, contour, and hydration—focused on balanced, natural-looking results.",
   accent: "gold",
   variants: [
     {
-      label: "Lip Filler",
-      priceDisplay: "$650",
-      duration: "45–60 min",
-      chips: ["Priced per syringe / treatment"],
-      note: "Customized lip shaping and hydration. Includes consultation and numbing.",
-    },
-    {
-      label: "RHA Filler",
+      label: "RHA Fillers",
       priceDisplay: "$800",
       duration: "60 min",
       chips: ["Priced per syringe / treatment"],
@@ -71,15 +72,15 @@ const FILLER_SECTION = {
     },
   ],
   footnote:
-    "The number of syringes recommended varies based on your goals and starting anatomy. Your provider will review options and pricing before treatment.",
+    "The number of syringes/treatments recommended varies by goals and starting anatomy. Your provider will review options before treatment.",
 };
 
-// 🌱 Regenerative & lipodissolve
+// 🌱 Regenerative / contouring / hair (from your menu)
 const REGENERATIVE_SECTION = {
   id: "regenerative",
-  name: "Regenerative & Lipodissolve",
+  name: "Regenerative & Advanced Treatments",
   tagline:
-    "Support collagen, improve texture, and refine small areas with regenerative therapies and targeted contouring.",
+    "Support collagen, improve texture, and refine targeted areas with regenerative therapies and advanced options.",
   accent: "mint",
   variants: [
     {
@@ -90,21 +91,36 @@ const REGENERATIVE_SECTION = {
         "Chemical lipolysis for small, stubborn pockets of fat. Number of sessions varies by area.",
     },
     {
-      label: "PRF Under-Eye",
-      priceDisplay: "$450",
+      label: "PRF",
+      priceDisplay: "$400",
       duration: "45–60 min",
       note:
-        "Platelet-rich fibrin for under-eye creping and hollowness. Best in a series.",
+        "Platelet-rich fibrin treatment to support skin quality and texture. Best in a series.",
     },
     {
-      label: "PRF Hair Restoration",
+      label: "PRF Hair",
       priceDisplay: "$550",
       duration: "60 min",
       note:
         "PRF injections to support hair density and scalp health. Typically performed in a series.",
     },
     {
-      label: "Sculptra & Hyperdilute Radiesse",
+      label: "Hair Exosomes",
+      priceDisplay: "$1,600",
+      duration: "60–75 min",
+      note:
+        "Advanced regenerative hair/scalp treatment. Plan is customized during consultation.",
+    },
+    {
+      label: "Hair Exosomes (Maintenance Treatment)",
+      priceDisplay: "$700",
+      duration: "45–60 min",
+      chips: ["Maintenance"],
+      note:
+        "Maintenance treatment pricing. Your provider will confirm timing and eligibility.",
+    },
+    {
+      label: "Sculptra & Hyperdiluted Radiesse",
       priceDisplay: "$900",
       duration: "60 min",
       note:
@@ -112,41 +128,28 @@ const REGENERATIVE_SECTION = {
     },
   ],
   footnote:
-    "Most regenerative treatments are performed in a series for best results. Your provider will discuss an appropriate plan during your visit.",
+    "Most regenerative treatments are performed in a series for best results. Your provider will recommend a plan during your visit.",
 };
 
-// ✂️ PDO Threads
+// ✂️ PDO Threads (exact list from your menu)
 const THREADS_SECTION = {
   id: "threads",
   name: "PDO Threads",
   tagline:
-    "Collagen-stimulating threads to subtly lift, refine, and contour areas such as the jawline, cheeks, and brows.",
+    "Collagen-stimulating threads to subtly lift, refine, and contour targeted areas.",
   accent: "gold",
   variants: [
-    {
-      label: "Smooth Threads (Collagen-Boosting)",
-      duration: "45–60 min",
-      priceDisplay: "Starting at $300",
-      note:
-        "Used to improve skin texture, fine lines, and overall firmness. Best performed in a series.",
-    },
-    {
-      label: "Lift Threads (Lifting / Repositioning)",
-      duration: "60–75 min",
-      priceDisplay: "Starting at $850",
-      note:
-        "Designed to gently lift areas like the jawline or cheeks. Exact pricing depends on the number of threads needed.",
-    },
-    {
-      label: "Full Face Thread Lift",
-      duration: "75–90 min",
-      priceDisplay: "Starting at $1,600",
-      note:
-        "Comprehensive thread treatment for multiple lift points and enhanced contouring.",
-    },
+    { label: "Full Face (Cheeks & Jawline)", priceDisplay: "$3,500", duration: "75–90 min" },
+    { label: "Cheeks", priceDisplay: "$1,800", duration: "60–75 min" },
+    { label: "Jawline", priceDisplay: "$2,000", duration: "60–75 min" },
+    { label: "Forehead / Brows", priceDisplay: "$1,500", duration: "45–60 min" },
+    { label: "Cat Eyes", priceDisplay: "$1,000", duration: "45–60 min" },
+    { label: "Nose", priceDisplay: "$1,500", duration: "45–60 min" },
+    { label: "Neck", priceDisplay: "$2,000", duration: "60–75 min" },
+    { label: "Lips", priceDisplay: "$500", duration: "45–60 min" },
   ],
   footnote:
-    "A consultation is required to determine thread type, quantity, and the best treatment plan for your goals.",
+    "A consultation is required to confirm candidacy, thread type, and a personalized treatment plan.",
 };
 
 const SECTIONS = [
@@ -171,13 +174,9 @@ function PricingBlock({ section }) {
     <section className="mt-6">
       <div className="flex items-baseline justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-brand-forest">
-            {section.name}
-          </h2>
+          <h2 className="text-xl font-semibold text-brand-forest">{section.name}</h2>
           {section.tagline ? (
-            <p className="mt-1 text-sm text-brand-forest/80">
-              {section.tagline}
-            </p>
+            <p className="mt-1 text-sm text-brand-forest/80">{section.tagline}</p>
           ) : null}
         </div>
       </div>
@@ -194,9 +193,7 @@ function PricingBlock({ section }) {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <dt className="font-semibold text-brand-forest">
-                        {v.label}
-                      </dt>
+                      <dt className="font-semibold text-brand-forest">{v.label}</dt>
 
                       <div className="mt-0.5 flex flex-wrap gap-1 text-[11px] text-brand-forest/75">
                         {v.duration ? (
@@ -206,10 +203,7 @@ function PricingBlock({ section }) {
                         ) : null}
 
                         {v.chips?.map((c) => (
-                          <span
-                            key={c}
-                            className="rounded-full bg-brand-mint/30 px-2 py-0.5"
-                          >
+                          <span key={c} className="rounded-full bg-brand-mint/30 px-2 py-0.5">
                             {c}
                           </span>
                         ))}
@@ -221,18 +215,14 @@ function PricingBlock({ section }) {
                     </dd>
                   </div>
 
-                  {v.note ? (
-                    <p className="text-xs text-brand-forest/80">{v.note}</p>
-                  ) : null}
+                  {v.note ? <p className="text-xs text-brand-forest/80">{v.note}</p> : null}
                 </div>
               ))}
             </dl>
           </div>
 
           {section.footnote ? (
-            <p className="mt-3 text-xs text-brand-forest/65">
-              {section.footnote}
-            </p>
+            <p className="mt-3 text-xs text-brand-forest/65">{section.footnote}</p>
           ) : null}
         </div>
       </article>
@@ -262,7 +252,6 @@ export default function InjectablesPage() {
 
   const onSelect = (id) => {
     setActive(id);
-    // update hash without jumping/scrolling
     window.history.replaceState(null, "", `#${id}`);
   };
 
@@ -359,7 +348,7 @@ export default function InjectablesPage() {
           </div>
         </section>
 
-        {/* Active section only (no long scrolling) */}
+        {/* Active section only */}
         <PricingBlock section={current} />
 
         {/* FAQ */}
@@ -368,7 +357,7 @@ export default function InjectablesPage() {
           faqs={[
             {
               q: "Do I need a consultation before injectables?",
-              a: "Yes. Your first visit will always include a consultation to review your health history, goals, and whether treatment is appropriate for you that day.",
+              a: "Yes. Your first visit includes a consultation to review your health history, goals, and whether treatment is appropriate for you that day.",
             },
             {
               q: "How long do neurotoxin results last?",
@@ -376,29 +365,14 @@ export default function InjectablesPage() {
             },
             {
               q: "Will I bruise or swell after injections?",
-              a: "Mild redness, swelling, or bruising is possible with any injectable. We recommend avoiding blood-thinning medications or supplements when medically appropriate and following all aftercare instructions.",
+              a: "Mild redness, swelling, or bruising is possible. Follow all aftercare instructions and ask us about what to avoid before your appointment.",
             },
             {
               q: "When should I schedule before an event?",
-              a: "For neurotoxins, schedule at least 2 weeks before an event to allow results to settle. For filler or regenerative treatments, we recommend 2–4 weeks in case of temporary swelling or touch-ups.",
+              a: "For neurotoxins, schedule at least 2 weeks before an event. For filler/threads/regenerative treatments, we recommend 2–4 weeks in case of temporary swelling or touch-ups.",
             },
           ]}
         />
-
-        {/* CTA */}
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-          <p className="text-xs md:text-sm text-brand-forest/80">
-            Not sure where to start? Book a{" "}
-            <span className="font-medium">cosmetic injection consultation</span>{" "}
-            and we’ll walk you through options, pricing, and a personalized plan.
-          </p>
-          <a
-            href="/booking?service=injectables"
-            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book Injectable Appointment
-          </a>
-        </section>
       </div>
     </div>
   );

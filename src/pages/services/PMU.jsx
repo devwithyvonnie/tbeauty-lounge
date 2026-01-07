@@ -1,7 +1,9 @@
+// src/pages/services/PMU.jsx
 import { useEffect, useMemo, useState } from "react";
 import MiniFAQAccordion from "../../components/MiniFAQ";
 
-// 🖌 Brows, liner, lips, and removal
+/** ---------------- DATA ---------------- */
+
 const PMU_GROUPS = [
   {
     id: "brows",
@@ -19,7 +21,6 @@ const PMU_GROUPS = [
       },
     ],
   },
-
   {
     id: "eyes",
     title: "Lash Line & Eyeliner",
@@ -31,7 +32,7 @@ const PMU_GROUPS = [
         name: "Top Eyeliner",
         description:
           "Defined top liner customized to your preferred thickness and shape.",
-        priceRange: [350], // $350–$400
+        priceRange: [350, 400],
         duration: "2 hrs",
       },
       {
@@ -52,7 +53,6 @@ const PMU_GROUPS = [
       },
     ],
   },
-
   {
     id: "lips",
     title: "Lips",
@@ -69,7 +69,6 @@ const PMU_GROUPS = [
       },
     ],
   },
-
   {
     id: "touchups",
     title: "Touch-Ups & Maintenance",
@@ -82,6 +81,7 @@ const PMU_GROUPS = [
         description:
           "Adjustments to shape/tone for previous work before proceeding with a new PMU service.",
         price: 150,
+        duration: "Varies",
       },
       {
         id: "touch-up",
@@ -89,15 +89,15 @@ const PMU_GROUPS = [
         description:
           "Maintenance visit to refresh color and definition after healing or as needed.",
         price: 300,
+        duration: "Varies",
       },
     ],
   },
-
   {
     id: "removal",
     title: "Removal",
     intro:
-      "Tattoo removal pricing varies by area. Sessions and expected results will be reviewed at consultation.",
+      "Removal pricing varies by area. Sessions and expected results will be reviewed at consultation.",
     services: [
       {
         id: "tattoo-removal-face",
@@ -105,13 +105,14 @@ const PMU_GROUPS = [
         description:
           "Removal service for smaller areas on the face. Pricing per session.",
         price: 180,
+        duration: "Varies",
       },
       {
         id: "tattoo-removal-body",
         name: "Tattoo Removal – Body",
-        description:
-          "Removal service for body areas. Pricing per session.",
+        description: "Removal service for body areas. Pricing per session.",
         price: 300,
+        duration: "Varies",
       },
     ],
   },
@@ -132,7 +133,7 @@ const PMU_FAQ = [
   },
   {
     q: "Can you work over previous permanent makeup?",
-    a: "We recommend a consultation first. If old work is very dark, saturated, or outside your desired shape, saline removal or lightening may be recommended before new PMU.",
+    a: "We recommend a consultation first. If old work is very dark, saturated, or outside your desired shape, removal or lightening may be recommended before new PMU.",
   },
 ];
 
@@ -144,6 +145,26 @@ const TAB_ORDER = [
   { id: "removal", label: "Removal" },
 ];
 
+/** ---------------- HELPERS ---------------- */
+
+const money = (n) =>
+  n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+
+function formatPrice(svc) {
+  if (svc.priceDisplay) return svc.priceDisplay;
+
+  if (Array.isArray(svc.priceRange) && svc.priceRange.length === 2) {
+    const [min, max] = svc.priceRange;
+    return `${money(min)}–${money(max)}`;
+  }
+
+  if (typeof svc.price === "number") return money(svc.price);
+
+  return null;
+}
+
+/** ---------------- PAGE ---------------- */
+
 export default function PMUPage() {
   const groupMap = useMemo(() => {
     const map = new Map();
@@ -152,9 +173,9 @@ export default function PMUPage() {
   }, []);
 
   const tabSet = useMemo(() => new Set(TAB_ORDER.map((t) => t.id)), []);
-  const [active, setActive] = useState("brows");
+  const [active, setActive] = useState(TAB_ORDER[0]?.id ?? "brows");
 
-  // deep link support: /services/pmu#lips (no jump)
+  // Deep link support: /services/pmu#lips
   useEffect(() => {
     const hash = (window.location.hash || "").replace("#", "");
     if (hash && tabSet.has(hash)) setActive(hash);
@@ -165,7 +186,7 @@ export default function PMUPage() {
     window.history.replaceState(null, "", `#${id}`);
   };
 
-  const activeGroup = active !== "faq" ? groupMap.get(active) : null;
+  const activeGroup = groupMap.get(active) ?? PMU_GROUPS[0];
 
   return (
     <div className="py-8">
@@ -227,7 +248,7 @@ export default function PMUPage() {
         </div>
       </section>
 
-      {/* WIDER CONTENT */}
+      {/* CONTENT */}
       <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
         {/* Sticky Tabs */}
         <section className="mt-8">
@@ -260,57 +281,38 @@ export default function PMUPage() {
           </div>
         </section>
 
-        {/* CATEGORY CONTENT */}
-        {active !== "faq" && activeGroup ? (
-          <section className="mt-6">
-            <div>
-              <h2 className="text-xl font-semibold text-brand-forest">
-                {activeGroup.title}
-              </h2>
-              {activeGroup.intro ? (
-                <p className="mt-1 text-sm text-brand-forest/80">
-                  {activeGroup.intro}
-                </p>
-              ) : null}
-            </div>
+        {/* ACTIVE CATEGORY */}
+        <section className="mt-6">
+          <div>
+            <h2 className="text-xl font-semibold text-brand-forest">
+              {activeGroup.title}
+            </h2>
+            {activeGroup.intro ? (
+              <p className="mt-1 text-sm text-brand-forest/80">
+                {activeGroup.intro}
+              </p>
+            ) : null}
+          </div>
 
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {activeGroup.services.map((svc, idx) => (
-                <ServiceCard
-                  key={svc.id}
-                  svc={svc}
-                  accent={idx % 2 === 0 ? "mint" : "gold"}
-                />
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        {/* FAQ */}
-        {active === "faq" ? (
-          <section className="mt-6">
-            <MiniFAQAccordion title="PMU FAQ" faqs={PMU_FAQ} />
-          </section>
-        ) : null}
-
-        {/* CTA */}
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-          <p className="text-xs md:text-sm text-brand-forest/80">
-            Not sure which PMU option is right for you? Book a{" "}
-            <span className="font-medium">permanent makeup consultation</span>{" "}
-            and we&apos;ll map out a plan together.
-          </p>
-          <a
-            href="/booking?service=pmu"
-            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book PMU Consultation
-          </a>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            {activeGroup.services.map((svc, idx) => (
+              <ServiceCard
+                key={svc.id}
+                svc={svc}
+                accent={idx % 2 === 0 ? "mint" : "gold"}
+              />
+            ))}
+          </div>
         </section>
+
+        {/* FAQ (BOTTOM — not a tab) */}
+        <MiniFAQAccordion title="PMU FAQ" faqs={PMU_FAQ} />
       </div>
     </div>
   );
 }
+
+/** ---------------- CARD ---------------- */
 
 function ServiceCard({ svc, accent = "mint" }) {
   const bar =
@@ -318,50 +320,49 @@ function ServiceCard({ svc, accent = "mint" }) {
       ? "from-brand-gold via-brand-mint to-brand-gold"
       : "from-brand-mint via-brand-gold to-brand-mint";
 
-  const showPriceNumber = typeof svc.price === "number";
+  const priceText = formatPrice(svc);
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
       <div className={`h-1 bg-gradient-to-r ${bar}`} />
+
       <div className="flex flex-1 flex-col p-4 md:p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="text-lg font-semibold text-brand-forest">{svc.name}</h3>
+            <h3 className="text-lg font-semibold text-brand-forest">
+              {svc.name}
+            </h3>
+
             {svc.description ? (
-              <p className="mt-1 text-sm text-brand-forest/80">{svc.description}</p>
+              <p className="mt-1 text-sm text-brand-forest/80">
+                {svc.description}
+              </p>
             ) : null}
 
-            <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
-              {svc.duration ? (
+            {!!svc.duration && (
+              <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
                 <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
                   {svc.duration}
                 </span>
-              ) : null}
-              {svc.price === 0 ? (
-                <span className="rounded-full bg-brand-mint/20 px-2 py-0.5 text-brand-forest/90">
-                  Included when booked on time
-                </span>
-              ) : null}
+              </div>
+            )}
+          </div>
+
+          {priceText ? (
+            <div className="ml-2 shrink-0 text-right">
+              <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
+                {Array.isArray(svc.priceRange) ? "Range" : "Starting at"}
+              </p>
+              <p className="text-base font-semibold text-brand-forest">
+                {priceText}
+              </p>
             </div>
-          </div>
-
-          <div className="ml-2 shrink-0 text-right text-sm">
-            {showPriceNumber ? (
-              <>
-                <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                  {svc.price === 0 ? "Price" : "Starting at"}
-                </p>
-                <p className="text-base font-semibold text-brand-forest">
-                  {svc.price === 0 ? "Included" : `$${svc.price}`}
-                </p>
-              </>
-            ) : null}
-
-            {svc.priceNote ? (
-              <p className="text-xs text-brand-forest/70">{svc.priceNote}</p>
-            ) : null}
-          </div>
+          ) : null}
         </div>
+
+        {svc.priceNote ? (
+          <p className="mt-3 text-xs text-brand-forest/70">{svc.priceNote}</p>
+        ) : null}
       </div>
     </article>
   );

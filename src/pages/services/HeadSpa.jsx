@@ -1,3 +1,4 @@
+// src/pages/services/HeadSpa.jsx
 import MiniFAQAccordion from "../../components/MiniFAQ";
 
 const HEAD_SPA_SERVICES = [
@@ -9,7 +10,7 @@ const HEAD_SPA_SERVICES = [
       "Includes a scalp analysis, deep cleanse, and conditioning using products customized to your scalp type, plus a relaxing scalp massage to support circulation and scalp health.",
     duration: "30 min",
     price: 60,
-    badge: "",
+    badge: "", // leave blank or remove
   },
   {
     id: "botanical",
@@ -46,10 +47,15 @@ const HEAD_SPA_ADDONS = [
   },
 ];
 
-function ServiceCard({ item }) {
+function ServiceCard({ item, accent = "mint" }) {
+  const bar =
+    accent === "gold"
+      ? "from-brand-gold via-brand-mint to-brand-gold"
+      : "from-brand-mint via-brand-gold to-brand-mint";
+
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
-      <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
+      <div className={`h-1 bg-gradient-to-r ${bar}`} />
 
       <div className="flex flex-1 flex-col p-4 md:p-5">
         <div className="flex items-start justify-between gap-4">
@@ -59,17 +65,33 @@ function ServiceCard({ item }) {
               {item.name}
             </h3>
 
-            {item.tagline && (
+            {item.tagline ? (
               <p className="mt-1 text-sm text-brand-forest/80">{item.tagline}</p>
-            )}
+            ) : null}
 
-            {item.description && (
+            {item.description ? (
               <p className="mt-2 text-sm text-brand-forest/80 leading-relaxed">
                 {item.description}
               </p>
-            )}
+            ) : null}
 
-            {/* Best for (keeps it short, avoids “gap” issues) */}
+            {/* chips */}
+            <div className="mt-3 flex flex-wrap gap-1 text-[11px]">
+              {item.duration ? (
+                <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
+                  {item.duration}
+                </span>
+              ) : null}
+
+              <span className="rounded-full bg-brand-mint/20 px-2 py-0.5 text-brand-forest/90">
+                Scalp analysis included
+              </span>
+              <span className="rounded-full bg-brand-mint/20 px-2 py-0.5 text-brand-forest/90">
+                Massage included
+              </span>
+            </div>
+
+            {/* optional “bestFor” line if you ever add it */}
             {item.bestFor?.length ? (
               <p className="mt-2 text-xs text-brand-forest/70">
                 <span className="font-medium text-brand-forest/80">
@@ -78,18 +100,9 @@ function ServiceCard({ item }) {
                 {item.bestFor.join(", ")}
               </p>
             ) : null}
-
-            {/* Chips */}
-            <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
-              {item.duration && (
-                <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
-                  {item.duration}
-                </span>
-              )}
-            </div>
           </div>
 
-          {/* RIGHT (prices on the right like other pages) */}
+          {/* RIGHT */}
           <div className="shrink-0 text-right">
             {item.badge ? (
               <span className="mb-2 inline-block rounded-full bg-brand-gold/10 px-3 py-1 text-[11px] font-medium text-brand-forest whitespace-nowrap">
@@ -113,7 +126,7 @@ function ServiceCard({ item }) {
 export default function HeadSpaPage() {
   return (
     <div className="py-8">
-      {/* WIDE HERO (matches lashes/facials) */}
+      {/* WIDE HERO */}
       <section className="mx-auto w-[96%] max-w-screen-2xl">
         <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
           <img
@@ -135,9 +148,9 @@ export default function HeadSpaPage() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-brand-forest/85">
-                Deep relaxation for the mind with scalp-focused care that supports
-                circulation, tension relief, and overall comfort—customized to
-                your scalp type and goals.
+                Deep relaxation for the mind with scalp-focused care that
+                supports circulation, tension relief, and overall comfort—
+                customized to your scalp type and goals.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2 text-xs">
@@ -186,8 +199,12 @@ export default function HeadSpaPage() {
           </div>
 
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {HEAD_SPA_SERVICES.map((item) => (
-              <ServiceCard key={item.id} item={item} />
+            {HEAD_SPA_SERVICES.map((item, idx) => (
+              <ServiceCard
+                key={item.id}
+                item={item}
+                accent={idx % 2 === 0 ? "mint" : "gold"}
+              />
             ))}
           </div>
         </section>
@@ -203,14 +220,18 @@ export default function HeadSpaPage() {
             </div>
 
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {HEAD_SPA_ADDONS.map((item) => (
-                <ServiceCard key={item.id} item={item} />
+              {HEAD_SPA_ADDONS.map((item, idx) => (
+                <ServiceCard
+                  key={item.id}
+                  item={item}
+                  accent={idx % 2 === 0 ? "gold" : "mint"}
+                />
               ))}
             </div>
           </section>
         ) : null}
 
-        {/* FAQ */}
+        {/* FAQ (BOTTOM) */}
         <MiniFAQAccordion
           title="Head Spa FAQ"
           faqs={[
@@ -232,20 +253,6 @@ export default function HeadSpaPage() {
             },
           ]}
         />
-
-        {/* CTA */}
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-          <p className="text-xs md:text-sm text-brand-forest/80">
-            Not sure which ritual to book? Choose any option and we’ll customize
-            it for your scalp and relaxation goals.
-          </p>
-          <a
-            href="/booking?service=headspa"
-            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book Head Spa
-          </a>
-        </section>
       </div>
     </div>
   );

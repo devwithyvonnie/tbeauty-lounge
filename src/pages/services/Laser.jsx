@@ -1,5 +1,8 @@
+// src/pages/services/Laser.jsx
 import { useEffect, useMemo, useState } from "react";
 import MiniFAQAccordion from "../../components/MiniFAQ";
+
+/** ---------------- DATA ---------------- */
 
 // 🌈 Skin rejuvenation (non–hair-removal)
 const SKIN_REJUVENATION = [
@@ -102,32 +105,14 @@ const TATTOO_REMOVAL = {
     "Laser-based removal to gradually fade unwanted tattoos over a series of sessions.",
   sizes: [
     { label: 'Small (2" x 2")', single: 90, pkg6: 513, pkg9: 729, pkg12: 918 },
-    {
-      label: 'Medium (3" x 3")',
-      single: 120,
-      pkg6: 684,
-      pkg9: 972,
-      pkg12: 1224,
-    },
-    {
-      label: 'Large (4" x 4")',
-      single: 150,
-      pkg6: 855,
-      pkg9: 1215,
-      pkg12: 1530,
-    },
-    {
-      label: 'Extra Large (5" x 5" or bigger)',
-      single: 200,
-      pkg6: 1140,
-      pkg9: 1620,
-      pkg12: 2040,
-    },
+    { label: 'Medium (3" x 3")', single: 120, pkg6: 684, pkg9: 972, pkg12: 1224 },
+    { label: 'Large (4" x 4")', single: 150, pkg6: 855, pkg9: 1215, pkg12: 1530 },
+    { label: 'Extra Large (5" x 5" or bigger)', single: 200, pkg6: 1140, pkg9: 1620, pkg12: 2040 },
   ],
 };
 
 const money = (n) =>
-  n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  n.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
 /** --------- TABS --------- */
 const TABS = [
@@ -136,8 +121,34 @@ const TABS = [
   { id: "skin", label: "Skin Rejuvenation" },
 ];
 
-/** --------- SECTIONS (render functions) --------- */
+/** ---------------- UI HELPERS ---------------- */
+
+function AccentBar({ accent = "mint" }) {
+  const cls =
+    accent === "gold"
+      ? "bg-gradient-to-r from-brand-gold via-brand-mint to-brand-gold"
+      : "bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint";
+  return <div className={`h-1 ${cls}`} />;
+}
+
+function BulletList({ items }) {
+  return (
+    <ul className="mt-3 grid gap-x-4 gap-y-1 text-sm text-brand-forest/85 sm:grid-cols-2">
+      {items.map((a) => (
+        <li key={a} className="flex gap-2">
+          <span className="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-brand-forest/70" />
+          <span>{a}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** ---------------- SECTIONS ---------------- */
+
 function HairRemovalSection() {
+  const groups = Object.values(LHR_AREAS);
+
   return (
     <section className="mt-6">
       <div>
@@ -145,21 +156,21 @@ function HairRemovalSection() {
           Laser Hair Removal Areas
         </h2>
         <p className="mt-1 text-sm text-brand-forest/80">
-          Pricing is based on area size. Single-session and package-of-5 pricing
-          are listed below.
+          Pricing is based on area size. Single-session and package pricing are listed.
         </p>
       </div>
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
-        {Object.values(LHR_AREAS).map((group) => (
+        {groups.map((group, idx) => (
           <article
             key={group.label}
             className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
           >
-            <div className="h-1 bg-gradient-to-r from-brand-gold via-brand-mint to-brand-gold" />
+            <AccentBar accent={idx % 2 === 0 ? "gold" : "mint"} />
+
             <div className="flex flex-1 flex-col p-4 md:p-5">
               <div className="flex items-start justify-between gap-3">
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-brand-forest">
                     {group.label}
                   </h3>
@@ -172,24 +183,15 @@ function HairRemovalSection() {
                       Single + package options
                     </span>
                   </div>
-
-                  <ul className="mt-3 space-y-1 text-sm text-brand-forest/85">
-                    {group.areas.map((a) => (
-                      <li key={a} className="flex gap-2">
-                        <span className="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-brand-forest/70" />
-                        <span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
-                <div className="ml-2 shrink-0 text-right text-sm">
+                <div className="ml-2 shrink-0 text-right">
                   <div>
                     <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                      Single session
+                      Single
                     </p>
                     <p className="text-base font-semibold text-brand-forest">
-                      ${group.price}
+                      {money(group.price)}
                     </p>
                   </div>
 
@@ -198,19 +200,21 @@ function HairRemovalSection() {
                       Package of {group.packageSessions}
                     </p>
                     <p className="text-sm font-semibold text-brand-forest">
-                      ${money(group.packagePrice)}
+                      {money(group.packagePrice)}
                     </p>
                   </div>
                 </div>
               </div>
+
+              <BulletList items={group.areas} />
             </div>
           </article>
         ))}
       </div>
 
       <p className="mt-4 text-xs text-brand-forest/70">
-        Packages are great for guests committed to a full series. Your provider
-        will recommend the right plan based on hair density and the treatment area.
+        Packages are great for guests committed to a full series. Your provider will recommend a plan
+        based on hair density, skin type, and the treatment area.
       </p>
     </section>
   );
@@ -227,7 +231,7 @@ function TattooRemovalSection() {
       </div>
 
       <article className="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
-        <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
+        <AccentBar accent="mint" />
         <div className="p-4 md:p-5">
           <div className="rounded-xl bg-brand-cream/70 px-3 py-3 overflow-x-auto">
             <table className="w-full text-sm text-brand-forest/90">
@@ -244,10 +248,10 @@ function TattooRemovalSection() {
                 {TATTOO_REMOVAL.sizes.map((s) => (
                   <tr key={s.label} className="border-t border-brand-cream/80">
                     <td className="py-2 pr-2">{s.label}</td>
-                    <td className="py-2 px-2 font-semibold">${s.single}</td>
-                    <td className="py-2 px-2 font-semibold">${s.pkg6}</td>
-                    <td className="py-2 px-2 font-semibold">${s.pkg9}</td>
-                    <td className="py-2 px-2 font-semibold">${s.pkg12}</td>
+                    <td className="py-2 px-2 font-semibold">{money(s.single)}</td>
+                    <td className="py-2 px-2 font-semibold">{money(s.pkg6)}</td>
+                    <td className="py-2 px-2 font-semibold">{money(s.pkg9)}</td>
+                    <td className="py-2 px-2 font-semibold">{money(s.pkg12)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -255,8 +259,7 @@ function TattooRemovalSection() {
           </div>
 
           <p className="mt-3 text-xs text-brand-forest/65">
-            The number of sessions needed depends on ink color, depth, tattoo age,
-            and your skin. Your provider will estimate a plan after evaluating the area.
+            Sessions needed vary by ink color, depth, tattoo age, and skin. We’ll estimate your plan after evaluating the area.
           </p>
         </div>
       </article>
@@ -272,21 +275,21 @@ function SkinRejuvenationSection() {
           Skin Rejuvenation
         </h2>
         <p className="mt-1 text-sm text-brand-forest/80">
-          IPL and advanced light-based treatments to target pigment, redness, texture,
-          and overall tone.
+          IPL and advanced light-based treatments to target pigment, redness, texture, and overall tone.
         </p>
       </div>
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
-        {SKIN_REJUVENATION.map((item) => (
+        {SKIN_REJUVENATION.map((item, idx) => (
           <article
             key={item.id}
             className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
           >
-            <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
+            <AccentBar accent={idx % 2 === 0 ? "mint" : "gold"} />
+
             <div className="flex flex-1 flex-col p-4 md:p-5">
               <div className="flex items-start justify-between gap-3">
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-brand-forest">
                     {item.name}
                   </h3>
@@ -296,22 +299,22 @@ function SkinRejuvenationSection() {
                     </p>
                   ) : null}
 
-                  <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
-                    <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
-                      {item.duration}
-                    </span>
-                  </div>
+                  {item.duration ? (
+                    <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
+                      <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
+                        {item.duration}
+                      </span>
+                    </div>
+                  ) : null}
                 </div>
 
-                <div className="ml-2 shrink-0 text-right text-sm">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                      Single session
-                    </p>
-                    <p className="text-base font-semibold text-brand-forest">
-                      ${item.price}
-                    </p>
-                  </div>
+                <div className="ml-2 shrink-0 text-right">
+                  <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
+                    Single
+                  </p>
+                  <p className="text-base font-semibold text-brand-forest">
+                    {money(item.price)}
+                  </p>
 
                   {item.packagePrice ? (
                     <div className="mt-2">
@@ -319,7 +322,7 @@ function SkinRejuvenationSection() {
                         {item.packageLabel}
                       </p>
                       <p className="text-sm font-semibold text-brand-forest">
-                        ${money(item.packagePrice)}
+                        {money(item.packagePrice)}
                       </p>
                     </div>
                   ) : null}
@@ -333,7 +336,8 @@ function SkinRejuvenationSection() {
   );
 }
 
-/** --------- PAGE --------- */
+/** ---------------- PAGE ---------------- */
+
 export default function LaserPage() {
   const defaultTab = TABS[0].id;
   const [active, setActive] = useState(defaultTab);
@@ -348,7 +352,6 @@ export default function LaserPage() {
 
   const onSelect = (id) => {
     setActive(id);
-    // update hash without scrolling
     window.history.replaceState(null, "", `#${id}`);
   };
 
@@ -381,13 +384,13 @@ export default function LaserPage() {
 
               <div className="mt-5 flex flex-wrap gap-2 text-xs">
                 <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-                  Medical-grade laser & light devices
+                  Medical-grade laser &amp; light devices
                 </span>
                 <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
                   Series-based treatment plans
                 </span>
                 <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-                  Customized to skin type & area
+                  Customized to skin type &amp; area
                 </span>
               </div>
 
@@ -412,7 +415,7 @@ export default function LaserPage() {
 
       {/* CONTENT */}
       <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
-        {/* Sticky tabs */}
+        {/* Sticky tabs (same upgrade as lashes/facials) */}
         <section className="mt-8">
           <div className="sticky top-3 z-20">
             <div className="rounded-2xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow-sm p-3">
@@ -448,7 +451,7 @@ export default function LaserPage() {
         {active === "tattoo" ? <TattooRemovalSection /> : null}
         {active === "skin" ? <SkinRejuvenationSection /> : null}
 
-        {/* FAQ */}
+        {/* FAQ (at bottom like lashes: not a tab) */}
         <MiniFAQAccordion
           title="Laser & Light Treatment FAQ"
           faqs={[
@@ -458,33 +461,18 @@ export default function LaserPage() {
             },
             {
               q: "Do I need to shave before my appointment?",
-              a: "Yes, we typically ask that you closely shave the treatment area 24 hours before your visit. Avoid waxing, plucking, or threading for several weeks before starting a series, since we need the follicle present.",
+              a: "Yes—closely shave the treatment area about 24 hours before your visit. Avoid waxing, plucking, or threading for several weeks before starting a series.",
             },
             {
               q: "Can I get laser if I have a tan or deeper skin tone?",
-              a: "Safety is our priority. Certain devices and settings are better suited for specific skin tones. During your consultation, we’ll assess your skin and advise when and how treatment can be done safely, which may include avoiding recent sun or self-tanner.",
+              a: "Safety first. Certain devices and settings work best for certain skin tones. We’ll assess your skin and advise the safest plan, which may include avoiding recent sun or self-tanner.",
             },
             {
               q: "What does laser feel like?",
-              a: "Most guests describe it as a quick rubber-band snap with brief heat. Some areas are more sensitive than others, but treatments are generally well-tolerated and quite fast.",
+              a: "Most guests describe it as a quick rubber-band snap with brief heat. Some areas are more sensitive than others, but treatments are generally fast and well-tolerated.",
             },
           ]}
         />
-
-        {/* CTA */}
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-          <p className="text-xs md:text-sm text-brand-forest/80">
-            Not sure which areas or treatments are right for you? Book a{" "}
-            <span className="font-medium">laser consultation</span> and we’ll map
-            out a personalized plan.
-          </p>
-          <a
-            href="/booking?service=laser"
-            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book Laser Appointment
-          </a>
-        </section>
       </div>
     </div>
   );

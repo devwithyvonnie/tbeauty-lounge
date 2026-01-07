@@ -1,18 +1,14 @@
 import { useMemo, useState } from 'react';
+import MiniFAQAccordion from '../components/MiniFAQ.jsx';
 
 /* ---------- Savings calculator ---------- */
 function MembershipSavingsCalculator({ tiers }) {
-  const [tierId, setTierId] = useState('revitalize');
+  const [tierId, setTierId] = useState("revitalize");
   const [applyCredit, setApplyCredit] = useState(true);
 
-  const [items, setItems] = useState([
-    { name: 'Lash Fill', price: 70, visits: 2 },
-  ]);
+  const [items, setItems] = useState([{ name: "Lash Fill", price: 70, visits: 2 }]);
 
-  const tier = useMemo(
-    () => tiers.find((t) => t.id === tierId),
-    [tiers, tierId],
-  );
+  const tier = useMemo(() => tiers.find((t) => t.id === tierId), [tiers, tierId]);
 
   const discountPct = useMemo(() => {
     const match = tier?.discount?.match(/(\d+)\s*%/);
@@ -54,13 +50,11 @@ function MembershipSavingsCalculator({ tiers }) {
   }, [creditLeft]);
 
   function updateItem(i, patch) {
-    setItems((prev) =>
-      prev.map((it, idx) => (idx === i ? { ...it, ...patch } : it)),
-    );
+    setItems((prev) => prev.map((it, idx) => (idx === i ? { ...it, ...patch } : it)));
   }
 
   function addItem() {
-    setItems((prev) => [...prev, { name: 'Service', price: 120, visits: 1 }]);
+    setItems((prev) => [...prev, { name: "Service", price: 120, visits: 1 }]);
   }
 
   function removeItem(i) {
@@ -73,18 +67,18 @@ function MembershipSavingsCalculator({ tiers }) {
         Membership savings calculator
       </h2>
       <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-brand-forest/75">
-        Plug in what you normally get (or plan to get) and see an estimate of
-        monthly savings with member pricing—plus how your monthly credit could
-        be used or saved.
+        Plug in what you normally get (or plan to get) and see an estimate of monthly savings
+        with member pricing—plus how your monthly credit could be used or saved.
       </p>
 
-      <div className="mx-auto mt-8 max-w-8xl rounded-[--radius-card] bg-white p-6 md:p-8 shadow-sm ring-1 ring-black/5">
+      <div className="mx-auto mt-8 w-full max-w-5xl rounded-[--radius-card] bg-white p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-black/5">
         {/* Tier + actions */}
         <div className="grid gap-4 md:grid-cols-3 md:items-end">
           <div className="md:col-span-2">
             <label className="text-xs font-medium text-brand-forest/70">
               Select membership tier
             </label>
+
             <select
               value={tierId}
               onChange={(e) => setTierId(e.target.value)}
@@ -100,8 +94,8 @@ function MembershipSavingsCalculator({ tiers }) {
             {/* Apply vs Save */}
             <div className="mt-4 flex flex-wrap gap-2">
               {[
-                { id: 'apply', label: 'Apply credit monthly', on: true },
-                { id: 'save', label: 'Save credit (bank it)', on: false },
+                { id: "apply", label: "Apply credit monthly", on: true },
+                { id: "save", label: "Save credit (bank it)", on: false },
               ].map((o) => (
                 <button
                   key={o.id}
@@ -109,8 +103,8 @@ function MembershipSavingsCalculator({ tiers }) {
                   onClick={() => setApplyCredit(o.on)}
                   className={`rounded-full px-4 py-2 text-xs transition ring-1 ring-black/5 ${
                     applyCredit === o.on
-                      ? 'bg-brand-mint/40 text-brand-forest'
-                      : 'bg-white text-brand-forest/70 hover:bg-white/90'
+                      ? "bg-brand-mint/40 text-brand-forest"
+                      : "bg-white text-brand-forest/70 hover:bg-white/90"
                   }`}
                 >
                   {o.label}
@@ -118,27 +112,27 @@ function MembershipSavingsCalculator({ tiers }) {
               ))}
             </div>
 
+            {/* Stats pills */}
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-full bg-brand-mint/20 px-3 py-1 text-[11px] text-brand-forest/70">
                 Discount: <span className="font-medium">{discountPct}%</span>
               </span>
               <span className="rounded-full bg-brand-mint/20 px-3 py-1 text-[11px] text-brand-forest/70">
-                Monthly credit:{' '}
-                <span className="font-medium">${membershipCredit}</span>
+                Monthly credit: <span className="font-medium">${membershipCredit}</span>
               </span>
               <span className="rounded-full bg-brand-mint/20 px-3 py-1 text-[11px] text-brand-forest/70">
-                Bank up to:{' '}
-                <span className="font-medium">${membershipCredit * 6}</span> (6
-                months)
+                Bank up to: <span className="font-medium">${membershipCredit * 6}</span>{" "}
+                (6 months)
               </span>
             </div>
           </div>
 
+          {/* Add service */}
           <div className="md:col-span-1">
             <button
               type="button"
               onClick={addItem}
-              className="w-full rounded-full bg-brand-forest px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm hover:brightness-110"
+              className="w-full rounded-full bg-brand-forest px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm hover:brightness-110 active:scale-[0.99]"
             >
               Add a service
             </button>
@@ -153,9 +147,9 @@ function MembershipSavingsCalculator({ tiers }) {
           {items.map((it, i) => (
             <div
               key={i}
-              className="grid gap-3 rounded-[--radius-card] bg-brand-mint/10 p-4 ring-1 ring-black/5 md:grid-cols-12 md:items-center"
+              className="grid gap-3 rounded-[--radius-card] bg-brand-mint/10 p-4 ring-1 ring-black/5 lg:grid-cols-12 lg:items-center"
             >
-              <div className="md:col-span-5">
+              <div className="lg:col-span-5">
                 <label className="text-[11px] font-medium text-brand-forest/70">
                   Service
                 </label>
@@ -167,7 +161,7 @@ function MembershipSavingsCalculator({ tiers }) {
                 />
               </div>
 
-              <div className="md:col-span-3">
+              <div className="lg:col-span-3">
                 <label className="text-[11px] font-medium text-brand-forest/70">
                   Price per visit
                 </label>
@@ -182,7 +176,7 @@ function MembershipSavingsCalculator({ tiers }) {
                 </div>
               </div>
 
-              <div className="md:col-span-3">
+              <div className="lg:col-span-3">
                 <label className="text-[11px] font-medium text-brand-forest/70">
                   Visits / month
                 </label>
@@ -194,19 +188,17 @@ function MembershipSavingsCalculator({ tiers }) {
                 />
               </div>
 
-              <div className="md:col-span-1 md:text-right">
+              <div className="lg:col-span-1 lg:text-right">
                 <button
                   type="button"
                   onClick={() => removeItem(i)}
                   disabled={items.length === 1}
                   className={`rounded-full px-3 py-2 text-xs font-medium ring-1 ring-black/10 ${
                     items.length === 1
-                      ? 'bg-white/50 text-brand-forest/40'
-                      : 'bg-white text-brand-forest/70 hover:bg-white/90'
+                      ? "bg-white/50 text-brand-forest/40"
+                      : "bg-white text-brand-forest/70 hover:bg-white/90"
                   }`}
-                  title={
-                    items.length === 1 ? 'Keep at least one item' : 'Remove'
-                  }
+                  title={items.length === 1 ? "Keep at least one item" : "Remove"}
                 >
                   ✕
                 </button>
@@ -215,19 +207,17 @@ function MembershipSavingsCalculator({ tiers }) {
           ))}
         </div>
 
-        {/* Results */}
+        {/* Results (tiles + explanation) */}
         <div className="mt-6 rounded-[--radius-card] bg-white p-6 ring-1 ring-black/5">
-          <div className="grid gap-4 md:grid-cols-4">
-            <div>
-              <p className="text-xs font-medium text-brand-forest/60">
-                Monthly spend
-              </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-xl bg-brand-cream/50 p-4 ring-1 ring-black/5">
+              <p className="text-xs font-medium text-brand-forest/60">Monthly spend</p>
               <p className="mt-1 text-lg font-semibold text-brand-forest">
                 ${monthlySpend.toFixed(0)}
               </p>
             </div>
 
-            <div>
+            <div className="rounded-xl bg-brand-cream/50 p-4 ring-1 ring-black/5">
               <p className="text-xs font-medium text-brand-forest/60">
                 With member pricing ({discountPct}%)
               </p>
@@ -236,20 +226,16 @@ function MembershipSavingsCalculator({ tiers }) {
               </p>
             </div>
 
-            <div>
-              <p className="text-xs font-medium text-brand-forest/60">
-                Estimated savings
-              </p>
+            <div className="rounded-xl bg-brand-cream/50 p-4 ring-1 ring-black/5">
+              <p className="text-xs font-medium text-brand-forest/60">Estimated savings</p>
               <p className="mt-1 text-lg font-semibold text-brand-forest">
                 ${estimatedSavings.toFixed(0)}
               </p>
             </div>
 
-            <div>
+            <div className="rounded-xl bg-brand-cream/50 p-4 ring-1 ring-black/5">
               <p className="text-xs font-medium text-brand-forest/60">
-                {applyCredit
-                  ? 'After applying credit'
-                  : 'Out-of-pocket (saving credit)'}
+                {applyCredit ? "After applying credit" : "Out-of-pocket (saving credit)"}
               </p>
               <p className="mt-1 text-lg font-semibold text-brand-forest">
                 ${afterCredit.toFixed(0)}
@@ -261,30 +247,28 @@ function MembershipSavingsCalculator({ tiers }) {
             {applyCredit ? (
               creditLeft > 0 ? (
                 <p className="text-sm text-brand-forest/80">
-                  Your monthly credit could cover your listed services, with{' '}
-                  <strong>${creditLeft.toFixed(0)}</strong> left to use on
-                  another service, products, or to bank.
+                  Your monthly credit could cover your listed services, with{" "}
+                  <strong>${creditLeft.toFixed(0)}</strong> left to use on another
+                  service, products, or to bank.
                 </p>
               ) : (
                 <p className="text-sm text-brand-forest/80">
-                  Your services exceed the monthly credit. Estimated
-                  out-of-pocket after credit:{' '}
-                  <strong>${afterCredit.toFixed(0)}</strong>.
+                  Your services exceed the monthly credit. Estimated out-of-pocket after
+                  credit: <strong>${afterCredit.toFixed(0)}</strong>.
                 </p>
               )
             ) : (
               <p className="text-sm text-brand-forest/80">
-                You’re choosing to <strong>save your full credit</strong> this
-                month while still receiving the member discount on services. If
-                you do this consistently, you could bank approximately{' '}
+                You’re choosing to <strong>save your full credit</strong> this month
+                while still receiving the member discount on services. If you do this
+                consistently, you could bank approximately{" "}
                 <strong>${bankedSixMonths.toFixed(0)}</strong> over 6 months.
               </p>
             )}
 
             <p className="mt-2 text-xs text-brand-forest/60">
-              *Estimates shown are for planning. Discounts apply to eligible,
-              regularly priced services. Birthday perks and touch-up offers vary
-              by tier.
+              *Estimates shown are for planning. Discounts apply to eligible, regularly
+              priced services. Birthday perks and touch-up offers vary by tier.
             </p>
           </div>
         </div>
@@ -480,7 +464,7 @@ export default function Memberships() {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-3 md:items-stretch">
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
             {tiers.map((t) => (
               <article
                 key={t.id}
@@ -511,7 +495,7 @@ export default function Memberships() {
                     </span>
                   ) : null}
                 </div>
-                
+
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-4xl font-semibold text-brand-forest">
                     ${t.price}
@@ -542,7 +526,7 @@ export default function Memberships() {
                   href={t.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-block w-full rounded-full bg-brand-forest px-6 py-2.5 text-center text-sm font-medium text-white shadow-sm hover:brightness-110"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-brand-forest px-6 py-3 text-sm font-semibold text-white shadow-sm hover:brightness-110 active:scale-[0.99]"
                 >
                   Join {t.name}
                 </a>
@@ -561,50 +545,7 @@ export default function Memberships() {
         <MembershipSavingsCalculator tiers={tiers} />
 
         {/* FAQ */}
-        <section id="faq" className="mt-12">
-          <h2 className="text-xl font-semibold text-brand-forest">
-            Membership FAQ
-          </h2>
-          <div className="mt-4 grid gap-3 md:grid-cols-2">
-            {faqs.map((f) => (
-              <details
-                key={f.q}
-                className="rounded-[--radius-card] bg-white p-5 shadow-sm ring-1 ring-black/5"
-              >
-                <summary className="cursor-pointer text-base font-medium text-brand-forest">
-                  {f.q}
-                </summary>
-                <p className="mt-2 text-sm text-brand-forest/75">{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        {/* FINAL CTA */}
-        <section className="mt-14 rounded-[--radius-card] bg-brand-mint/15 p-8 text-center md:p-10">
-          <h2 className="text-2xl font-semibold text-brand-forest">
-            Ready to make self-care your default?
-          </h2>
-          <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-brand-forest/75">
-            Join today, apply your first credit immediately, and let’s keep your
-            routine consistent all year.
-          </p>
-
-          <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
-            <a
-              href="#tiers"
-              className="rounded-full bg-brand-forest px-8 py-3 text-sm font-medium text-white shadow-sm hover:brightness-110"
-            >
-              Choose My Tier
-            </a>
-            <a
-              href="/booking"
-              className="rounded-full bg-white/85 px-8 py-3 text-sm font-medium text-brand-forest shadow-sm ring-1 ring-black/5 hover:bg-white"
-            >
-              Talk to Us First
-            </a>
-          </div>
-        </section>
+        <MiniFAQAccordion title="Membership FAQ" faqs={faqs} />
 
         {/* Terms */}
         <p className="mt-8 text-center text-xs text-brand-forest/60">

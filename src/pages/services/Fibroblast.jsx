@@ -1,9 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import MiniFAQAccordion from "../../components/MiniFAQ";
 
-const fmt = (n) =>
-  n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+/* ---------- helpers ---------- */
+const fmt = (n) => {
+  const num = typeof n === "number" ? n : Number(n);
+  if (Number.isNaN(num)) return "$0";
+  return num.toLocaleString("en-US", { style: "currency", currency: "USD" });
+};
 
+/* ---------- data ---------- */
 const SECTIONS = [
   {
     id: "eyes",
@@ -90,7 +95,7 @@ export default function FibroblastPage() {
     return m;
   }, []);
 
-  // Support deep links like /fibroblast#neck
+  // Support deep links like /services/fibroblast#neck
   useEffect(() => {
     const hash = (window.location.hash || "").replace("#", "");
     if (hash && sectionMap.has(hash)) setActive(hash);
@@ -100,7 +105,6 @@ export default function FibroblastPage() {
 
   const onSelect = (id) => {
     setActive(id);
-    // Update the hash without jumping/scrolling
     window.history.replaceState(null, "", `#${id}`);
   };
 
@@ -165,13 +169,12 @@ export default function FibroblastPage() {
         </div>
       </section>
 
-      {/* WIDER CONTENT */}
+      {/* CONTENT */}
       <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
         {/* Sticky tab bar */}
         <section className="mt-8">
           <div className="sticky top-3 z-20">
             <div className="rounded-2xl bg-white/85 backdrop-blur ring-1 ring-black/5 shadow-sm p-3">
-              {/* Tabs: horizontal scroll on small screens */}
               <div className="-mx-1 overflow-x-auto">
                 <div className="px-1 flex gap-2 min-w-max">
                   {SECTIONS.map((s) => {
@@ -206,39 +209,25 @@ export default function FibroblastPage() {
               <h2 className="text-xl font-semibold text-brand-forest">
                 {current.title}
               </h2>
-              {current.subtitle && (
+              {current.subtitle ? (
                 <p className="mt-1 text-sm text-brand-forest/80">
                   {current.subtitle}
                 </p>
-              )}
+              ) : null}
             </div>
           </div>
 
+          {/* Price list card (Lashes-style upgrade) */}
           <article className="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
             <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
             <div className="p-4 md:p-5">
-              <div className="grid gap-3 md:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {current.items.map((item) => (
-                  <div
+                  <PriceCard
                     key={`${current.id}-${item.name}`}
-                    className="rounded-xl bg-brand-cream/70 px-4 py-3"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="min-w-0">
-                        <p className="font-medium text-brand-forest">
-                          {item.name}
-                        </p>
-                      </div>
-                      <div className="shrink-0 text-right">
-                        <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                          Starting at
-                        </p>
-                        <p className="text-base font-semibold text-brand-forest">
-                          {fmt(item.price)}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    name={item.name}
+                    price={item.price}
+                  />
                 ))}
               </div>
 
@@ -271,22 +260,30 @@ export default function FibroblastPage() {
             },
           ]}
         />
-
-        {/* CTA */}
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
-          <p className="text-xs md:text-sm text-brand-forest/80">
-            Not sure which area to start with? Book a{" "}
-            <span className="font-medium">Fibroblast consultation</span> and
-            we&apos;ll map out a plan that fits your goals.
-          </p>
-          <a
-            href="/booking?service=fibroblast"
-            className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-          >
-            Book Fibroblast Consultation
-          </a>
-        </section>
       </div>
     </div>
+  );
+}
+
+/* ---------- presentational ---------- */
+
+function PriceCard({ name, price }) {
+  return (
+    <article className="flex items-center justify-between gap-3 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
+      <div className="h-full w-1 bg-gradient-to-b from-brand-mint via-brand-gold to-brand-mint" />
+      <div className="flex w-full items-start justify-between p-4">
+        <h3 className="min-w-0 pr-3 text-sm md:text-base font-semibold text-brand-forest">
+          {name}
+        </h3>
+        <div className="shrink-0 text-right">
+          <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
+            Starting at
+          </p>
+          <p className="text-base font-semibold text-brand-forest">
+            {fmt(price)}
+          </p>
+        </div>
+      </div>
+    </article>
   );
 }
