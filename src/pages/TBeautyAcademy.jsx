@@ -219,7 +219,7 @@ function Card({ children, accent = 'mint-gold' }) {
 
 function PillRow({ items }) {
   return (
-    <div className="mt-4 flex flex-wrap gap-2 text-xs">
+    <div className="mt-4 flex flex-wrap gap-2 text-[11px] sm:text-xs">
       {items.map((t) => (
         <span
           key={t}
@@ -376,7 +376,7 @@ export default function TBeautyAcademy() {
   return (
     <div className="py-8">
       {/* WIDE HERO */}
-      <section className="mx-auto w-[96%] max-w-screen-2xl">
+      <section className="mx-auto w-[92%] max-w-7xl">
         <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
           <img
             src="/images/academy/hero.png"
@@ -386,13 +386,13 @@ export default function TBeautyAcademy() {
           />
           <div className="absolute inset-0 bg-brand-cream/70" />
 
-          <div className="absolute inset-0 flex items-center">
-            <div className="mx-auto w-11/12 max-w-3xl">
+          <div className="absolute inset-0 flex items-end sm:items-center">
+            <div className="mx-auto w-11/12 max-w-3xl pb-6 sm:pb-0">
               <p className="text-sm tracking-[0.25em] text-brand-forest/70">
                 PROFESSIONAL TRAINING
               </p>
 
-              <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-5xl">
+              <h1 className="mt-2 text-3xl font-semibold leading-tight text-brand-forest sm:text-4xl md:text-5xl">
                 Lash Masterclass
               </h1>
 
@@ -416,151 +416,151 @@ export default function TBeautyAcademy() {
         </div>
       </section>
 
-      <main className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
-      {/* ===== OVERVIEW + CTA (same card language as other pages) ===== */}
-      <section className="mt-8">
-        <Card>
-          <div className="flex flex-col md:flex-row gap-6 justify-between">
-            <div className="min-w-0">
-              <h2 className="text-xl font-semibold text-brand-forest">
-                Course Overview
-              </h2>
-              <p className="mt-2 max-w-prose text-brand-forest/85">
-                This Lash Masterclass covers classic and volume lash
-                application, eye mapping, retention, aftercare, sanitation &
-                safety standards, and Barbicide Certification preparation.
-              </p>
+      <main className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 pb-24 md:py-8 md:pb-0">
+        {/* ===== OVERVIEW + CTA (same card language as other pages) ===== */}
+        <section className="mt-8">
+          <Card>
+            <div className="flex flex-col md:flex-row gap-6 justify-between">
+              <div className="min-w-0">
+                <h2 className="text-xl font-semibold text-brand-forest">
+                  Course Overview
+                </h2>
+                <p className="mt-2 max-w-prose text-brand-forest/85">
+                  This Lash Masterclass covers classic and volume lash
+                  application, eye mapping, retention, aftercare, sanitation &
+                  safety standards, and Barbicide Certification preparation.
+                </p>
 
-              <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                {[
-                  'Starter kit included',
-                  'Certificate included',
-                  'Bring your own model (we can assist if needed)',
-                  'Ongoing support after completion',
-                ].map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-brand-cream px-3 py-1 text-brand-forest/90"
-                  >
-                    {t}
+                <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                  {[
+                    'Starter kit included',
+                    'Certificate included',
+                    'Bring your own model (we can assist if needed)',
+                    'Ongoing support after completion',
+                  ].map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-brand-cream px-3 py-1 text-brand-forest/90"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="shrink-0 md:text-right md:pl-6 md:border-l md:border-black/10">
+                <p className="text-2xl font-semibold text-brand-forest">
+                  $2,100{' '}
+                  <span className="text-sm font-normal text-brand-forest/70">
+                    total tuition
                   </span>
-                ))}
+                </p>
+                <p className="mt-1 text-xs text-brand-forest/70">
+                  $500 non-refundable deposit
+                </p>
+                <p className="mt-1 text-xs text-brand-forest/70">
+                  Balance due by 5:00 PM the Saturday before class
+                </p>
+
+                <div className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-1">
+                  <a
+                    href="https://www.vagaro.com/tbeautylounge/classes"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full bg-brand-forest px-5 py-2.5 text-sm font-medium text-white hover:brightness-110 text-center"
+                  >
+                    Reserve Your Spot
+                  </a>
+                  <a
+                    href="/contactus?reason=waitlist"
+                    className="rounded-full border border-brand-gold px-5 py-2.5 text-sm text-brand-forest hover:bg-brand-cream/70 text-center"
+                  >
+                    Join the Waitlist
+                  </a>
+                  <p className="mt-1 text-xs text-brand-forest/65 text-center">
+                    Questions before enrolling? We’re happy to help.
+                  </p>
+                </div>
               </div>
             </div>
+          </Card>
+        </section>
 
-            <div className="shrink-0 md:text-right">
-              <p className="text-2xl font-semibold text-brand-forest">
-                $2,100{' '}
-                <span className="text-sm font-normal text-brand-forest/70">
-                  total tuition
-                </span>
-              </p>
-              <p className="mt-1 text-xs text-brand-forest/70">
-                $500 non-refundable deposit
-              </p>
-              <p className="mt-1 text-xs text-brand-forest/70">
-                Balance due by 5:00 PM the Saturday before class
-              </p>
+        {/* ===== KIT PREVIEW (same card layout) ===== */}
+        <section className="mt-10">
+          <Card>
+            <div className="grid gap-6 md:grid-cols-2 items-center">
+              <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
+                <div className="aspect-[4/3]">
+                  <img
+                    src="/images/academy/lash-kit.png"
+                    alt="Lash Masterclass starter kit"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
 
-              <div className="mt-4 flex flex-col gap-2">
-                <a
-                  href="https://www.vagaro.com/tbeautylounge/classes"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110 text-center"
-                >
-                  Reserve Your Spot
-                </a>
-                <a
-                  href="/contactus?reason=waitlist"
-                  className="rounded-full border border-brand-gold px-5 py-2 text-sm text-brand-forest hover:bg-brand-cream/70 text-center"
-                >
-                  Join the Waitlist
-                </a>
-                <p className="mt-1 text-xs text-brand-forest/65 text-center">
-                  Questions before enrolling? We’re happy to help.
+              <div>
+                <h2 className="text-xl font-semibold text-brand-forest">
+                  Starter Kit Included
+                </h2>
+                <p className="mt-2 text-sm text-brand-forest/80">
+                  You’ll leave class with professional essentials so you can
+                  continue practicing and start taking clients.
+                </p>
+
+                <ul className="mt-3 space-y-2 text-sm text-brand-forest/85">
+                  <li>• Tweezers + isolation tools</li>
+                  <li>• Lashes + adhesive essentials</li>
+                  <li>• Tapes, disposables & setup supplies</li>
+                  <li>• Aftercare + cleansing guidance</li>
+                </ul>
+
+                <p className="mt-3 text-xs text-brand-forest/65">
+                  Kit contents may vary slightly based on availability.
                 </p>
               </div>
             </div>
-          </div>
-        </Card>
-      </section>
+          </Card>
+        </section>
 
-      {/* ===== KIT PREVIEW (same card layout) ===== */}
-      <section className="mt-10">
-        <Card>
-          <div className="grid gap-6 md:grid-cols-2 items-center">
-            <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
-              <div className="aspect-[4/3]">
-                <img
-                  src="/images/academy/lash-kit.png"
-                  alt="Lash Masterclass starter kit"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
+        {/* ===== VALUE TAKEAWAYS ===== */}
+        <WhatYouLeaveWith />
+
+        {/* ===== CHERRY CTA (same card language) ===== */}
+        <section className="mt-10">
+          <Card accent="gold-mint">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="min-w-0">
+                <h2 className="text-xl font-semibold text-brand-forest">
+                  Financing Available with Cherry
+                </h2>
+                <p className="mt-1 text-sm text-brand-forest/80 max-w-prose">
+                  Prefer monthly payments? Eligible students can apply for
+                  financing through Cherry (approval required). It’s a simple
+                  way to break tuition into manageable payments.
+                </p>
+                <p className="mt-2 text-xs text-brand-forest/65">
+                  Financing availability may vary. Options may also be available
+                  through Vagaro (pending approval).
+                </p>
+              </div>
+
+              <div className="shrink-0">
+                <a
+                  href="/cherry"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-primary px-5 py-2 text-sm font-medium text-white hover:brightness-110"
+                >
+                  View Cherry Payment Plans
+                </a>
               </div>
             </div>
+          </Card>
+        </section>
 
-            <div>
-              <h2 className="text-xl font-semibold text-brand-forest">
-                Starter Kit Included
-              </h2>
-              <p className="mt-2 text-sm text-brand-forest/80">
-                You’ll leave class with professional essentials so you can
-                continue practicing and start taking clients.
-              </p>
-
-              <ul className="mt-3 space-y-2 text-sm text-brand-forest/85">
-                <li>• Tweezers + isolation tools</li>
-                <li>• Lashes + adhesive essentials</li>
-                <li>• Tapes, disposables & setup supplies</li>
-                <li>• Aftercare + cleansing guidance</li>
-              </ul>
-
-              <p className="mt-3 text-xs text-brand-forest/65">
-                Kit contents may vary slightly based on availability.
-              </p>
-            </div>
-          </div>
-        </Card>
-      </section>
-
-      {/* ===== VALUE TAKEAWAYS ===== */}
-      <WhatYouLeaveWith />
-
-      {/* ===== CHERRY CTA (same card language) ===== */}
-      <section className="mt-10">
-        <Card accent="gold-mint">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="min-w-0">
-              <h2 className="text-xl font-semibold text-brand-forest">
-                Financing Available with Cherry
-              </h2>
-              <p className="mt-1 text-sm text-brand-forest/80 max-w-prose">
-                Prefer monthly payments? Eligible students can apply for
-                financing through Cherry (approval required). It’s a simple way
-                to break tuition into manageable payments.
-              </p>
-              <p className="mt-2 text-xs text-brand-forest/65">
-                Financing availability may vary. Options may also be available
-                through Vagaro (pending approval).
-              </p>
-            </div>
-
-            <div className="shrink-0">
-              <a
-                href="/cherry"
-                className="inline-flex items-center justify-center rounded-full bg-brand-primary px-5 py-2 text-sm font-medium text-white hover:brightness-110"
-              >
-                View Cherry Payment Plans
-              </a>
-            </div>
-          </div>
-        </Card>
-      </section>
-
-      {/* ===== MINI GALLERY STRIP (match other pages: clean grid + caption) ===== */}
-      {/* <section className="mt-10">
+        {/* ===== MINI GALLERY STRIP (match other pages: clean grid + caption) ===== */}
+        {/* <section className="mt-10">
         <div className="grid gap-3 md:grid-cols-3">
           {[
             {
@@ -595,194 +595,195 @@ export default function TBeautyAcademy() {
         </p>
       </section> */}
 
-      {/* ===== WHAT YOU'LL LEARN (same as your “pizazz” section) ===== */}
-      <section className="mt-10 relative overflow-hidden rounded-3xl ring-1 ring-black/5">
-        <div className="absolute inset-0 opacity-[0.08] bg-[url('/images/academy/texture.png')] bg-cover bg-center" />
-        <div className="relative p-4 md:p-6">
+        {/* ===== WHAT YOU'LL LEARN (same as your “pizazz” section) ===== */}
+        <section className="mt-10 relative overflow-hidden rounded-3xl ring-1 ring-black/5">
+          <div className="absolute inset-0 opacity-[0.08] bg-[url('/images/academy/texture.png')] bg-cover bg-center" />
+          <div className="relative p-5 md:p-6">
+            <SectionHead
+              eyebrow="CURRICULUM"
+              title="What You’ll Learn"
+              desc="Technique + safety + real-world workflow—so you can confidently take paying clients after training."
+            />
+
+           <div className="mt-4 grid gap-3 sm:gap-4 md:grid-cols-2">
+              {LEARNING_OUTCOMES.map((card) => (
+                <article
+                  key={card.title}
+                  className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
+                >
+                  <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
+                  <div className="p-4 md:p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-base font-semibold text-brand-forest">
+                        {card.title}
+                      </h3>
+                      <span className="rounded-full bg-brand-mint/20 px-3 py-0.5 text-[11px] text-brand-forest">
+                        {card.badge}
+                      </span>
+                    </div>
+
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {card.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full bg-brand-cream px-3 py-1 text-xs text-brand-forest ring-1 ring-black/5"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== 4-DAY SCHEDULE (cards like your Service grids) ===== */}
+        <section className="mt-10">
           <SectionHead
-            eyebrow="CURRICULUM"
-            title="What You’ll Learn"
-            desc="Technique + safety + real-world workflow—so you can confidently take paying clients after training."
+            eyebrow="ITINERARY"
+            title="4-Day Schedule Breakdown"
+            desc="Class runs approximately 8:30 AM – 4:30 PM each day. Timing may adjust slightly based on class flow."
           />
 
           <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {LEARNING_OUTCOMES.map((card) => (
+            {SCHEDULE.map((d) => (
               <article
-                key={card.title}
-                className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
+                key={d.day}
+                className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
               >
                 <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
                 <div className="p-4 md:p-5">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-base font-semibold text-brand-forest">
-                      {card.title}
-                    </h3>
-                    <span className="rounded-full bg-brand-mint/20 px-3 py-0.5 text-[11px] text-brand-forest">
-                      {card.badge}
+                    <div>
+                      <h3 className="text-lg font-semibold text-brand-forest">
+                        {d.day}
+                      </h3>
+                      <p className="mt-1 text-sm text-brand-forest/80">
+                        {d.focus}
+                      </p>
+                    </div>
+                    <span className="rounded-full bg-brand-cream px-3 py-1 text-xs text-brand-forest/90">
+                      8 hours
                     </span>
                   </div>
 
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {card.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full bg-brand-cream px-3 py-1 text-xs text-brand-forest ring-1 ring-black/5"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                  <div className="mt-4 space-y-3">
+                    {d.blocks.map((b) => {
+                      const isBreak =
+                        b.title.toLowerCase().includes('break') ||
+                        b.title.toLowerCase().includes('lunch') ||
+                        b.title.toLowerCase().includes('clean-up');
+
+                      return (
+                        <div
+                          key={b.time + b.title}
+                          className={`rounded-xl px-3 py-3 ${isBreak ? 'bg-brand-cream/40' : 'bg-brand-cream/70'}`}
+                        >
+                          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
+                           <p className="text-xs font-semibold text-brand-forest/90 sm:whitespace-nowrap">
+  {b.time}
+</p>
+                            <div className="text-left">
+                              <p className="text-sm font-medium text-brand-forest">
+                                {b.title}
+                              </p>
+                              {b.note ? (
+  <p className="mt-1 text-xs text-brand-forest/70 leading-relaxed break-words">
+    {b.note}
+  </p>
+) : null}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== 4-DAY SCHEDULE (cards like your Service grids) ===== */}
-      <section className="mt-10">
-        <SectionHead
-          eyebrow="ITINERARY"
-          title="4-Day Schedule Breakdown"
-          desc="Class runs approximately 8:30 AM – 4:30 PM each day. Timing may adjust slightly based on class flow."
+        {/* ===== CLASS DATES (pill list like other pages) ===== */}
+        <section className="mt-10">
+          <SectionHead
+            eyebrow="DATES"
+            title="Upcoming Class Dates"
+            desc="Seats are limited to 4–5 students per class for personalized guidance."
+          />
+
+          <div className="mt-4 flex flex-wrap gap-2 text-sm">
+            {CLASS_DATES.map((d) => (
+              <span
+                key={d.label}
+                className="rounded-full bg-brand-mint/30 px-4 py-1 text-brand-forest/90"
+              >
+                {d.label}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* ===== REQUIREMENTS & POLICIES (accordion matches site) ===== */}
+        <MiniFAQAccordion
+          title="Requirements & Policies"
+          faqs={[
+            {
+              q: 'Who can enroll?',
+              a: 'Per the Board of Cosmetology, students must provide proof of high school education and proof of residency.',
+            },
+            {
+              q: 'Deposit & payment terms',
+              a: 'Tuition is $2,100 and includes a professional lash kit. A $500 non-refundable deposit is required to reserve a seat. The remaining $1,600 is due by 5:00 PM the Saturday before the class start date. Failure to pay on time results in forfeiture of the seat and deposit.',
+            },
+            {
+              q: 'Accepted payment methods',
+              a: 'We accept cash or card. Financing may be available through Cherry or Vagaro (pending approval).',
+            },
+            {
+              q: 'Cancellation, refunds & rescheduling',
+              a: 'Deposits are non-refundable and non-transferable. If cancelled 7+ days prior, the deposit is forfeited and the remaining balance (if paid) is refunded OR may be applied one-time to a future course within 90 days. If cancelled 3–6 days prior, 50% of total tuition is refunded. Within 48 hours or no-show: no refund and no reschedule. Once class begins, tuition is non-refundable.',
+            },
+            {
+              q: 'Chargebacks',
+              a: 'Chargebacks are prohibited. Unauthorized chargebacks may result in legal action and revocation of certification.',
+            },
+          ]}
         />
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {SCHEDULE.map((d) => (
-            <article
-              key={d.day}
-              className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
-            >
-              <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
-              <div className="p-4 md:p-5">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-semibold text-brand-forest">
-                      {d.day}
-                    </h3>
-                    <p className="mt-1 text-sm text-brand-forest/80">
-                      {d.focus}
-                    </p>
-                  </div>
-                  <span className="rounded-full bg-brand-cream px-3 py-1 text-xs text-brand-forest/90">
-                    8 hours
-                  </span>
-                </div>
+        {/* ===== INSTRUCTORS (cards) ===== */}
+        <EducatorsSection />
 
-                <div className="mt-4 space-y-3">
-                  {d.blocks.map((b) => {
-                    const isBreak =
-                      b.title.toLowerCase().includes('break') ||
-                      b.title.toLowerCase().includes('lunch') ||
-                      b.title.toLowerCase().includes('clean-up');
+        {/* ===== STICKY CTA (Mobile) ===== */}
+        <div className="fixed inset-x-0 bottom-0 z-40 bg-white/95 backdrop-blur border-t border-black/10 px-4 py-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:hidden">
+          <div className="mx-auto flex max-w-md items-center justify-between gap-3">
+            <div>
+              <p className="text-xs text-brand-forest/70">Lash Masterclass</p>
+              <p className="text-sm font-semibold text-brand-forest">
+                Reserve your seat
+              </p>
+            </div>
 
-                    return (
-                      <div
-                        key={b.time + b.title}
-                        className={`rounded-xl px-3 py-3 ${isBreak ? 'bg-brand-cream/40' : 'bg-brand-cream/70'}`}
-                      >
-                        <div className="flex items-start gap-4">
-                          <p className="text-xs font-semibold text-brand-forest/90 whitespace-nowrap">
-                            {b.time}
-                          </p>
-                          <div className="text-left">
-                            <p className="text-sm font-medium text-brand-forest">
-                              {b.title}
-                            </p>
-                            {b.note ? (
-                              <p className="mt-1 text-xs text-brand-forest/70">
-                                {b.note}
-                              </p>
-                            ) : null}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== CLASS DATES (pill list like other pages) ===== */}
-      <section className="mt-10">
-        <SectionHead
-          eyebrow="DATES"
-          title="Upcoming Class Dates"
-          desc="Seats are limited to 4–5 students per class for personalized guidance."
-        />
-
-        <div className="mt-4 flex flex-wrap gap-2 text-sm">
-          {CLASS_DATES.map((d) => (
-            <span
-              key={d.label}
-              className="rounded-full bg-brand-mint/30 px-4 py-1 text-brand-forest/90"
-            >
-              {d.label}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== REQUIREMENTS & POLICIES (accordion matches site) ===== */}
-      <MiniFAQAccordion
-        title="Requirements & Policies"
-        faqs={[
-          {
-            q: 'Who can enroll?',
-            a: 'Per the Board of Cosmetology, students must provide proof of high school education and proof of residency.',
-          },
-          {
-            q: 'Deposit & payment terms',
-            a: 'Tuition is $2,100 and includes a professional lash kit. A $500 non-refundable deposit is required to reserve a seat. The remaining $1,600 is due by 5:00 PM the Saturday before the class start date. Failure to pay on time results in forfeiture of the seat and deposit.',
-          },
-          {
-            q: 'Accepted payment methods',
-            a: 'We accept cash or card. Financing may be available through Cherry or Vagaro (pending approval).',
-          },
-          {
-            q: 'Cancellation, refunds & rescheduling',
-            a: 'Deposits are non-refundable and non-transferable. If cancelled 7+ days prior, the deposit is forfeited and the remaining balance (if paid) is refunded OR may be applied one-time to a future course within 90 days. If cancelled 3–6 days prior, 50% of total tuition is refunded. Within 48 hours or no-show: no refund and no reschedule. Once class begins, tuition is non-refundable.',
-          },
-          {
-            q: 'Chargebacks',
-            a: 'Chargebacks are prohibited. Unauthorized chargebacks may result in legal action and revocation of certification.',
-          },
-        ]}
-      />
-
-      {/* ===== INSTRUCTORS (cards) ===== */}
-      <EducatorsSection />
-
-      {/* ===== STICKY CTA (Mobile) ===== */}
-      <div className="fixed inset-x-0 bottom-0 z-40 bg-white/95 backdrop-blur border-t border-black/10 px-4 py-3 md:hidden">
-        <div className="mx-auto flex max-w-md items-center justify-between gap-3">
-          <div>
-            <p className="text-xs text-brand-forest/70">Lash Masterclass</p>
-            <p className="text-sm font-semibold text-brand-forest">
-              Reserve your seat
-            </p>
-          </div>
-
-          <div className="flex gap-2">
-            <a
-              href="/cherry"
-              className="rounded-full border border-brand-forest px-4 py-2 text-xs font-medium text-brand-forest hover:bg-brand-cream"
-            >
-              Pay w/ Cherry
-            </a>
-            <a
-              href="/contact"
-              className="rounded-full bg-brand-forest px-4 py-2 text-xs font-medium text-white hover:brightness-110"
-            >
-              Enroll
-            </a>
+            <div className="flex gap-2">
+              <a
+                href="/cherry"
+                className="rounded-full border border-brand-forest px-4 py-2.5 text-xs font-medium text-brand-forest hover:bg-brand-cream"
+              >
+                Pay w/ Cherry
+              </a>
+              <a
+                href="https://www.vagaro.com/tbeautylounge/classes"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-brand-forest px-4 py-2.5 text-xs font-medium text-white hover:brightness-110"
+              >
+                Enroll
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-
       </main>
     </div>
   );

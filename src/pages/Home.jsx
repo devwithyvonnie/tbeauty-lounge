@@ -4,6 +4,8 @@ import SocialProof from '../sections/SocialProof';
 import IntroCards from '../sections/IntroCard';
 import FeaturedServiceTabs from '../sections/FeaturedServiceTabs';
 import MembershipTiers from '../sections/MembershipTiers';
+import PodiumWidget from "../components/WebchatWidget";
+import PodiumPopup from '../components/Popup';
 
 function SectionHeader({ title, desc }) {
   return (
@@ -85,6 +87,9 @@ function Hero() {
 export default function Home() {
   return (
     <div className="space-y-8">
+      <PodiumWidget />
+      <PodiumPopup />
+      
       {/* FULL-WIDTH HERO */}
       <Hero />
 

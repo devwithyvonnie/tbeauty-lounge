@@ -181,7 +181,7 @@ export default function Services() {
     <div className="py-8">
       {/* HERO (consistent width + height) */}
       <section className="mx-auto w-[92%] max-w-7xl">
-        <div className="relative overflow-hidden rounded-[--radius-card] ring-1 ring-black/5">
+        <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
           <img
             src="/images/services/hero.png"
             alt="T Beauty Lounge services"
