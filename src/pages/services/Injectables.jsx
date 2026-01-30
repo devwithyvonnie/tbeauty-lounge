@@ -27,14 +27,6 @@ const NEUROTOXIN_SECTION = {
         "A long-lasting neurotoxin option. Final dosing is determined during consultation.",
     },
     {
-      label: "Daxxify (Over 100u)",
-      priceDisplay: "$7.25 / unit",
-      duration: "30–45 min",
-      chips: ["Bulk tier"],
-      note:
-        "Applies to large treatment plans. Your provider will confirm eligibility and dosing.",
-    },
-    {
       label: "Dysport",
       priceDisplay: "$5.25 / unit",
       duration: "30–45 min",

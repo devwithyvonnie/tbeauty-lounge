@@ -376,12 +376,12 @@ export default function TBeautyAcademy() {
   return (
     <div className="py-8">
       {/* WIDE HERO */}
-      <section className="mx-auto w-[92%] max-w-7xl">
+       <section className="mx-auto w-[92%] max-w-7xl">
         <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
           <img
             src="/images/academy/hero.png"
             alt="Eyelash extensions"
-            className="h-[52vh] w-full object-cover md:h-[60vh]"
+            className="h-[52vh] w-full object-cover md:h-[58vh]"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-brand-cream/70" />
@@ -605,7 +605,7 @@ export default function TBeautyAcademy() {
               desc="Technique + safety + real-world workflow—so you can confidently take paying clients after training."
             />
 
-           <div className="mt-4 grid gap-3 sm:gap-4 md:grid-cols-2">
+            <div className="mt-4 grid gap-3 sm:gap-4 md:grid-cols-2">
               {LEARNING_OUTCOMES.map((card) => (
                 <article
                   key={card.title}
@@ -682,18 +682,18 @@ export default function TBeautyAcademy() {
                           className={`rounded-xl px-3 py-3 ${isBreak ? 'bg-brand-cream/40' : 'bg-brand-cream/70'}`}
                         >
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
-                           <p className="text-xs font-semibold text-brand-forest/90 sm:whitespace-nowrap">
-  {b.time}
-</p>
+                            <p className="text-xs font-semibold text-brand-forest/90 sm:whitespace-nowrap">
+                              {b.time}
+                            </p>
                             <div className="text-left">
                               <p className="text-sm font-medium text-brand-forest">
                                 {b.title}
                               </p>
                               {b.note ? (
-  <p className="mt-1 text-xs text-brand-forest/70 leading-relaxed break-words">
-    {b.note}
-  </p>
-) : null}
+                                <p className="mt-1 text-xs text-brand-forest/70 leading-relaxed break-words">
+                                  {b.note}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
                         </div>
