@@ -1,36 +1,12 @@
-import InstagramFeed from "../components/InstagramFeed";
+import InstagramFeed from '../components/InstagramFeed';
 
 export default function Footer() {
   return (
     <footer className="w-full mt-14">
-      {/* FOLLOW US (still constrained inside full-width footer) */}
-      <section className="w-full">
-        <div className="mx-auto w-[92%] max-w-7xl">
-          <div className="rounded-[--radius-card] bg-white shadow-sm ring-1 ring-black/5 p-6 md:p-7">
-            <div className="text-center">
-              <p className="text-xs tracking-[0.2em] text-brand-forest/70">
-                FOLLOW US
-              </p>
-              <a
-                href="https://www.instagram.com/tbeautyloungeaz"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-1 inline-block text-lg font-semibold text-brand-forest hover:underline"
-              >
-                @TBEAUTYLOUNGEAZ
-              </a>
-            </div>
-
-            <InstagramFeed />
-
-          </div>
-        </div>
-      </section>
-
       {/* MAIN FOOTER (full-width background band) */}
-      <section className="w-full mt-8 bg-brand-forest text-brand-cream">
+      <section className="w-full mt-10 bg-brand-forest text-brand-cream">
         {/* keep content constrained */}
-        <div className="mx-auto w-11/12 max-w-6xl">
+        <div className="mx-auto w-11/12 max-w-7xl">
           <div className="relative overflow-hidden rounded-[--radius-card]">
             {/* soft gradient + faint lotus watermark */}
             <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_-10%,rgba(255,255,255,.08),transparent)]" />
@@ -38,45 +14,19 @@ export default function Footer() {
               <Lotus className="h-full w-full text-white" />
             </div>
 
-            <div className="relative grid gap-8 px-6 py-8 md:grid-cols-3 md:px-8">
+            <div className="relative grid gap-8 px-6 py-10 sm:grid-cols-2 lg:grid-cols-4 md:px-8">
               {/* About */}
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Lotus className="h-6 w-6 text-brand-mint" />
                   <h3 className="text-base font-semibold">T Beauty Lounge</h3>
                 </div>
-                <p className="text-sm/6 text-brand-cream/85">
+                <p className="max-w-xs text-sm/6 text-brand-cream/80">
                   Your glow, our expertise. Bringing out your natural beauty
-                  with precision and care.
+                  with precision, care, and confidence.
                 </p>
-              </div>
 
-              {/* Contact */}
-              <div className="space-y-2">
-                <h3 className="text-base font-semibold">Contact Us</h3>
-                <address className="not-italic text-sm/6">
-                  <a
-                    href="https://maps.google.com/?q=13755+North+Litchfield+Road,+Suite+103,+Goodyear,+AZ+85395"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:underline"
-                  >
-                    13755 North Litchfield Road, Suite 103, <br></br> Goodyear, AZ 85395
-                  </a>
-                  <br />
-                  <a
-                    href="mailto:tbeautyloungeaz@gmail.com"
-                    className="hover:underline"
-                  >
-                    tbeautyloungeaz@gmail.com
-                  </a>
-                  <br />
-                  <a href="tel:+16232138996" className="hover:underline">
-                    (623) 213-8996
-                  </a>
-                </address>
-
-                <div className="flex gap-3 pt-1">
+                <div className="flex gap-3 pt-2">
                   <SocialIcon
                     href="https://www.instagram.com/tbeautyloungeaz"
                     label="Instagram"
@@ -92,20 +42,73 @@ export default function Footer() {
                 </div>
               </div>
 
+              {/* Contact */}
+              <div className="space-y-3">
+                <h3 className="text-base font-semibold">Contact</h3>
+                <address className="not-italic text-sm/6 text-brand-cream/80">
+                  <a
+                    href="https://maps.google.com/?q=1375+North+Litchfield+Road,+Suite+103,+Goodyear,+AZ+85395"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-mint"
+                  >
+                    1375 North Litchfield Road, Suite 103
+                    <br />
+                    Goodyear, AZ 85395
+                  </a>
+
+                  <div className="mt-3 space-y-1">
+                    <a
+                      href="mailto:tbeautyloungeaz@gmail.com"
+                      className="block hover:text-brand-mint"
+                    >
+                      tbeautyloungeaz@gmail.com
+                    </a>
+                    <a
+                      href="tel:+16232138996"
+                      className="block hover:text-brand-mint"
+                    >
+                      (623) 213-8996
+                    </a>
+                  </div>
+                </address>
+              </div>
+
+              {/* Office Hours */}
+              <div className="space-y-3">
+                <h3 className="text-base font-semibold">Office Hours</h3>
+
+                <div className="text-sm/6 text-brand-cream/80">
+                  <p className="font-medium text-brand-cream">
+                    9:30 AM – 5:00 PM
+                  </p>
+
+                  <p className="mt-3 text-xs/5 text-brand-cream/70">
+                    Calls received after 5:00 PM will be returned the next
+                    business day. Text messages and inquiries will be answered
+                    at the earliest convenience.
+                  </p>
+
+                  <p className="mt-2 text-xs/5 text-brand-cream/60">
+                    Hours may vary by day and appointment availability.
+                  </p>
+                </div>
+              </div>
+
               {/* Quick links */}
-              <div className="space-y-2">
-                <h3 className="text-base font-semibold">Quick Links</h3>
-                <ul className="grid grid-cols-2 gap-y-2 text-sm/6 md:block md:space-y-2">
+              <div className="space-y-3">
+                <h3 className="text-base font-semibold">Explore</h3>
+                <ul className="space-y-2 text-sm/6 text-brand-cream/80">
                   {[
-                    { href: "/", label: "Home" },
-                    { href: "/about", label: "About" },
-                    { href: "/services", label: "Services" },
-                    { href: "/memberships", label: "Memberships" },
-                    { href: "/policy", label: "Policy" },
-                    { href: "/contact", label: "Contact Us" },
+                    { href: '/', label: 'Home' },
+                    { href: '/about', label: 'About' },
+                    { href: '/services', label: 'Services' },
+                    { href: '/memberships', label: 'Memberships' },
+                    { href: '/policy', label: 'Policy' },
+                    { href: '/contact', label: 'Contact Us' },
                   ].map((l) => (
                     <li key={l.href}>
-                      <a className="hover:underline" href={l.href}>
+                      <a className="hover:text-brand-mint" href={l.href}>
                         {l.label}
                       </a>
                     </li>
@@ -118,8 +121,8 @@ export default function Footer() {
             <div className="relative border-t border-white/10 bg-brand-forest/95 px-6 py-3 text-[12px] text-brand-cream/75 md:px-8">
               <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
                 <p>
-                  © {new Date().getFullYear()} T Beauty Lounge. Created by Yvonne
-                  Tran.
+                  © {new Date().getFullYear()} T Beauty Lounge. Created by
+                  Yvonne Tran.
                 </p>
                 <p className="space-x-3">
                   <a href="/privacypolicy" className="hover:underline">

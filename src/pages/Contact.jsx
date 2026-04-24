@@ -79,8 +79,8 @@ export default function Contact() {
               </h1>
 
               <p className="mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base text-brand-forest/85">
-                Have a question, need help choosing a service, or ready to book?
-                Reach out anytime and our team will guide you.
+              Have a question, need help choosing a service, or ready to book?
+              Reach out during office hours and our team will guide you.
               </p>
 
               <div className="mt-5 sm:mt-6 grid gap-3 sm:flex sm:flex-wrap">
@@ -148,19 +148,20 @@ export default function Contact() {
             </a>
           </InfoCard>
 
-          <InfoCard title="Hours">
-            <ul className="space-y-1 text-sm text-brand-forest/85">
-              <li>
-                <span className="font-medium">Mon–Fri:</span> 9:30 AM – 7:00 PM
-              </li>
-              <li>
-                <span className="font-medium">Saturday:</span> 9:30 AM – 6:00 PM
-              </li>
-              <li>
-                <span className="font-medium">Sunday:</span> By appointment only
-              </li>
-            </ul>
-          </InfoCard>
+          <InfoCard title="Office Hours">
+  <p className="text-sm font-medium text-brand-forest">
+    9:30 AM – 5:00 PM
+  </p>
+
+  <p className="mt-3 text-sm leading-relaxed text-brand-forest/75">
+    Calls received after 5:00 PM will be returned the next business day.
+    Text messages and inquiries will be responded to at the earliest convenience.
+  </p>
+
+  <p className="mt-2 text-xs leading-relaxed text-brand-forest/60">
+    Hours may vary by day and appointment availability.
+  </p>
+</InfoCard>
         </section>
 
         {/* ===== FORM + MAP ===== */}
