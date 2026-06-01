@@ -1,116 +1,124 @@
 const SERVICE_CATS = [
   {
-    id: "lashes",
-    eyebrow: "EYELASH EXTENSIONS",
-    title: "Soft, customized, comfortable",
+    id: 'lashes',
+    eyebrow: 'EYELASH EXTENSIONS',
+    title: 'Soft, customized, comfortable',
     blurb:
-      "Classic, hybrid, volume, and mega sets tailored to your eye shape. Lash lifts & tints for a low-maintenance glow.",
+      'Classic, hybrid, volume, and mega sets tailored to your eye shape. Lash lifts & tints for a low-maintenance glow.',
     bullets: [
-      "Classic / Hybrid / Volume / Mega",
-      "Lash Lift & Tint options",
-      "Sensitive-safe adhesive options",
+      'Classic / Hybrid / Volume / Mega',
+      'Lash Lift & Tint options',
+      'Sensitive-safe adhesive options',
     ],
-    image: "/images/services/eyelash.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/lashes",
+    image: '/images/services/eyelash.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/lashes',
   },
   {
-    id: "skin",
-    eyebrow: "FACIALS & SKIN",
-    title: "Result-driven, calming care",
+    id: 'skin',
+    eyebrow: 'FACIALS & SKIN',
+    title: 'Result-driven, calming care',
     blurb:
-      "Custom facials, dermaplane, enzyme or light peels, LED therapy and more—built for your skin’s current needs.",
+      'Custom facials, dermaplane, enzyme or light peels, LED therapy and more—built for your skin’s current needs.',
     bullets: [
-      "Custom facials for every skin type",
-      "Dermaplaning & specialty add-ons",
-      "LED Light Therapy & targeted masks",
+      'Custom facials for every skin type',
+      'Dermaplaning & specialty add-ons',
+      'LED Light Therapy & targeted masks',
     ],
-    image: "/images/services/facial.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/facials",
+    image: '/images/services/facial.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/facials',
   },
   {
-    id: "wax",
-    eyebrow: "WAX & TINT",
-    title: "Clean, precise, confidence-boosting",
+    id: 'wax',
+    eyebrow: 'WAX & TINT',
+    title: 'Clean, precise, confidence-boosting',
     blurb:
-      "Smooth skin and polished brows with gentle waxing and custom tinting. Quick appointments with results you’ll love.",
+      'Smooth skin and polished brows with gentle waxing and custom tinting. Quick appointments with results you’ll love.',
     bullets: [
-      "Brow shaping & facial waxing",
-      "Brow tint / lash tint options",
-      "Great add-on to lashes & facials",
+      'Brow shaping & facial waxing',
+      'Brow tint / lash tint options',
+      'Great add-on to lashes & facials',
     ],
-    image: "/images/services/wax-tint.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/waxtint",
+    image: '/images/services/wax-tint.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/waxtint',
   },
   {
-    id: "fibroblast",
-    eyebrow: "FIBROBLAST",
-    title: "Lift + tighten without surgery",
+    id: 'fibroblast',
+    eyebrow: 'FIBROBLAST',
+    title: 'Lift + tighten without surgery',
     blurb:
-      "Fibroblast (plasma) therapy targets areas like eyelids, under-eyes, smile lines, and neck to help firm and smooth the look of skin over time.",
+      'Fibroblast (plasma) therapy targets areas like eyelids, under-eyes, smile lines, and neck to help firm and smooth the look of skin over time.',
     bullets: [
-      "Great for eyelids, under-eyes & lines",
-      "Consultation recommended for candidacy",
-      "Aftercare is key for best results",
+      'Great for eyelids, under-eyes & lines',
+      'Consultation recommended for candidacy',
+      'Aftercare is key for best results',
     ],
-    image: "/images/services/fibroblast.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/fibroblast",
+    image: '/images/services/fibroblast.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/fibroblast',
   },
   {
-    id: "injectables",
-    eyebrow: "COSMETIC INJECTIONS",
-    title: "Natural, balanced refinement",
+    id: 'injectables',
+    eyebrow: 'FUNCTIONAL MEDICINE & AESTHETICS',
+    title: 'Inside-out wellness with natural refinement',
     blurb:
-      "Neurotoxin and filler with an emphasis on natural, harmonious results. Always consultation-first and medically guided.",
+      'Personalized aesthetic and wellness services designed to support confidence, balance, and long-term beauty. Consultation-first, medically guided, and focused on natural-looking results.',
     bullets: [
-      "Neurotoxin for fine lines & wrinkles",
-      "Filler for lips, cheeks, chin & more",
-      "PRP & biostimulatory options",
+      'Neurotoxins for fine lines & facial balancing',
+      'PDO threads, filler & collagen-supporting treatments',
+      'Functional medicine consultations & wellness support',
     ],
-    image: "/images/services/injectables.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/injectables",
+    image: '/images/services/injectables.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/functional-medicine-and-aesthetics',
   },
   {
-    id: "laser",
-    eyebrow: "LASER HAIR REMOVAL",
-    title: "Smooth with less effort",
+    id: 'laser',
+    eyebrow: 'LASER HAIR REMOVAL',
+    title: 'Smooth with less effort',
     blurb:
-      "Face and body packages for the areas you treat most. Consults help choose the best plan for your skin & hair.",
-    bullets: ["Small / medium / large areas", "Series pricing available", "Shave 24 hours prior; no waxing"],
-    image: "/images/services/laser.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/laser",
+      'Face and body packages for the areas you treat most. Consults help choose the best plan for your skin & hair.',
+    bullets: [
+      'Small / medium / large areas',
+      'Series pricing available',
+      'Shave 24 hours prior; no waxing',
+    ],
+    image: '/images/services/laser.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/laser',
   },
   {
-    id: "pmu",
-    eyebrow: "PERMANENT MAKEUP",
-    title: "Wake up subtly polished",
+    id: 'pmu',
+    eyebrow: 'PERMANENT MAKEUP',
+    title: 'Wake up subtly polished',
     blurb:
-      "Brows, liner, and lip blush designed to save time and keep features softly defined. Includes a perfecting visit when indicated.",
-    bullets: ["Powder / Ombré Brows", "Lash-line enhancement", "Lip Blush with follow-up"],
-    image: "/images/services/permanentmakeup.png",
-    bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-    menuHref: "/services/pmu",
+      'Brows, liner, and lip blush designed to save time and keep features softly defined. Includes a perfecting visit when indicated.',
+    bullets: [
+      'Powder / Ombré Brows',
+      'Lash-line enhancement',
+      'Lip Blush with follow-up',
+    ],
+    image: '/images/services/permanentmakeup.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/pmu',
   },
   {
-  id: "headspa",
-  eyebrow: "JAPANESE HEAD SPA",
-  title: "Scalp health + deep relaxation",
-  blurb:
-    "A luxurious scalp-focused treatment designed to cleanse, rebalance, and soothe. Great for stress relief, buildup, dryness, or simply a reset.",
-  bullets: [
-    "Tailored products for your scalp type",
-    "Deep cleanse + massage-based ritual",
-    "Add-on friendly with facials",
-  ],
-  image: "/images/services/headspa.png",
-  bookHref: "https://www.vagaro.com/tbeautylounge/book-now",
-  menuHref: "/services/headspa",
-},
+    id: 'headspa',
+    eyebrow: 'JAPANESE HEAD SPA',
+    title: 'Scalp health + deep relaxation',
+    blurb:
+      'A luxurious scalp-focused treatment designed to cleanse, rebalance, and soothe. Great for stress relief, buildup, dryness, or simply a reset.',
+    bullets: [
+      'Tailored products for your scalp type',
+      'Deep cleanse + massage-based ritual',
+      'Add-on friendly with facials',
+    ],
+    image: '/images/services/headspa.png',
+    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    menuHref: '/services/headspa',
+  },
 ];
 
 function Eyebrow({ children }) {
@@ -202,7 +210,8 @@ export default function Services() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-brand-forest/85">
-                Browse categories at a glance, then view the full menu and pricing.
+                Browse categories at a glance, then view the full menu and
+                pricing.
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -232,7 +241,7 @@ export default function Services() {
           {SERVICE_CATS.map((s) => (
             <ServiceCard key={s.id} s={s} />
           ))}
-        </div>  
+        </div>
       </main>
     </div>
   );
