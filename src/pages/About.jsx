@@ -64,7 +64,7 @@ export default function About() {
           />
           <div>
             <Eyebrow>OUR STORY</Eyebrow>
-            <h2 className="section-title">Rooted in care, guided by results</h2>
+            <br />
             <p className="section-body">
               T Beauty Lounge was founded on the belief that self-care is more
               than a luxury—it’s a necessity. Our goal is to create a welcoming
@@ -83,15 +83,16 @@ export default function About() {
         <Split imageLeft={false}>
           <div>
             <Eyebrow>MEET TERESA, FNP-C</Eyebrow>
-            <h2 className="section-title">
-              A provider who treats you like family
-            </h2>
+            <br />
             <p className="section-body">
-              Teresa is our highly skilled Nurse Practitioner, specializing in
-              cosmetic injectables, skin rejuvenation, and personalized beauty
-              treatments. With a passion for helping clients look and feel their
-              best, she combines medical expertise with an artistic touch to
-              deliver natural, stunning results.
+            Teresa is a highly skilled Nurse Practitioner specializing in both aesthetic 
+            treatments and functional medicine. She combines advanced cosmetic injections 
+            with a personalized, root-cause approach to wellness — helping clients achieve 
+            natural results while supporting their overall health.
+            <br />
+            <br />
+            With a passion for inside-out beauty, Teresa focuses on enhancing confidence through 
+            treatments that are both effective and thoughtfully tailored to each individual.
             </p>
             <a
               href="/services/injectables"
@@ -117,9 +118,7 @@ export default function About() {
           />
           <div>
             <Eyebrow>WHAT WE OFFER</Eyebrow>
-            <h2 className="section-title">
-              Modern aesthetics, thoughtfully delivered
-            </h2>
+            <br />
             <p className="section-body">
               From luxurious facials and lash extensions to advanced cosmetic
               injections and weight loss solutions, we provide a full range of
@@ -136,9 +135,7 @@ export default function About() {
         <Split imageLeft={false}>
           <div>
             <Eyebrow>OUR PROMISE TO YOU</Eyebrow>
-            <h2 className="section-title">
-              Care you can feel, results you can trust
-            </h2>
+            <br />
             <p className="section-body">
               We’re dedicated to exceptional care, using high-quality products
               and the latest techniques. Your safety, comfort, and satisfaction
@@ -175,9 +172,7 @@ export default function About() {
           />
           <div>
             <Eyebrow>ROOTED IN COMMUNITY</Eyebrow>
-            <h2 className="section-title">
-              Built in Goodyear, for the West Valley
-            </h2>
+            <br />
             <p className="section-body">
               T Beauty Lounge is proud to serve the Goodyear community and
               beyond. We believe in building lasting relationships with our

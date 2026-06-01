@@ -1,6 +1,7 @@
 // src/App.jsx
 import { Routes, Route } from 'react-router-dom';
 import './index.css';
+
 import Sidebar from './components/Sidebar';
 import MobileNav from './components/MobileNav';
 import Footer from './components/Footer';
@@ -10,7 +11,7 @@ import Services from './pages/Services';
 import Lashes from './pages/services/Lashes';
 import Facials from './pages/services/Facials';
 import WaxTint from './pages/services/WaxTint';
-import Injectables from './pages/services/Injectables';
+import Injectables from './pages/services/functional-medicine-and-aesthetics';
 import JapaneseHeadSpa from './pages/services/HeadSpa';
 import Laser from './pages/services/Laser';
 import PMU from './pages/services/PMU';
@@ -34,7 +35,7 @@ function MainRoutes() {
       <Route path="/services" element={<Services />} />
       <Route path="/services/lashes" element={<Lashes />} />
       <Route path="/services/facials" element={<Facials />} />
-      <Route path="/services/injectables" element={<Injectables />} />
+      <Route path="/services/functional-medicine-and-aesthetics" element={<Injectables />} />
       <Route path="/services/laser" element={<Laser />} />
       <Route path="/services/waxtint" element={<WaxTint />} />
       <Route path="/services/fibroblast" element={<Fibroblast />} />
@@ -54,21 +55,21 @@ function MainRoutes() {
 
 export default function App() {
   return (
-    <div className="bg-bg text-text">
-      {/* MOBILE NAV (hamburger + book + drawer) */}
-      <MobileNav />
-
-      <div className="md:px-6 md:py-6">
-        <div className="md:grid md:grid-cols-[260px_1fr] md:gap-6">
+      <div className="w-full bg-bg text-text">
+        <MobileNav />
+      <div className="w-full md:px-6 md:py-6">
+        <div className="md:grid md:grid-cols-[260px_minmax(0,1fr)] md:gap-6">
           {/* DESKTOP SIDEBAR */}
           <div className="hidden md:block">
             <Sidebar />
           </div>
 
-          <div>
-            <main className="min-h-screen">
+          {/* PAGE CONTENT */}
+          <div className="min-w-0">
+            <main className="min-h-screen min-w-0 overflow-x-hidden">
               <MainRoutes />
             </main>
+
             <Footer />
           </div>
         </div>

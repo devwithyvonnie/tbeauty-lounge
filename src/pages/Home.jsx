@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import MiniFAQ from '../sections/MiniFAQ';
 import SocialProof from '../sections/SocialProof';
 import IntroCards from '../sections/IntroCard';
@@ -22,21 +21,49 @@ function SectionHeader({ title, desc }) {
   );
 }
 
-function Divider() {
-  return <div className="h-px bg-white/15" />;
-}
+function ServiceMarquee() {
+  const services = [
+    "Facials",
+    "Japanese Head Spa",
+    "Eyelash Extensions",
+    "Brow Lamination",
+    "Waxing",
+    "Permanent Makeup",
+    "Cosmetic Injections",
+    "Skin Rejuvenation",
+    "Laser Treatments",
+    "Functional Medicine",
+    "Hormone Optimization",
+    "IV Therapy",
+  ];
 
-function TrustRow({ value, label }) {
+  const marqueeItems = [...services, ...services];
+
   return (
-    <div className="flex items-center justify-between px-5 py-4">
-      <div className="text-base font-semibold">{value}</div>
-      <div className="text-xs text-white/85 text-right max-w-[60%] leading-snug">
-        {label}
+    <section className="relative w-full max-w-full overflow-hidden border-y border-brand-forest/10 bg-brand-cream py-4">
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-brand-cream to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-brand-cream to-transparent" />
+
+      <div className="marquee-track">
+        <div className="marquee-group">
+          {services.map((service) => (
+            <span key={service} className="marquee-item">
+              {service} <span className="marquee-star">✦</span>
+            </span>
+          ))}
+        </div>
+
+        <div className="marquee-group" aria-hidden="true">
+          {services.map((service) => (
+            <span key={`${service}-copy`} className="marquee-item">
+              {service} <span className="marquee-star">✦</span>
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
-
 
 function Hero() {
   return (
@@ -52,7 +79,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/15" />
 
       {/* wide container aligns with page; inner text stays readable */}
-      <div className="absolute inset-0 flex items-center">
+      <div className="absolute inset-0 z-10 flex items-center">
         <div className="mx-auto w-[92%] max-w-7xl">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] text-brand-forest">
@@ -86,25 +113,18 @@ function Hero() {
 
 export default function Home() {
   return (
-    <div className="space-y-8">
+    <div className="overflow-x-hidden">
       <PodiumWidget />
       <PodiumPopup />
       
       {/* FULL-WIDTH HERO */}
       <Hero />
 
+      {/* SERVICES MARQUEE */}
+      <ServiceMarquee />
+
       {/* CONSTRAINED CONTENT */}
-      <main className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
-        {/* STATS */}
-        <section className="rounded-[--radius-card] bg-brand-primary text-white shadow-sm border border-white/10 overflow-hidden">
-  <TrustRow value="10+ years" label="Experience you can trust" />
-  <Divider />
-  <TrustRow value="5K+ clients" label="Satisfied customers served" />
-  <Divider />
-  <TrustRow value="100%" label="Personalized care plans" />
-</section>
-
-
+      <main className="mx-auto w-[92%] max-w-7xl space-y-8 pt-6 pb-8 md:pt-8 md:pb-10">
         {/* INTRO */}
         <IntroCards />
 

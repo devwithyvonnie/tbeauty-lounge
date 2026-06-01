@@ -1,5 +1,52 @@
 @import "tailwindcss";
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: clip;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: service-marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1.25rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-style: italic;
+  letter-spacing: 0.18em;
+  color: rgba(70, 88, 58, 0.75);
+}
+
+.marquee-star {
+  color: #b9934b;
+}
+
+@keyframes service-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Brand tokens for T Beauty Lounge */
 @theme {
   --color-brand-primary: #7c9a6d;
@@ -29,3 +76,4 @@
   --color-muted-text: #556157;
   /* neutral-muted (not green) */
 }
+

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export const SERVICES = [
   { to: "/services/lashes", label: "Eyelash Extensions" },
   { to: "/services/facials", label: "Facials & Skin" },
-  { to: "/services/injectables", label: "Cosmetic Injections" },
+  { to: "/services/functional-medicine-and-aesthetics", label: "Functional Medicine & Aesthetics" },
   { to: "/services/fibroblast", label: "Fibroblast" },
   { to: "/services/waxtint", label: "Wax & Tint" },
   { to: "/services/laser", label: "Laser Hair Removal" },
@@ -93,7 +93,7 @@ export default function Sidebar() {
       <div>
         <div className="mb-6">
           <div className="text-xl font-semibold">T Beauty Lounge</div>
-          <div className="mt-1 text-xs text-white/80">Med Spa in Goodyear</div>
+          <div className="mt-1 text-xs text-white/80">Medical Spa in Goodyear, AZ</div>
         </div>
 
         <nav className="space-y-0.5">

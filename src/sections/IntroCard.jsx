@@ -22,9 +22,8 @@ export default function IntroCards() {
               </h3>
 
               <p className="mt-2 text-sm md:text-base text-brand-forest/85 leading-relaxed">
-                Teresa brings years of expertise in cosmetic injections, skin rejuvenation, and
-                wellness treatments. Known for her gentle approach and eye for detail, Teresa is
-                passionate about helping clients look and feel their absolute best.
+              Teresa brings years of expertise in aesthetic medicine and functional wellness. Her philosophy focuses on helping clients look and feel their best by combining natural-looking aesthetic results with 
+              a deeper, inside-out approach to health and longevity.
               </p>
 
               <a
