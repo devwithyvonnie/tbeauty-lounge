@@ -815,287 +815,67 @@ function MembershipSavingsCalculator({ tiers }) {
 }
 
 export default function Memberships() {
-  const tiers = [
-    {
-      id: 'refresh',
-      name: 'Refresh',
-      price: 149,
-      discount: '10% off all services',
-      perks: [
-        '10% off products',
-        '1/2 off Lash Touch Ups',
-        '1/2 off Facials during your birthday month',
-      ],
-      note: 'Simple, consistent maintenance—your monthly reset.',
-      bestFor: 'Monthly upkeep',
-      url: 'https://www.vagaro.com/cl/D~L2Gl73Mtu23IOrbBINYiMzLXG-EYXepeXNObGcDVM=',
-    },
-    {
-      id: 'revitalize',
-      name: 'Revitalize',
-      price: 199,
-      discount: '12% off all services',
-      popular: true,
-      perks: [
-        '10% off products',
-        '1/2 off Lash Touch Ups',
-        '1/2 off Facials during your birthday month',
-      ],
-      note: 'Our most chosen tier for steady self-care + savings.',
-      bestFor: 'Most clients',
-      url: 'https://www.vagaro.com/cl/ijKIQUmJjRAqf6RMruTF1z3DKfXWWH5X6X547EqRRWo=',
-    },
-    {
-      id: 'radiance-elite',
-      name: 'Radiance Elite',
-      price: 249,
-      discount: '15% off all services',
-      perks: [
-        '10% off products',
-        '1/2 off Lash Touch Ups',
-        '1/2 off Facials during your birthday month',
-        '25 units of Daxxify during your birthday month',
-      ],
-      note: 'Maximum value + birthday upgrade.',
-      bestFor: 'Max value',
-      url: 'https://www.vagaro.com/cl/xGsF139giMVB8y~bcx0DNC6zX5qzVVX11j8jdYwDa7o=',
-    },
-  ];
-
-  const spaPills = [
-    'Bank up to 6 months',
-    'Member pricing on services',
-    '10% off products',
-    'Birthday month perks',
-  ];
-
-  const benefits = [
-    {
-      title: 'Consistency, without pressure',
-      copy: 'A softer approach to self-care—built to keep you on schedule and feeling your best.',
-    },
-    {
-      title: 'Savings that feel effortless',
-      copy: 'Member pricing on services plus product savings—quiet benefits that add up every visit.',
-    },
-    {
-      title: 'Birthday month, elevated',
-      copy: 'Celebrate with exclusive birthday perks on every tier—plus Daxxify on Radiance Elite.',
-    },
-  ];
-
-  const faqs = [
-    {
-      q: 'What is the Signature Glow Membership?',
-      a: 'The Signature Glow Membership is our monthly beauty membership designed to reward consistency. Each month, you receive membership credit equal to your membership price, along with exclusive savings on eligible services.',
-    },
-    {
-      q: 'How does the monthly credit work?',
-      a: 'Each month, your membership fee adds credit to your account that can be used toward services or retail. Credits are tracked on your account and may be applied at your discretion.',
-    },
-    {
-      q: 'Can I save my credits?',
-      a: 'Yes. Unused membership credits may be banked for up to six (6) months, allowing you to save them for higher-value services if desired.',
-    },
-    {
-      q: 'Do I HAVE to use my credit toward my lash fills?',
-      a: 'No. Using your membership credit is always your choice. You may apply credits toward a service, save them for later, or choose to pay separately and bank your balance.',
-    },
-    {
-      q: 'How do membership discounts work?',
-      a: 'Membership discounts are applied automatically at checkout based on your tier: Refresh receives 10% off, Revitalize receives 12% off, and Radiance Elite receives 15% off eligible services. Certain promotions or services may be excluded.',
-    },
-    {
-      q: 'Can you give me an example?',
-      a: 'If you are on the Refresh tier, your monthly membership adds $149 in credit. A $70 service with a 10% membership discount becomes $63. You may choose to apply that amount toward your membership balance or pay separately and save your credit for later.',
-    },
-    {
-      q: 'Can I use my membership on products?',
-      a: 'Yes. Membership credits may be applied toward both services and retail products unless otherwise specified.',
-    },
-    {
-      q: "What's the difference between the tiers?",
-      a: 'All tiers offer flexible monthly credit, with increasing savings at each level. Refresh is ideal for maintenance, Revitalize offers enhanced savings and flexibility, and Radiance Elite provides the highest level of savings and exclusive benefits.',
-    },
-  ];
-
   return (
-    <div className="py-8">
-      {/* WIDE HERO */}
-      <section className="mx-auto w-[92%] max-w-7xl">
-        <div className="relative overflow-hidden rounded-2xl ring-1 ring-black/5">
+    <div className="min-h-screen bg-brand-cream">
+      <section className="relative isolate overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
           <img
             src="/images/membership/hero.png"
-            alt="T Beauty Lounge services"
-            className="h-[52vh] w-full object-cover md:h-[58vh]"
-            loading="lazy"
+            alt="T Beauty Lounge Membership"
+            className="h-full w-full object-cover opacity-25"
           />
-          <div className="absolute inset-0 bg-brand-cream/55" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/15" />
+          <div className="absolute inset-0 bg-brand-cream/90 backdrop-blur-[2px]" />
+        </div>
 
-          <div className="absolute inset-0 flex items-center">
-            <div className="mx-auto w-[92%] max-w-3xl">
-              <p className="text-[11px] tracking-[0.25em] text-brand-forest/70">
-                MEMBERSHIP
-              </p>
+        {/* Content */}
+        <div className="relative mx-auto flex min-h-screen w-[92%] max-w-5xl flex-col items-center justify-center py-24 text-center">
+          <p className="text-xs tracking-[0.35em] text-brand-forest/60">
+            T BEAUTY LOUNGE MEMBERSHIP
+          </p>
 
-              <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-5xl">
-                A Med-Spa Membership that feels like self-care
-              </h1>
+          <h1 className="mt-4 text-4xl font-semibold leading-tight text-brand-forest md:text-6xl">
+            We're Enhancing
+            <br />
+            Your Membership Experience
+          </h1>
 
-              <p className="mt-4 max-w-2xl text-brand-forest/85">
-                Monthly beauty credit plus member pricing on services - designed
-                to keep your routine consistent, soft, and easy.
-              </p>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-forest/80 md:text-lg">
+            Due to recent changes, our Signature Glow Membership is currently
+            undergoing updates as we work to create an even better experience
+            for our members.
+          </p>
 
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <a
-                  href="https://www.vagaro.com/tbeautylounge/memberships"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-brand-gold px-7 py-3 text-white font-semibold shadow-sm hover:brightness-95"
-                >
-                  Sign Up Now
-                </a>
-                <a
-                  href="/services"
-                  className="inline-flex items-center justify-center rounded-full border border-brand-gold bg-white/70 px-7 py-3 text-brand-forest font-semibold hover:bg-brand-cream/70"
-                >
-                  Browse Services
-                </a>
-              </div>
-            </div>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-forest/70">
+            We're refining our membership benefits, policies, and offerings to
+            better serve our clients while ensuring the program continues to
+            provide exceptional value. Existing memberships remain active during
+            this transition.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="/contactus?reason=membership"
+              className="rounded-full bg-brand-forest px-6 py-3 text-sm font-medium text-white transition hover:brightness-110"
+            >
+              Contact Our Team
+            </a>
+
+            <a
+              href="/services"
+              className="rounded-full border border-brand-gold px-6 py-3 text-sm font-medium text-brand-forest transition hover:bg-white/60"
+            >
+              Browse Our Services
+            </a>
           </div>
+
+          <p className="mt-10 max-w-xl text-xs leading-relaxed text-brand-forest/50">
+            Thank you for your patience and continued support while we prepare a
+            more refined membership experience. If you have any questions about
+            your current membership or account, our team is happy to assist you.
+          </p>
         </div>
       </section>
-
-      {/* REST OF PAGE (constrained) */}
-      <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-5 sm:py-6 md:py-8">
-        {/* BENEFITS */}
-        <section className="mt-10">
-          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
-            {benefits.map((b) => (
-              <div key={b.title} className="p-2">
-                <h3 className="text-base font-semibold text-brand-forest">
-                  {b.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-forest/75">
-                  {b.copy}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="mx-auto my-12 h-px w-24 bg-brand-forest/15" />
-
-        {/* TIERS */}
-        <section id="tiers" className="mt-2">
-          <div className="text-center">
-            <h2 className="text-2xl font-semibold text-brand-forest">
-              Choose your tier
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-sm text-brand-forest/75">
-              Three options—same soft philosophy. Pick your level of savings and
-              perks based on your routine.
-            </p>
-          </div>
-
-          {/* Mobile tabs */}
-          <MobileTierTabs tiers={tiers} />
-
-          {/* Desktop grid */}
-          <div className="mt-8 hidden gap-5 md:grid md:grid-cols-3">
-            {tiers.map((t) => (
-              <article
-                key={t.id}
-                id={t.id}
-                className={`relative flex h-full flex-col overflow-hidden rounded-[--radius-card] bg-white p-7 shadow-sm ring-1 ring-black/5 ${
-                  t.popular ? 'ring-2 ring-brand-gold/60' : ''
-                }`}
-              >
-                <div
-                  className={`absolute left-0 top-0 h-1 w-full ${
-                    t.popular ? 'bg-brand-gold' : 'bg-brand-mint/40'
-                  }`}
-                />
-
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-brand-forest">
-                      {t.name}
-                    </h3>
-                    <p className="mt-1 text-xs text-brand-forest/60">
-                      {t.bestFor}
-                    </p>
-                  </div>
-
-                  {t.popular ? (
-                    <span className="rounded-full bg-brand-gold px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
-                      Most Popular
-                    </span>
-                  ) : null}
-                </div>
-
-                <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-4xl font-semibold text-brand-forest">
-                    ${t.price}
-                  </span>
-                  <span className="text-sm text-brand-forest/60">/mo</span>
-                </div>
-
-                <p className="mt-1 text-sm text-brand-forest/80">
-                  {t.discount}
-                </p>
-
-                <div className="mt-5 rounded-[--radius-card] bg-brand-mint/12 p-4">
-                  <ul className="space-y-2 text-sm text-brand-forest/85">
-                    {t.perks.map((p) => (
-                      <li key={p} className="flex gap-2">
-                        <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-forest/45" />
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <p className="mt-4 text-xs text-brand-forest/60">{t.note}</p>
-
-                <div className="mt-6 flex-1" />
-
-                <a
-                  href={t.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-brand-forest px-6 py-3 text-sm font-semibold text-white shadow-sm hover:brightness-110 active:scale-[0.99]"
-                >
-                  Join {t.name}
-                </a>
-
-                <p className="mt-3 text-center text-xs text-brand-forest/60">
-                  Apply your first credit immediately.
-                </p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <div className="mx-auto my-12 h-px w-24 bg-brand-forest/15" />
-
-        {/* CALCULATOR (replaces examples) */}
-        <MembershipSavingsCalculator tiers={tiers} />
-
-        {/* FAQ */}
-        <MiniFAQAccordion title="Membership FAQ" faqs={faqs} />
-
-        {/* Terms */}
-        <p className="mt-8 text-center text-xs text-brand-forest/60">
-          Discounts apply to regularly priced services. Credits are
-          non-transferable. Unused credits may be banked up to 6 months.
-          Birthday perks valid during birthday month. Daxxify birthday perk
-          applies to Radiance Elite only. See full policy at booking.
-        </p>
-      </div>
     </div>
   );
 }
