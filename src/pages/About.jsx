@@ -79,26 +79,28 @@ export default function About() {
           </div>
         </Split>
 
-        {/* ========== MEET TERESA (image R / text L) ========== */}
+        {/* ========== INJECTABLES & FUNCTIONAL MEDICINE, WITH TERESA (image R / text L) ========== */}
         <Split imageLeft={false}>
           <div>
-            <Eyebrow>MEET TERESA, FNP-C</Eyebrow>
+            <Eyebrow>INJECTABLES & FUNCTIONAL MEDICINE, WITH TERESA</Eyebrow>
             <br />
             <p className="section-body">
-            Teresa is a highly skilled Nurse Practitioner specializing in both aesthetic 
-            treatments and functional medicine. She combines advanced cosmetic injections 
-            with a personalized, root-cause approach to wellness — helping clients achieve 
-            natural results while supporting their overall health.
+            Injectables and functional medicine are available at our Goodyear location
+            through Teresa Le, MSN, FNP-C, founder of TAI Longevity &amp; Aesthetics.
+            Teresa is an independent nurse practitioner who continues to see clients
+            at T Beauty Lounge — her scheduling, pricing, and payments are handled
+            directly through her own practice.
             <br />
             <br />
-            With a passion for inside-out beauty, Teresa focuses on enhancing confidence through 
-            treatments that are both effective and thoughtfully tailored to each individual.
+            T Beauty Lounge members still enjoy their membership discount on
+            Teresa's services (see our Membership page for details on how credits
+            and discounts apply).
             </p>
             <a
-              href="/services/injectables"
+              href="/services/functional-medicine-and-aesthetics"
               className="btn-primary mt-5 inline-block"
             >
-              View Teresa’s Treatments <span aria-hidden="true">→</span>
+              View Teresa's Treatments <span aria-hidden="true">→</span>
             </a>
           </div>
 

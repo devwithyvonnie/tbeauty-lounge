@@ -23,13 +23,13 @@ const CATEGORIES = [
   },
   {
     id: "injectables",
-    title: "Cosmetic Injections",
+    title: "Injectables & Functional Medicine",
     blurb:
-      "Natural-looking neurotoxin and filler treatments performed by our FNP-C to soften lines, restore volume, and refine contours.",
+      "Neurotoxin, filler, and functional medicine treatments available on-site through Teresa Le, MSN, FNP-C, an independent nurse practitioner.",
     image: "/images/home/injectables.png",
     duration: "30–60 mins",
     notes: "results build over time • consultation included",
-    href: "/services/injectables",
+    href: "/services/functional-medicine-and-aesthetics",
   },
   {
     id: "laser",

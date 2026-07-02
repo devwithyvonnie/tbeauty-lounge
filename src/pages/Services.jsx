@@ -61,17 +61,18 @@ const SERVICE_CATS = [
   },
   {
     id: 'injectables',
-    eyebrow: 'FUNCTIONAL MEDICINE & AESTHETICS',
-    title: 'Inside-out wellness with natural refinement',
+    eyebrow: 'INJECTABLES & FUNCTIONAL MEDICINE',
+    title: 'Available on-site with an independent provider',
     blurb:
-      'Personalized aesthetic and wellness services designed to support confidence, balance, and long-term beauty. Consultation-first, medically guided, and focused on natural-looking results.',
+      'Neurotoxins, fillers, biostimulators, and functional medicine — provided at our Goodyear location by Teresa Le, MSN, FNP-C, of TAI Longevity & Aesthetics. Teresa handles her own scheduling, pricing, and payments; your T Beauty Lounge membership discount still applies.',
     bullets: [
       'Neurotoxins for fine lines & facial balancing',
       'PDO threads, filler & collagen-supporting treatments',
       'Functional medicine consultations & wellness support',
     ],
     image: '/images/services/injectables.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://tailongevityaesthetics.janeapp.com/',
+    bookExternal: true,
     menuHref: '/services/functional-medicine-and-aesthetics',
   },
   {
@@ -168,6 +169,7 @@ function ServiceCard({ s }) {
         <div className="mt-4 flex flex-wrap gap-3">
           <a
             href={s.bookHref}
+            {...(s.bookExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
             className="inline-flex items-center gap-2 rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
           >
             Book Now <span aria-hidden="true">→</span>

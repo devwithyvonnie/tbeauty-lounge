@@ -2,7 +2,7 @@ export default function IntroCards() {
   return (
     <section className="mt-6">
       <div className="grid gap-4 md:grid-cols-2">
-        {/* Card 1 — Meet Teresa */}
+        {/* Card 1 — Injectables & Functional Medicine, with Teresa */}
         <article className="relative overflow-hidden rounded-[--radius-card] min-h-[360px]">
           <img
             src="/images/team/teresa.png"
@@ -18,16 +18,17 @@ export default function IntroCards() {
           <div className="relative z-10 p-5 md:p-7 h-full flex items-end">
             <div className="w-full rounded-2xl bg-white/85 backdrop-blur-sm ring-1 ring-black/5 shadow-sm p-4 md:p-5">
               <h3 className="text-xl md:text-2xl font-semibold text-brand-forest">
-                Meet Teresa Le, FNP-C
+                Injectables & Functional Medicine
               </h3>
 
               <p className="mt-2 text-sm md:text-base text-brand-forest/85 leading-relaxed">
-              Teresa brings years of expertise in aesthetic medicine and functional wellness. Her philosophy focuses on helping clients look and feel their best by combining natural-looking aesthetic results with 
-              a deeper, inside-out approach to health and longevity.
+              Available on-site through Teresa Le, MSN, FNP-C, founder of TAI Longevity & Aesthetics — 
+              an independent nurse practitioner practice offering natural-looking aesthetic results and 
+              a root-cause approach to wellness.
               </p>
 
               <a
-                href="/services/injectables"
+                href="/services/functional-medicine-and-aesthetics"
                 className="mt-4 inline-flex items-center justify-center rounded-full bg-brand-forest px-5 py-2 text-sm text-white hover:brightness-110"
               >
                 Teresa&apos;s Services

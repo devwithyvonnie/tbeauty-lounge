@@ -102,6 +102,53 @@ const SERVICE_MENU = [
   },
 ];
 
+/** -----------------------
+ *  MEMBERSHIP TIERS
+ *  -----------------------
+ */
+const TIERS = [
+  {
+    id: 'refresh',
+    name: 'Refresh',
+    price: 149,
+    discount: '10% off all services & products',
+    bestFor: 'Great for guests who visit monthly and want steady savings.',
+    perks: [
+      '½ off Lash Touch-Ups',
+      '30% off Japanese Head Spa or Facial treatment + products during your birthday month',
+    ],
+    note: 'Monthly credit banks up to 6 months if unused.',
+    url: 'https://www.vagaro.com/cl/D~L2Gl73Mtu23IOrbBINYiMzLXG-EYXepeXNObGcDVM=',
+  },
+  {
+    id: 'revitalize',
+    name: 'Revitalize',
+    price: 199,
+    discount: '12% off all services & products',
+    bestFor: 'Our most popular tier — built for regular lash and facial routines.',
+    popular: true,
+    perks: [
+      '½ off Lash Touch-Ups',
+      '40% off Japanese Head Spa or Facial treatment + products during your birthday month',
+    ],
+    note: 'Monthly credit banks up to 6 months if unused.',
+    url: 'https://www.vagaro.com/cl/ijKIQUmJjRAqf6RMruTF1z3DKfXWWH5X6X547EqRRWo=',
+  },
+  {
+    id: 'radiance',
+    name: 'Radiance Elite',
+    price: 249,
+    discount: '15% off all services & products',
+    bestFor: 'For guests who want maximum savings across every visit.',
+    perks: [
+      '½ off Lash Touch-Ups',
+      '50% off Japanese Head Spa or Facial treatment + products during your birthday month',
+    ],
+    note: 'Monthly credit banks up to 6 months if unused.',
+    url: 'https://www.vagaro.com/cl/xGsF139giMVB8y~bcx0DNC6zX5qzVVX11j8jdYwDa7o=',
+  },
+];
+
 const money0 = (n) =>
   (Number(n) || 0).toLocaleString('en-US', { maximumFractionDigits: 0 });
 
@@ -122,13 +169,18 @@ function StatTile({ label, value, sub, highlight = false }) {
     <div
       className={[
         'min-w-[210px] sm:min-w-0', // makes tiles scrollable on mobile
-        'rounded-2xl p-4 ring-1 ring-black/5',
+        'rounded-2xl p-4 ring-1 ring-black/5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm',
         highlight
           ? 'bg-brand-forest/10 ring-2 ring-brand-forest'
           : 'bg-brand-cream/45',
       ].join(' ')}
     >
-      <p className="text-[11px] font-medium text-brand-forest/60">{label}</p>
+      <p className="flex items-center gap-1 text-[11px] font-medium text-brand-forest/60">
+        {highlight ? (
+          <span className="text-brand-gold" aria-hidden="true">✦</span>
+        ) : null}
+        {label}
+      </p>
       <p
         className={`mt-1 font-semibold text-brand-forest ${highlight ? 'text-xl' : 'text-lg'}`}
       >
@@ -148,10 +200,10 @@ function CompareTile({ normal, member }) {
         Normal vs Member price (per visit)
       </p>
 
-      <div className="mt-3 grid grid-cols-2 gap-3">
+      <div className="relative mt-3 grid grid-cols-2 gap-3">
         <div className="rounded-xl bg-brand-cream/35 p-3 ring-1 ring-black/5">
           <p className="text-[11px] text-brand-forest/60">Normal</p>
-          <p className="mt-1 text-lg font-semibold text-brand-forest">
+          <p className="mt-1 text-lg font-semibold text-brand-forest line-through decoration-brand-forest/30">
             ${money0(normal)}
           </p>
         </div>
@@ -162,11 +214,84 @@ function CompareTile({ normal, member }) {
             ${money1(member)}
           </p>
         </div>
+
+        <span
+          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-brand-forest/50 ring-1 ring-black/10 sm:inline-block"
+          aria-hidden="true"
+        >
+          vs
+        </span>
       </div>
 
       <p className="mt-2 text-[11px] text-brand-forest/60">
         Member price reflects your tier discount.
       </p>
+    </div>
+  );
+}
+
+function DesktopTierGrid({ tiers }) {
+  return (
+    <div className="hidden md:grid md:grid-cols-3 md:gap-5">
+      {tiers.map((t) => (
+        <article
+          key={t.id}
+          className={`group relative flex flex-col overflow-hidden rounded-[--radius-card] bg-white p-6 shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl ${
+            t.popular ? 'ring-2 ring-brand-gold/60' : ''
+          }`}
+        >
+          <div
+            className={`absolute left-0 top-0 h-1 w-full ${
+              t.popular ? 'bg-brand-gold' : 'bg-brand-mint/40'
+            }`}
+          />
+
+          {t.popular ? (
+            <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-brand-gold px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
+              <span className="sparkle-float text-[10px]" aria-hidden="true">✦</span>
+              Most Popular
+            </span>
+          ) : null}
+
+          <h3 className="text-lg font-semibold text-brand-forest">{t.name}</h3>
+          <p className="mt-1 text-xs text-brand-forest/60">{t.bestFor}</p>
+
+          <div className="mt-5 flex items-baseline gap-2">
+            <span className="text-4xl font-semibold text-brand-forest">
+              ${t.price}
+            </span>
+            <span className="text-sm text-brand-forest/60">/mo</span>
+          </div>
+
+          <p className="mt-1 text-sm text-brand-forest/80">{t.discount}</p>
+
+          <div className="mt-5 rounded-[--radius-card] bg-brand-mint/12 p-4">
+            <ul className="space-y-2 text-sm text-brand-forest/85">
+              {t.perks.map((p) => (
+                <li key={p} className="flex gap-2">
+                  <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-forest/45" />
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="mt-4 text-xs text-brand-forest/60">{t.note}</p>
+
+          <a
+            href={t.url}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-brand-forest px-6 py-3 text-sm font-semibold text-white shadow-sm hover:brightness-110 active:scale-[0.99]"
+          >
+            Join {t.name}
+          </a>
+
+          <p className="mt-3 text-center text-xs text-brand-forest/60">
+            Apply your first credit immediately.
+          </p>
+        </article>
+      ))}
     </div>
   );
 }
@@ -194,10 +319,10 @@ function MobileTierTabs({ tiers }) {
                 type="button"
                 onClick={() => setActiveId(t.id)}
                 className={[
-                  'rounded-full px-3 py-2 text-[12px] font-semibold ring-1 ring-black/10 transition',
+                  'rounded-full px-3 py-2 text-[12px] font-semibold ring-1 ring-black/10 transition-all duration-200',
                   isActive
-                    ? 'bg-brand-forest text-white'
-                    : 'bg-white text-brand-forest/70 hover:bg-brand-cream/60',
+                    ? 'bg-brand-forest text-white shadow-md scale-[1.04]'
+                    : 'bg-white text-brand-forest/70 hover:bg-brand-cream/60 hover:scale-[1.02]',
                 ].join(' ')}
                 aria-pressed={isActive}
               >
@@ -314,7 +439,7 @@ function isLashFill(service) {
 function MembershipSavingsCalculator({ tiers }) {
   // One step at a time (mobile)
   const [activeStep, setActiveStep] = useState(1); // 1, 2, 3
-  const [showBreakdownDetails, setShowBreakdownDetails] = useState(false);
+  const [, setShowBreakdownDetails] = useState(false);
 
   const calculatorRef = useRef(null);
 
@@ -326,6 +451,10 @@ function MembershipSavingsCalculator({ tiers }) {
   );
   const discountPct = useMemo(() => parseDiscountPct(tier), [tier]);
   const membershipPrice = useMemo(() => Number(tier?.price || 0), [tier]);
+
+  // New-to-lashes / new-client branch: recommend a fullset + 1-2 fills
+  // before joining, instead of running the savings math.
+  const [newToLashes, setNewToLashes] = useState(false);
 
   // STEP 2: routine
   const mainOptions = useMemo(
@@ -462,6 +591,25 @@ function MembershipSavingsCalculator({ tiers }) {
     [leftoverEndOfMonth],
   );
 
+  const potentialAfterTwelveMonths = useMemo(
+    () => leftoverEndOfMonth * 12,
+    [leftoverEndOfMonth],
+  );
+
+  // What this same routine would cost at regular (non-member) pricing
+  const normalMonthlyCost = useMemo(() => {
+    const mainNormal = (Number(basePrice) || 0) * effectiveVisits;
+    const facialNormal = addFacial ? Number(selectedFacial?.price) || 0 : 0;
+    return mainNormal + facialNormal;
+  }, [basePrice, effectiveVisits, addFacial, selectedFacial]);
+
+  // Pure discount savings on this routine, independent of credit banking —
+  // this is the headline "you save $X" number.
+  const discountSavingsThisMonth = useMemo(
+    () => Math.max(0, normalMonthlyCost - usedFromCreditThisMonth),
+    [normalMonthlyCost, usedFromCreditThisMonth],
+  );
+
   const leftoverCanCoverFacial = useMemo(() => {
     if (!canAddFacial) return false;
     if (!selectedFacial) return false;
@@ -486,8 +634,10 @@ function MembershipSavingsCalculator({ tiers }) {
   ref={calculatorRef}
   className="mt-16 scroll-mt-24"
 >
-      <h2 className="text-xl font-semibold text-brand-forest text-center">
+      <h2 className="flex items-center justify-center gap-2 text-xl font-semibold text-brand-forest text-center">
+        <span className="text-brand-gold" aria-hidden="true">✦</span>
         Membership savings calculator
+        <span className="text-brand-gold" aria-hidden="true">✦</span>
       </h2>
       <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-brand-forest/75">
         Pick your membership, build your routine, then view your breakdown.
@@ -527,6 +677,37 @@ function MembershipSavingsCalculator({ tiers }) {
         >
           <div className="rounded-2xl bg-brand-mint/8 p-4 sm:p-5 ring-1 ring-black/5">
             <label className="text-xs font-medium text-brand-forest/70">
+              Have you had a fullset & at least one fill with us before?
+            </label>
+
+            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => setNewToLashes(false)}
+                className={`rounded-full px-4 py-3 text-xs font-semibold ring-1 ring-black/10 transition ${
+                  !newToLashes
+                    ? 'bg-brand-forest text-white'
+                    : 'bg-white text-brand-forest/70 hover:bg-white/90'
+                }`}
+              >
+                Yes, I'm a returning client
+              </button>
+              <button
+                type="button"
+                onClick={() => setNewToLashes(true)}
+                className={`rounded-full px-4 py-3 text-xs font-semibold ring-1 ring-black/10 transition ${
+                  newToLashes
+                    ? 'bg-brand-forest text-white'
+                    : 'bg-white text-brand-forest/70 hover:bg-white/90'
+                }`}
+              >
+                I'm new to lashes or new here
+              </button>
+            </div>
+
+            <div className="mt-5 h-px w-full bg-brand-forest/10" />
+
+            <label className="mt-5 block text-xs font-medium text-brand-forest/70">
               Membership tier
             </label>
 
@@ -548,7 +729,7 @@ function MembershipSavingsCalculator({ tiers }) {
                 onClick={() => setActiveStep(2)}
                 className="w-full rounded-full bg-brand-forest px-5 py-3 text-xs font-semibold text-white"
               >
-                Next: Pick your routine →
+                Next: {newToLashes ? 'See what to book first' : 'Pick your routine'} →
               </button>
             </div>
           </div>
@@ -556,6 +737,47 @@ function MembershipSavingsCalculator({ tiers }) {
 
         <div className="mt-4" />
 
+        {newToLashes ? (
+          <div className="rounded-2xl bg-brand-cream/50 p-5 sm:p-6 ring-1 ring-black/5">
+            <p className="text-[11px] font-semibold tracking-wide text-brand-forest/60 uppercase">
+              Before you join
+            </p>
+            <h3 className="mt-2 text-lg font-semibold text-brand-forest">
+              Book a fullset + 1–2 fills first
+            </h3>
+            <p className="mt-2 text-sm text-brand-forest/80 leading-relaxed">
+              If you're new to lashes or new to T Beauty Lounge, we recommend
+              coming in for a fullset and at least one or two fills at regular
+              pricing before joining {tier?.name || 'a membership'}. This gives
+              you time to confirm the look, retention, and style are exactly
+              what you want — so your membership is set up around a routine
+              you already love, and you get the most value from it from day
+              one.
+            </p>
+            <p className="mt-3 text-sm text-brand-forest/80 leading-relaxed">
+              Once you've had your fullset and a fill or two, come back and
+              flip this toggle to "returning client" to see your estimated
+              membership savings.
+            </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="https://www.vagaro.com/tbeautylounge/book-now"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full bg-brand-forest px-6 py-3 text-center text-sm font-semibold text-white shadow-sm hover:brightness-110"
+              >
+                Book Your Fullset
+              </a>
+              <a
+                href="/faq"
+                className="rounded-full border border-brand-gold bg-white/70 px-6 py-3 text-center text-sm font-semibold text-brand-forest hover:bg-white"
+              >
+                Questions? View FAQ
+              </a>
+            </div>
+          </div>
+        ) : (
+          <>
         {/* ------------------ STEP 2 ------------------ */}
         <MobileStep
           title="Step 2 · Pick your routine"
@@ -630,6 +852,15 @@ function MembershipSavingsCalculator({ tiers }) {
 
                 <p className="mt-2 text-xs text-brand-forest/60">
                   Choose 2 visits if you come every two weeks.
+                </p>
+
+                <p className="mt-3 rounded-xl bg-white/70 p-3 text-[11px] text-brand-forest/70 leading-relaxed ring-1 ring-black/5">
+                  ⚠️ Heads up: most months have about 4 weeks, but some have
+                  5 depending on when your appointments land. If your
+                  2-week schedule pushes you into a 3rd fill during a
+                  5-week month, that extra visit may not be fully covered
+                  by your monthly credit — a small out-of-pocket cost is
+                  possible depending on your exact booking dates.
                 </p>
               </div>
             ) : null}
@@ -753,8 +984,35 @@ function MembershipSavingsCalculator({ tiers }) {
           setActiveStep={setActiveStep}
         >
           <div className="rounded-2xl bg-white p-4 sm:p-5 ring-1 ring-black/5">
+            {/* HERO STAT — the enticing headline number */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-forest via-brand-forest to-[#3a4830] px-5 py-7 text-center text-white shadow-lg">
+              {/* floating gold sparkles — brand's marquee star motif */}
+              <span className="sparkle-float pointer-events-none absolute left-5 top-4 text-lg text-brand-gold/70" aria-hidden="true">✦</span>
+              <span className="sparkle-float-delay pointer-events-none absolute right-6 top-8 text-sm text-brand-gold/50" aria-hidden="true">✦</span>
+              <span className="sparkle-float pointer-events-none absolute bottom-4 left-10 text-xs text-brand-gold/40" aria-hidden="true">✦</span>
+              <span className="sparkle-float-delay pointer-events-none absolute bottom-6 right-8 text-base text-brand-gold/60" aria-hidden="true">✦</span>
+
+              <p className="text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase">
+                Your estimated savings
+              </p>
+              <p
+                key={`${discountSavingsThisMonth}-${tierId}`}
+                className="pop-in mt-2 text-4xl font-semibold sm:text-5xl"
+              >
+                ${money0(discountSavingsThisMonth)}
+                <span className="text-base font-medium text-white/80">
+                  {' '}
+                  / month
+                </span>
+              </p>
+              <p className="mt-2 text-xs text-white/75">
+                Just from your {tier?.name || 'membership'} discount on this
+                routine — before counting any banked credit.
+              </p>
+            </div>
+
             {/* MOBILE */}
-            <div className="space-y-3">
+            <div className="mt-3 space-y-3">
               {/* 1) Normal vs Member */}
               <CompareTile normal={basePrice} member={memberPricePerVisit} />
 
@@ -782,20 +1040,41 @@ function MembershipSavingsCalculator({ tiers }) {
                 />
               )}
 
-              {/* 4) Potential after 6 months (only if leftover) */}
+              {/* 4) Potential after 6 & 12 months (only if leftover) */}
               {hasLeftover ? (
-                <StatTile
-                  label="Potential after 6 months"
-                  value={`$${money0(potentialAfterSixMonths)}`}
-                  sub="If you roll it over"
-                />
+                <>
+                  <StatTile
+                    label="Potential after 6 months"
+                    value={`$${money0(potentialAfterSixMonths)}`}
+                    sub="If you roll it over"
+                  />
+                  <StatTile
+                    label="Potential after 12 months"
+                    value={`$${money0(potentialAfterTwelveMonths)}`}
+                    sub="A full year of banked credit"
+                    highlight
+                  />
+                </>
               ) : null}
             </div>
 
             <p className="mt-4 text-xs text-brand-forest/60 leading-relaxed">
               “Left over” assumes member-priced services are deducted from your
               monthly membership credit. Credits may be banked up to 6 months.
+              Note: most months run about 4 weeks, but some run 5 depending on
+              your appointment dates — an extra fill in a 5-week month may
+              come with a small out-of-pocket cost.
             </p>
+
+            {/* Direct join CTA right where they see their savings */}
+            <a
+              href={tier?.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-brand-forest px-6 py-3 text-sm font-semibold text-white shadow-sm hover:brightness-110 active:scale-[0.99]"
+            >
+              Join {tier?.name} & Start Saving
+            </a>
 
             {/* Mobile nav (optional) */}
             <div className="mt-4 md:hidden">
@@ -809,6 +1088,8 @@ function MembershipSavingsCalculator({ tiers }) {
             </div>
           </div>
         </MobileStep>
+        </>
+        )}
       </div>
     </section>
   );
@@ -817,8 +1098,8 @@ function MembershipSavingsCalculator({ tiers }) {
 export default function Memberships() {
   return (
     <div className="min-h-screen bg-brand-cream">
+      {/* HERO */}
       <section className="relative isolate overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0">
           <img
             src="/images/membership/hero.png"
@@ -828,39 +1109,142 @@ export default function Memberships() {
           <div className="absolute inset-0 bg-brand-cream/90 backdrop-blur-[2px]" />
         </div>
 
-        {/* Content */}
-        <div className="relative mx-auto flex min-h-screen w-[92%] max-w-5xl flex-col items-center justify-center py-24 text-center">
+        <div className="relative mx-auto flex flex-col items-center justify-center gap-4 w-[92%] max-w-5xl py-16 text-center md:py-20">
           <p className="text-xs tracking-[0.35em] text-brand-forest/60">
             T BEAUTY LOUNGE MEMBERSHIP
           </p>
 
-          <h1 className="mt-4 text-4xl font-semibold leading-tight text-brand-forest md:text-6xl">
-            We're Enhancing
+          <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-6xl">
+            Intentional beauty,
             <br />
-            Your Membership Experience
+            funded monthly
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-forest/80 md:text-lg">
-            Due to recent changes, our Signature Glow Membership is currently
-            undergoing updates as we work to create an even better experience
-            for our members.
+          <p className="mt-2 max-w-2xl text-base leading-relaxed text-brand-forest/80 md:text-lg">
+            Every tier includes a monthly beauty credit you can use right
+            away or bank for up to 6 months, plus a discount on all services
+            and products — and an even bigger discount during your birthday
+            month.
           </p>
 
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-forest/70">
-            We're refining our membership benefits, policies, and offerings to
-            better serve our clients while ensuring the program continues to
-            provide exceptional value. Existing memberships remain active during
-            this transition.
-          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#tiers"
+              className="rounded-full bg-brand-forest px-6 py-3 text-sm font-medium text-white transition hover:brightness-110"
+            >
+              Compare Tiers
+            </a>
+            <a
+              href="#calculator"
+              className="rounded-full border border-brand-gold px-6 py-3 text-sm font-medium text-brand-forest transition hover:bg-white/60"
+            >
+              Estimate My Savings
+            </a>
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+      {/* TIER COMPARISON */}
+      <section id="tiers" className="mx-auto w-[92%] max-w-6xl scroll-mt-20 py-10 md:py-14">
+        <div className="text-center">
+          <p className="text-[11px] tracking-[0.22em] text-brand-forest/60">
+            MEMBERSHIP TIERS
+          </p>
+          <h2 className="mt-2 text-2xl md:text-3xl font-semibold text-brand-forest">
+            Pick the tier that fits your routine
+          </h2>
+        </div>
+
+        <div className="mt-8">
+          <MobileTierTabs tiers={TIERS} />
+          <DesktopTierGrid tiers={TIERS} />
+        </div>
+
+        <div className="mx-auto mt-6 max-w-3xl rounded-2xl bg-brand-mint/10 p-4 text-center ring-1 ring-black/5 sm:p-5">
+          <p className="text-sm text-brand-forest/80 leading-relaxed">
+            <span className="font-semibold text-brand-forest">New to lashes or new to T Beauty Lounge?</span>{' '}
+            We recommend booking a fullset and one or two fills at regular
+            pricing first, so you can confirm the look is exactly what you
+            want before joining a membership.
+          </p>
+        </div>
+      </section>
+
+      {/* TERESA / INJECTABLES NOTE */}
+      <section className="mx-auto w-[92%] max-w-6xl">
+        <div className="rounded-2xl bg-white p-5 ring-1 ring-black/5 md:p-6">
+          <h2 className="text-lg font-semibold text-brand-forest">
+            Injectables & Functional Medicine with Teresa
+          </h2>
+          <p className="mt-2 text-sm text-brand-forest/80 leading-relaxed">
+            Your membership discount applies to services with Teresa Le,
+            MSN, FNP-C of TAI Longevity &amp; Aesthetics — but membership{' '}
+            <em>credits</em> cannot be used toward her services, since
+            Teresa operates independently and bills separately from T
+            Beauty Lounge.
+          </p>
+        </div>
+      </section>
+
+      {/* CALCULATOR */}
+      <section className="mx-auto w-[92%] max-w-6xl">
+        <MembershipSavingsCalculator tiers={TIERS} />
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto w-[92%] max-w-6xl py-10 md:py-14">
+        <MiniFAQAccordion
+          title="Membership FAQ"
+          faqs={[
+            {
+              q: 'How does the monthly credit work?',
+              a: 'Each month, your membership price becomes a credit you can put toward services. Member pricing (after your tier discount) is deducted from that credit. Any leftover credit banks for up to 6 months.',
+            },
+            {
+              q: 'Does my discount apply to products too?',
+              a: 'Yes — your tier discount applies to both services and retail products.',
+            },
+            {
+              q: 'What happens during my birthday month?',
+              a: "You'll receive an elevated discount (30%, 40%, or 50% depending on your tier) on a Japanese Head Spa or Facial treatment, plus products, during your birthday month.",
+            },
+            {
+              q: "Can I use my membership with Teresa's injectables or functional medicine services?",
+              a: 'Your membership discount applies to Teresa\u2019s services, but membership credits cannot be used toward them, since Teresa (TAI Longevity & Aesthetics) operates independently and bills separately from T Beauty Lounge.',
+            },
+            {
+              q: 'Can I switch tiers or cancel?',
+              a: 'Yes — reach out to our team and we can help you change tiers or cancel your membership. Existing credit remains valid per our membership policy.',
+            },
+            {
+              q: "I'm new to lashes — should I join right away?",
+              a: "We recommend booking a fullset and one or two fills at regular pricing first. This lets you confirm the look, retention, and style are right for you, so your membership gets set up around a routine you already love from day one.",
+            },
+            {
+              q: 'Will I ever have an out-of-pocket cost with my membership?',
+              a: "It's possible in some months. Membership credit is based on an average month (~4 weeks), but some months have 5 weeks depending on the calendar. If your regular 2-week fill schedule lands a 3rd fill in one of those months, that extra visit may not be fully covered by your monthly credit, resulting in a small out-of-pocket charge. This depends entirely on your exact booking dates.",
+            },
+          ]}
+        />
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className="mx-auto w-[92%] max-w-5xl pb-16 text-center">
+        <div className="rounded-3xl bg-white p-8 ring-1 ring-black/5 md:p-10">
+          <h2 className="text-xl font-semibold text-brand-forest md:text-2xl">
+            Ready to join?
+          </h2>
+          <p className="mt-2 text-sm text-brand-forest/75 md:text-base">
+            Questions about which tier fits your routine? Our team is happy
+            to help.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <a
               href="/contactus?reason=membership"
               className="rounded-full bg-brand-forest px-6 py-3 text-sm font-medium text-white transition hover:brightness-110"
             >
               Contact Our Team
             </a>
-
             <a
               href="/services"
               className="rounded-full border border-brand-gold px-6 py-3 text-sm font-medium text-brand-forest transition hover:bg-white/60"
@@ -868,12 +1252,6 @@ export default function Memberships() {
               Browse Our Services
             </a>
           </div>
-
-          <p className="mt-10 max-w-xl text-xs leading-relaxed text-brand-forest/50">
-            Thank you for your patience and continued support while we prepare a
-            more refined membership experience. If you have any questions about
-            your current membership or account, our team is happy to assist you.
-          </p>
         </div>
       </section>
     </div>
