@@ -9,7 +9,7 @@ export default function MembershipPreview() {
         price: 149,
         discount: "10% off all services & products",
         perks: [
-          "½ off Lash Touch-Ups",
+          "½ off Lash Touch-Ups (5–7 days after your lash appointment)",
           "30% off Japanese Head Spa or Facial treatment + products during your birthday month",
         ],
       },
@@ -20,7 +20,7 @@ export default function MembershipPreview() {
         discount: "12% off all services & products",
         popular: true,
         perks: [
-          "½ off Lash Touch-Ups",
+          "½ off Lash Touch-Ups (5–7 days after your lash appointment)",
           "40% off Japanese Head Spa or Facial treatment + products during your birthday month",
         ],
       },
@@ -30,7 +30,7 @@ export default function MembershipPreview() {
         price: 249,
         discount: "15% off all services & products",
         perks: [
-          "½ off Lash Touch-Ups",
+          "½ off Lash Touch-Ups (5–7 days after your lash appointment)",
           "50% off Japanese Head Spa or Facial treatment + products during your birthday month",
         ],
       },

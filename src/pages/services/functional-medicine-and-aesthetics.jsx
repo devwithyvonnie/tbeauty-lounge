@@ -3,8 +3,12 @@ import MiniFAQAccordion from "../../components/MiniFAQ";
 
 /** ---------------- DATA ---------------- */
 
-const TERESA_BOOKING_URL = "https://tailongevityaesthetics.janeapp.com/";
-const TAI_SITE_URL = "https://tailongevity.com/aesthetics.html";
+import {
+  TERESA_BOOKING_URL,
+  TAI_SITE_URL,
+  TERESA_PHONE_DISPLAY,
+  TERESA_PHONE_TEL,
+} from "../../data/teresa";
 
 // High-level categories only — no pricing here since Teresa's practice
 // (TAI Longevity & Aesthetics) sets and controls her own pricing.
@@ -129,6 +133,13 @@ export default function FunctionalMedicineAndAesthetics() {
                 </a>
 
                 <a
+                  href={TERESA_PHONE_TEL}
+                  className="rounded-full bg-white/80 px-6 py-2.5 text-sm font-medium text-brand-forest ring-1 ring-black/10 hover:bg-white"
+                >
+                  Call {TERESA_PHONE_DISPLAY}
+                </a>
+
+                <a
                   href={TAI_SITE_URL}
                   target="_blank"
                   rel="noreferrer"
@@ -144,6 +155,46 @@ export default function FunctionalMedicineAndAesthetics() {
 
       {/* CONTENT */}
       <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
+        {/* Contact Teresa directly */}
+        <section className="overflow-hidden rounded-2xl bg-white shadow-sm ring-2 ring-brand-gold/60">
+          <div className="grid gap-5 p-5 md:grid-cols-[1.4fr_1fr] md:items-center md:p-6">
+            <div>
+              <p className="text-[11px] tracking-[0.22em] text-brand-forest/60">
+                BOOKING &amp; QUESTIONS
+              </p>
+              <h2 className="mt-1 text-lg font-semibold text-brand-forest md:text-xl">
+                Contact Teresa's practice directly
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-brand-forest/80">
+                For appointments, pricing, and treatment questions, reach out to
+                TAI Longevity &amp; Aesthetics. Teresa's practice handles all of
+                her scheduling and payments.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <a
+                href={TERESA_PHONE_TEL}
+                className="flex items-center justify-between rounded-xl bg-brand-cream/70 px-4 py-3 text-sm ring-1 ring-black/5 hover:bg-brand-cream"
+              >
+                <span className="text-brand-forest/70">Call</span>
+                <span className="font-semibold text-brand-forest">
+                  {TERESA_PHONE_DISPLAY}
+                </span>
+              </a>
+              <a
+                href={TERESA_BOOKING_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between rounded-xl bg-brand-forest px-4 py-3 text-sm text-white hover:brightness-110"
+              >
+                <span>Book online</span>
+                <span className="font-semibold">Jane App →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Category overview (no pricing — set by TAI Longevity & Aesthetics) */}
         <section>
           <h2 className="text-xl font-semibold text-brand-forest">
@@ -191,7 +242,7 @@ export default function FunctionalMedicineAndAesthetics() {
             },
             {
               q: "How do I book with Teresa?",
-              a: "Book directly through TAI Longevity & Aesthetics at tailongevityaesthetics.janeapp.com. This is separate from T Beauty Lounge's booking system.",
+              a: `Book directly through TAI Longevity & Aesthetics at tailongevityaesthetics.janeapp.com, or call ${TERESA_PHONE_DISPLAY}. This is separate from T Beauty Lounge's booking system.`,
             },
             {
               q: "Can I use my T Beauty Lounge membership with Teresa?",
@@ -207,7 +258,12 @@ export default function FunctionalMedicineAndAesthetics() {
         {/* CTA */}
         <section className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-brand-cream pt-4">
           <p className="text-xs md:text-sm text-brand-forest/80">
-            Ready to get started? Book a consultation directly with Teresa.
+            Ready to get started? Book a consultation directly with Teresa
+            online or call{" "}
+            <a href={TERESA_PHONE_TEL} className="font-medium underline underline-offset-2">
+              {TERESA_PHONE_DISPLAY}
+            </a>
+            .
           </p>
           <a
             href={TERESA_BOOKING_URL}

@@ -7,30 +7,30 @@ import MiniFAQAccordion from "../../components/MiniFAQ";
 
 // ✨ Waxing
 const WAXING_SERVICES = [
-  { id: "bikini", name: "Bikini", price: 39 },
-  { id: "brazilian", name: "Brazilian", price: 56 },
+  { id: "bikini", name: "Bikini", price: 42 },
+  { id: "brazilian", name: "Brazilian", price: 60 },
   { id: "buttocks", name: "Buttocks", price: 45 },
-  { id: "chest", name: "Chest", price: 45 },
-  { id: "chin-sideburns", name: "Chin/Sideburns", price: 12 },
+  { id: "chest", name: "Chest", price: 50 },
+  { id: "chin-sideburns", name: "Chin/Sideburns", price: 15 },
   { id: "eyebrow", name: "Eyebrow", price: 15 },
-  { id: "full-arms", name: "Full Arms", price: 40 },
-  { id: "full-back", name: "Full Back", price: 63 },
-
-  { id: "lower-legs", name: "Lower Legs", price: 75 },
-  { id: "upper-legs", name: "Upper Legs", price: 42 },
+  { id: "full-arms", name: "Full Arms", price: 42 },
+  { id: "full-back", name: "Full Back", price: 65 },
+  { id: "full-legs", name: "Full Legs", price: 85 },
+  { id: "lower-legs", name: "Lower Legs", price: 50 },
+  { id: "upper-legs", name: "Upper Legs", price: 40 },
   { id: "hands-feet", name: "Hands/Feet", price: 10 },
   { id: "lip", name: "Lip", price: 7 },
-  { id: "neck", name: "Neck", price: 15 },
-  { id: "underarms", name: "Underarms", price: 22 },
-  { id: "whole-face", name: "Whole Face", price: 59 },
+  { id: "neck", name: "Neck", price: 10 },
+  { id: "underarms", name: "Underarms", price: 25 },
+  { id: "whole-face", name: "Whole Face", price: 62 },
 ];
 
 // 🎨 Perm / Tint
 const ENHANCEMENTS_SERVICES = [
-  { id: "brow-lamination", name: "Brow Lamination", price: 70 },
+  { id: "brow-lamination", name: "Brow Lamination", price: 80 },
   { id: "eyebrow-tint", name: "Eyebrow Tint", price: 35 },
   { id: "henna-tint", name: "Henna Tint", price: 45 },
-  { id: "eyelash-perm", name: "Eyelash Perm", price: 80 },
+  { id: "eyelash-perm", name: "Eyelash Perm", price: 90 },
   { id: "eyelash-tint", name: "Eyelash Tint", price: 35 },
 ];
 

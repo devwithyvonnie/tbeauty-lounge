@@ -127,11 +127,6 @@ export default function FAQ() {
       },
       {
         categories: ['overall'],
-        q: 'Do you offer financing?',
-        a: 'Yes\u2014we partner with Cherry for flexible payment options. You can check your options anytime on our Cherry page before booking.',
-      },
-      {
-        categories: ['overall'],
         q: 'Can I request a specific provider?',
         a: 'Yes\u2014when booking online, you\u2019ll see the option to choose a specific provider, or select "any" if you don\u2019t have a preference and want the earliest availability.',
       },
@@ -170,7 +165,7 @@ export default function FAQ() {
       {
         categories: ['lashes'],
         q: 'What\u2019s the difference between Classic, Hybrid, and Volume?',
-        a: 'Classic applies one extension per natural lash for a soft, natural look\u2014great for first-timers. Hybrid mixes classic and volume techniques for extra fullness. Volume applies lightweight fans of multiple extensions per lash for a fuller look. Extra Volume and Mega Volume go bigger and denser still.',
+        a: 'Classic applies one extension per natural lash for a soft, natural look\u2014great for first-timers. Classic Hybrid uses classic lashes in two different lengths for soft texture. Volume applies lightweight fans of multiple extensions per lash for a fuller look, and Volume Hybrid mixes classic and volume lashes for textured fullness. Extra Volume and Mega Volume go bigger and denser still.',
       },
       {
         categories: ['lashes'],
@@ -212,7 +207,7 @@ export default function FAQ() {
       {
         categories: ['facials'],
         q: 'Can facials help with acne or dark spots?',
-        a: 'Yes. We offer targeted acne and brightening facials, plus HydraDiamond\u00ae and microneedling options that can support smoother texture and more even tone over a series of treatments.',
+        a: 'Yes. The Velvet Glow Treatment and our HydroDiamond\u00ae tiers target concerns like breakouts and uneven tone, and microneedling can support smoother texture and more even tone over a series of treatments.',
       },
       {
         categories: ['facials'],
@@ -222,12 +217,12 @@ export default function FAQ() {
       {
         categories: ['facials'],
         q: 'What\u2019s the difference between your facials?',
-        a: 'Our Deluxe facial is the most common starting point: double cleanse, exfoliation, light extractions, moisturizer, sunscreen, and toner. Acne and Anti-Aging facials follow the same steps using products targeted for those concerns. Dermaplaning includes a double cleanse and dermaplaning treatment to remove dead skin, followed by a mask, moisturizer, sunscreen, and toner. Goddess combines Deluxe + Dermaplaning + a mask for the most comprehensive option.',
+        a: 'Our Signature Glow facials come in three tiers. The Sunlit Glow (60 min) includes a double cleanse, custom enzyme, targeted extractions, and a treatment mask. The Velvet Glow (75 min) adds dermaplaning and a targeted mask for concerns like acne, pigment, or aging. The Golden Hour (90 min) is our most complete ritual, with advanced protocols and an extended facial, neck, and shoulder massage. Our HydroDiamond\u00ae facials follow the same 60/75/90-minute pattern: the Glass Skin Express, the Velvet Infusion, and the Lit From Within.',
       },
       {
         categories: ['facials'],
         q: 'How long does a facial take, and how do I know which one to pick?',
-        a: 'Facials range from about 1\u20132 hours depending on which one you choose. All first-time clients receive an in-depth consultation to help find the right fit for your skin and goals.',
+        a: 'Our tiered facials run 60, 75, or 90 minutes, and the HydroDiamond\u00ae Glow Express takes about 30 minutes. All first-time clients receive an in-depth consultation to help find the right fit for your skin and goals.',
       },
       {
         categories: ['facials'],
@@ -244,7 +239,7 @@ export default function FAQ() {
       {
         categories: ['injectables'],
         q: 'How do I book with Teresa?',
-        a: 'Book directly through TAI Longevity & Aesthetics at tailongevityaesthetics.janeapp.com. This is separate from T Beauty Lounge\u2019s booking system.',
+        a: 'Book directly through TAI Longevity & Aesthetics at tailongevityaesthetics.janeapp.com, or call (602) 699-4208. This is separate from T Beauty Lounge\u2019s booking system.',
       },
       {
         categories: ['injectables'],
@@ -259,7 +254,7 @@ export default function FAQ() {
       {
         categories: ['injectables'],
         q: 'How do I get pricing, book a consultation, or ask clinical questions?',
-        a: 'Since Teresa operates independently, all pricing, consultations, and clinical questions go directly through TAI Longevity & Aesthetics\u2014visit her site at tailongevity.com or book at tailongevityaesthetics.janeapp.com.',
+        a: 'Since Teresa operates independently, all pricing, consultations, and clinical questions go directly through TAI Longevity & Aesthetics\u2014visit her site at tailongevity.com, book at tailongevityaesthetics.janeapp.com, or call (602) 699-4208.',
       },
 
       // ---------------- LASER ----------------
@@ -323,7 +318,7 @@ export default function FAQ() {
       {
         categories: ['pmu'],
         q: 'What areas can you do PMU on?',
-        a: 'Powder/Ombr\u00e9 Brows, Eyeliner (top, bottom, or both), and Lip Blush, plus correction services and tattoo removal for both face and body.',
+        a: 'Powder/Ombr\u00e9 Brows, Eyeliner (top, bottom, or both), and Lip Blush, plus tattoo removal for both face and body.',
       },
       {
         categories: ['pmu'],
@@ -419,10 +414,9 @@ export default function FAQ() {
     () => [
       'Do I need a card on file to book?',
       'What is your cancellation policy?',
-      'Do you offer financing?',
       'Do you allow children or additional guests?',
       'Can I request a specific provider?',
-      'How often do I need a fill?',
+      'How often do I need fills?',
     ],
     [],
   );
@@ -499,7 +493,7 @@ export default function FAQ() {
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search (ex: fills, downtime, cancellation, financing)..."
+                  placeholder="Search (ex: fills, downtime, cancellation, memberships)..."
                   className="w-full max-w-xl rounded-2xl bg-white/90 px-4 py-3 text-sm text-brand-forest outline-none ring-1 ring-black/10 focus:ring-2 focus:ring-brand-forest/40"
                 />
               </div>

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import BlackFridaySpecials from "../sections/BlackFridaySpecials";
 
 const PROMOS_LIVE = true;
 
@@ -36,15 +37,6 @@ const MONTHLY_PROMOS = [
     mood: "Soft, polished skin you’ll notice immediately.",
     note:
       "Two appointments required. Second visit scheduled 4–6 weeks out. Full payment for both services is due at the first visit. Cannot be combined.",
-  },
-  {
-    month: "January",
-    eyebrow: "NEW YEAR, NEW SMILE",
-    kicker: "Same-day confidence",
-    title: "Teeth Whitening",
-    highlight: "40% OFF",
-    description: "A noticeably brighter smile with same-day results.",
-    mood: "The quickest glow-up you can book.",
   },
 
   /* =======================
@@ -157,15 +149,6 @@ const MONTHLY_PROMOS = [
     description: "Full, polished brows that frame the face beautifully.",
     mood: "Fluffy, lifted, and instantly styled.",
   },
-  {
-    month: "May",
-    eyebrow: "GET GLOWING FOR SUMMER",
-    kicker: "Brighten up for photos",
-    title: "Teeth Whitening",
-    highlight: "40% OFF",
-    description: "A bright smile that elevates every summer look.",
-    mood: "One visit, instant impact.",
-  },
 
   /* =======================
      JUNE — Subtle Enhancement
@@ -205,15 +188,6 @@ const MONTHLY_PROMOS = [
     highlight: "$100",
     description: "Structured brows that stay in place — even in summer heat.",
     mood: "Always polished. No effort.",
-  },
-  {
-    month: "June",
-    eyebrow: "GET GLOWING FOR SUMMER",
-    kicker: "Brighten up for photos",
-    title: "Teeth Whitening",
-    highlight: "40% OFF",
-    description: "Noticeably brighter smiles for summer events and photos.",
-    mood: "Instant confidence, instantly.",
   },
 
   /* =======================
@@ -598,6 +572,9 @@ export default function Promos() {
   return (
     <div className="py-8">
       <PromosHero />
+
+      {/* BLACK FRIDAY (auto-hides after end date) */}
+      <BlackFridaySpecials />
 
       <section className="mx-auto w-[92%] max-w-7xl mt-10">
         <p className="text-[11px] tracking-[0.25em] text-brand-forest/60">
