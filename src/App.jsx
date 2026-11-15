@@ -41,7 +41,6 @@ function MainRoutes() {
       <Route path="/services/pmu" element={<PMU />} />
       <Route path="/services/headspa" element={<JapaneseHeadSpa />} />
       <Route path="/tbeautyacademy" element={<Academy />} />
-      <Route path="/cherry" element={<Cherry />} />
       <Route path="/policy" element={<Policy />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/promo" element={<Promo />} />
