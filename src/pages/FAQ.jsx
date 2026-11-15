@@ -1,13 +1,14 @@
-import { useMemo, useState, useEffect, useRef } from 'react';
 
+import { useMemo, useState, useEffect, useRef } from 'react';
+ 
 /* --- Keep all your existing FAQ code below --- */
 function AccordionItem({ q, a, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
-
+ 
   useEffect(() => {
     setOpen(defaultOpen);
   }, [defaultOpen]);
-
+ 
   return (
     <div className="rounded-2xl bg-white/80 ring-1 ring-black/5 shadow-sm overflow-hidden">
       <button
@@ -28,7 +29,7 @@ function AccordionItem({ q, a, defaultOpen = false }) {
           +
         </span>
       </button>
-
+ 
       <div
         className={`grid transition-all duration-300 ${
           open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
@@ -41,7 +42,7 @@ function AccordionItem({ q, a, defaultOpen = false }) {
     </div>
   );
 }
-
+ 
 function CategoryCard({ title, count, active, onClick }) {
   return (
     <button
@@ -59,14 +60,14 @@ function CategoryCard({ title, count, active, onClick }) {
         }`}
         aria-hidden="true"
       />
-
+ 
       <div className="min-w-0">
         <h3 className="truncate text-sm font-semibold">{title}</h3>
         <p className={`mt-0.5 text-[11px] ${active ? 'text-white/75' : 'text-brand-forest/60'}`}>
           {count} question{count === 1 ? '' : 's'}
         </p>
       </div>
-
+ 
       <span
         className={`inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs transition ${
           active
@@ -80,7 +81,7 @@ function CategoryCard({ title, count, active, onClick }) {
     </button>
   );
 }
-
+ 
 export default function FAQ() {
   const SECTIONS = useMemo(
     () => [
@@ -96,7 +97,7 @@ export default function FAQ() {
     ],
     [],
   );
-
+ 
   const FAQS = useMemo(
     () => [
       // ---------------- OVERALL ----------------
@@ -140,7 +141,7 @@ export default function FAQ() {
         q: 'Is T Beauty Lounge a medical spa? What about injectables?',
         a: 'Yes, T Beauty Lounge is a medical spa. Injectables and functional medicine are available at our Goodyear location through Teresa Le, MSN, FNP-C of TAI Longevity & Aesthetics, an independent nurse practitioner practice.',
       },
-
+ 
       // ---------------- LASHES ----------------
       {
         categories: ['lashes'],
@@ -192,7 +193,7 @@ export default function FAQ() {
         q: 'What if I\u2019m sensitive to lash adhesive?',
         a: 'We offer a patch test with our regular lash glue, or a sensitive glue alternative. Sensitive glue is gentler but sheds noticeably sooner than our regular glue. All lash work is backed by a 5-day guarantee\u2014if you notice irritation or sensitivity, reach out right away and we\u2019ll get you in to assess it as soon as possible.',
       },
-
+ 
       // ---------------- FACIALS ----------------
       {
         categories: ['facials'],
@@ -207,7 +208,7 @@ export default function FAQ() {
       {
         categories: ['facials'],
         q: 'Can facials help with acne or dark spots?',
-        a: 'Yes. The Velvet Glow Treatment and our HydroDiamond\u00ae tiers target concerns like breakouts and uneven tone, and microneedling can support smoother texture and more even tone over a series of treatments.',
+        a: 'Yes. We offer targeted acne and brightening facials, plus HydraDiamond\u00ae and microneedling options that can support smoother texture and more even tone over a series of treatments.',
       },
       {
         categories: ['facials'],
@@ -217,19 +218,19 @@ export default function FAQ() {
       {
         categories: ['facials'],
         q: 'What\u2019s the difference between your facials?',
-        a: 'Our Signature Glow facials come in three tiers. The Sunlit Glow (60 min) includes a double cleanse, custom enzyme, targeted extractions, and a treatment mask. The Velvet Glow (75 min) adds dermaplaning and a targeted mask for concerns like acne, pigment, or aging. The Golden Hour (90 min) is our most complete ritual, with advanced protocols and an extended facial, neck, and shoulder massage. Our HydroDiamond\u00ae facials follow the same 60/75/90-minute pattern: the Glass Skin Express, the Velvet Infusion, and the Lit From Within.',
+        a: 'Our Deluxe facial is the most common starting point: double cleanse, exfoliation, light extractions, moisturizer, sunscreen, and toner. Acne and Anti-Aging facials follow the same steps using products targeted for those concerns. Dermaplaning includes a double cleanse and dermaplaning treatment to remove dead skin, followed by a mask, moisturizer, sunscreen, and toner. Goddess combines Deluxe + Dermaplaning + a mask for the most comprehensive option.',
       },
       {
         categories: ['facials'],
         q: 'How long does a facial take, and how do I know which one to pick?',
-        a: 'Our tiered facials run 60, 75, or 90 minutes, and the HydroDiamond\u00ae Glow Express takes about 30 minutes. All first-time clients receive an in-depth consultation to help find the right fit for your skin and goals.',
+        a: 'Facials range from about 1\u20132 hours depending on which one you choose. All first-time clients receive an in-depth consultation to help find the right fit for your skin and goals.',
       },
       {
         categories: ['facials'],
         q: 'How often should I get a facial?',
         a: 'Every 4\u20136 weeks is ideal to align with your skin\u2019s natural renewal cycle.',
       },
-
+ 
       // ---------------- INJECTABLES & FUNCTIONAL MEDICINE ----------------
       {
         categories: ['injectables'],
@@ -256,7 +257,7 @@ export default function FAQ() {
         q: 'How do I get pricing, book a consultation, or ask clinical questions?',
         a: 'Since Teresa operates independently, all pricing, consultations, and clinical questions go directly through TAI Longevity & Aesthetics\u2014visit her site at tailongevity.com, book at tailongevityaesthetics.janeapp.com, or call (602) 699-4208.',
       },
-
+ 
       // ---------------- LASER ----------------
       {
         categories: ['laser'],
@@ -293,7 +294,7 @@ export default function FAQ() {
         q: 'Do I need to avoid the sun before or after treatment?',
         a: 'Yes\u2014avoid sun exposure to the treatment area for 2\u20134 weeks both before and after your session.',
       },
-
+ 
       // ---------------- PMU ----------------
       {
         categories: ['pmu'],
@@ -318,14 +319,14 @@ export default function FAQ() {
       {
         categories: ['pmu'],
         q: 'What areas can you do PMU on?',
-        a: 'Powder/Ombr\u00e9 Brows, Eyeliner (top, bottom, or both), and Lip Blush, plus tattoo removal for both face and body.',
+        a: 'Powder/Ombr\u00e9 Brows, Eyeliner (top, bottom, or both), and Lip Blush, plus correction services and tattoo removal for both face and body.',
       },
       {
         categories: ['pmu'],
         q: 'Is PMU the same as a regular tattoo?',
         a: 'No\u2014PMU uses different pigments and techniques designed to fade gradually over 1\u20133+ years, rather than being permanent like body tattoos, and it\u2019s applied with a focus on natural, cosmetic enhancement.',
       },
-
+ 
       // ---------------- WAX + TINT ----------------
       {
         categories: ['waxtint'],
@@ -352,7 +353,7 @@ export default function FAQ() {
         q: 'What\u2019s the difference between a brow tint and brow lamination?',
         a: 'A tint adds color to the brow hairs for a fuller look. Lamination reshapes and sets the hairs upward and into place for a fuller, more uniform brow shape\u2014they\u2019re often done together.',
       },
-
+ 
       // ---------------- FIBROBLAST ----------------
       {
         categories: ['fibroblast'],
@@ -379,7 +380,7 @@ export default function FAQ() {
         q: 'Is this the same as a facelift?',
         a: 'No\u2014Fibroblast is a non-surgical, targeted treatment for skin laxity and texture in specific areas, not a surgical procedure. Results and downtime are different from surgical options.',
       },
-
+ 
       // ---------------- JAPANESE HEAD SPA ----------------
       {
         categories: ['headspa'],
@@ -409,7 +410,7 @@ export default function FAQ() {
     ],
     [],
   );
-
+ 
   const MOST_ASKED = useMemo(
     () => [
       'Do I need a card on file to book?',
@@ -420,11 +421,11 @@ export default function FAQ() {
     ],
     [],
   );
-
+ 
   const [query, setQuery] = useState('');
   const [selectedKey, setSelectedKey] = useState(null);
   const resultsRef = useRef(null);
-
+ 
   const selectCategory = (key) => {
     setSelectedKey(key);
     // Auto-scroll to results just below the category grid
@@ -432,13 +433,13 @@ export default function FAQ() {
       resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   };
-
+ 
   const q = query.trim().toLowerCase();
   const isMatch = (item) => {
     if (!q) return true;
     return item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q);
   };
-
+ 
   const counts = useMemo(() => {
     const map = new Map();
     SECTIONS.forEach((s) => map.set(s.key, 0));
@@ -447,22 +448,22 @@ export default function FAQ() {
     );
     return map;
   }, [SECTIONS, FAQS]);
-
+ 
   const mostAskedItems = useMemo(() => {
     const set = new Set(MOST_ASKED);
     return FAQS.filter((f) => set.has(f.q) && isMatch(f));
   }, [FAQS, MOST_ASKED, q]);
-
+ 
   const selectedSection = useMemo(() => {
     if (!selectedKey) return null;
     return SECTIONS.find((s) => s.key === selectedKey) || null;
   }, [SECTIONS, selectedKey]);
-
+ 
   const selectedItems = useMemo(() => {
     if (!selectedKey) return [];
     return FAQS.filter((f) => f.categories.includes(selectedKey) && isMatch(f));
   }, [FAQS, selectedKey, q]);
-
+ 
   return (
     <div className="py-8">
       {/* WIDE HERO — matches Lashes/Services/etc. hero convention */}
@@ -475,7 +476,7 @@ export default function FAQ() {
             loading="lazy"
           />
           <div className="absolute inset-0 bg-brand-cream/75" />
-
+ 
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-11/12 max-w-3xl">
               <p className="text-sm tracking-[0.25em] text-brand-forest/70">
@@ -488,7 +489,7 @@ export default function FAQ() {
                 Choose a service category, or start with the most common
                 questions.
               </p>
-
+ 
               <div className="mt-6">
                 <input
                   value={query}
@@ -501,7 +502,7 @@ export default function FAQ() {
           </div>
         </div>
       </section>
-
+ 
       {/* WIDER CONTENT */}
       <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
         {/* Browse by Service — compact chips */}
@@ -510,7 +511,7 @@ export default function FAQ() {
             <h2 className="text-xl font-semibold text-brand-forest">
               Browse by Service
             </h2>
-
+ 
             {selectedKey ? (
               <button
                 type="button"
@@ -521,7 +522,7 @@ export default function FAQ() {
               </button>
             ) : null}
           </div>
-
+ 
           <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {SECTIONS.map((s) => (
               <CategoryCard
@@ -534,7 +535,7 @@ export default function FAQ() {
             ))}
           </div>
         </section>
-
+ 
         <div ref={resultsRef} className="scroll-mt-24">
           {selectedKey && (
             <section>
@@ -546,7 +547,7 @@ export default function FAQ() {
                   {selectedItems.length} result{selectedItems.length === 1 ? '' : 's'}
                 </span>
               </div>
-
+ 
               <div className="mt-4 space-y-3">
                 {selectedItems.length ? (
                   selectedItems.map((item) => (
@@ -567,7 +568,7 @@ export default function FAQ() {
               </div>
             </section>
           )}
-
+ 
           {!selectedKey && (
             <section>
               <div className="flex items-end justify-between gap-4">
@@ -578,7 +579,7 @@ export default function FAQ() {
                   {mostAskedItems.length} result{mostAskedItems.length === 1 ? '' : 's'}
                 </span>
               </div>
-
+ 
               <div className="mt-4 space-y-3">
                 {mostAskedItems.length ? (
                   mostAskedItems.map((item) => (
@@ -600,7 +601,7 @@ export default function FAQ() {
             </section>
           )}
         </div>
-
+ 
         <div className="rounded-2xl bg-white/80 p-6 md:p-8 ring-1 ring-black/5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 className="text-lg font-semibold text-brand-forest">
@@ -611,7 +612,7 @@ export default function FAQ() {
               send us a message.
             </p>
           </div>
-
+ 
           <div className="flex gap-3">
             <a
               href="/contact"
@@ -631,3 +632,4 @@ export default function FAQ() {
     </div>
   );
 }
+ 
