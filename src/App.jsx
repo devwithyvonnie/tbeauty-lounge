@@ -18,7 +18,6 @@ import PMU from './pages/services/PMU';
 import Fibroblast from './pages/services/Fibroblast';
 import Memberships from './pages/Memberships';
 import Academy from './pages/TBeautyAcademy';
-import Cherry from './pages/Cherry';
 import Policy from './pages/Policy';
 import FAQ from './pages/FAQ';
 import Promo from './pages/Promo';
