@@ -4,6 +4,7 @@ import MiniFAQ from '../../components/MiniFAQ';
 const LASH_SETS = [
   {
     name: 'Classic',
+    details: ['1 extension per natural lash', 'Lightest, most natural look'],
     tagline: 'Soft, natural enhancement.',
     vibe: ['Natural', 'Everyday'],
     prices: { full: 130, fill2: 65, fill3: 80 },
@@ -11,12 +12,14 @@ const LASH_SETS = [
   },
   {
     name: 'Classic Hybrid',
-    tagline: 'A little extra fullness with soft texture.',
+    details: ['1 extension per natural lash', 'Two lengths for soft texture'],
+    tagline: 'Classic lashes in two lengths for soft, natural texture.',
     vibe: ['Natural+', 'Date Night'],
     prices: { full: 140, fill2: 70, fill3: 85 },
   },
   {
     name: 'Volume',
+    details: ['Lightweight fans on each lash', 'Fuller than classic'],
     tagline: 'Fluffy, full lash line with dimension.',
     vibe: ['Full', 'Fluffy'],
     prices: { full: 140, fill2: 70, fill3: 85 },
@@ -24,18 +27,21 @@ const LASH_SETS = [
   },
   {
     name: 'Volume Hybrid',
+    details: ['Classic + volume mix', 'Textured fullness'],
     tagline: 'Bold fullness with a wispy finish.',
     vibe: ['Glam', 'Photo Ready'],
     prices: { full: 160, fill2: 80, fill3: 95 },
   },
   {
     name: 'Extra Volume',
+    details: ['Denser fans', 'Fuller than volume'],
     tagline: 'Bigger, denser, ultra-fluffy.',
     vibe: ['Full Glam'],
     prices: { full: 155, fill2: 77, fill3: 92 },
   },
   {
     name: 'Mega Volume',
+    details: ['Densest fans we offer', 'Maximum fullness'],
     tagline: 'Maximum density and drama.',
     vibe: ['Ultra Glam'],
     prices: { full: 170, fill2: 90, fill3: 110 },
@@ -43,6 +49,7 @@ const LASH_SETS = [
   {
     id: 'wispy-volume',
     name: 'Wispy Volume Lashes',
+    details: ['Volume base with wispy spikes', 'Textured, airy finish'],
     tagline:
       'Soft, textured volume with wispy peaks for a dramatic yet airy finish.',
     vibe: ['Wispy', 'Ultra Glam'],
@@ -131,7 +138,7 @@ export default function LashesPage() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-brand-forest/85">
-                Classic, Hybrid, Volume, Extra Volume, and Mega Volume sets
+                Classic, Hybrid, Volume, Extra Volume, Mega Volume, and Wispy Volume sets
                 customized to your eye shape, natural lashes, and desired level
                 of glam.
               </p>
@@ -258,17 +265,49 @@ export default function LashesPage() {
                       </dl>
                     </div>
 
-                    <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-brand-forest/75">
-                      <span className="rounded-full bg-brand-cream px-2 py-1">
-                        Most popular fills: 2–3 weeks
-                      </span>
-                      <span className="rounded-full bg-brand-cream px-2 py-1">
-                        Customized mapping included
-                      </span>
-                    </div>
+                    {set.details?.length ? (
+                      <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-brand-forest/75">
+                        {set.details.map((d) => (
+                          <span
+                            key={d}
+                            className="rounded-full bg-brand-cream px-2 py-1"
+                          >
+                            {d}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 </article>
               ))}
+            </div>
+
+            <div className="mt-6 flex items-start gap-3 rounded-2xl bg-white/80 p-5 ring-1 ring-black/5">
+              <span
+                className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-mint/30 text-sm text-brand-forest"
+                aria-hidden="true"
+              >
+                i
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-brand-forest">
+                  Fixes, touch-ups &amp; fills
+                </p>
+                <ul className="mt-2 space-y-1 text-sm text-brand-forest/80 max-w-3xl">
+                  <li>
+                    <span className="font-medium text-brand-forest">1–5 days</span>{" "}
+                    after your lash appointment: lash fix
+                  </li>
+                  <li>
+                    <span className="font-medium text-brand-forest">5–7 days</span>{" "}
+                    after your lash appointment: touch-up
+                  </li>
+                  <li>
+                    <span className="font-medium text-brand-forest">After 7 days</span>
+                    : booked as a 2-week fill
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         ) : null}

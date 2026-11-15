@@ -114,7 +114,7 @@ const TIERS = [
     discount: '10% off all services & products',
     bestFor: 'Great for guests who visit monthly and want steady savings.',
     perks: [
-      '½ off Lash Touch-Ups',
+      '½ off Lash Touch-Ups (5–7 days after your lash appointment)',
       '30% off Japanese Head Spa or Facial treatment + products during your birthday month',
     ],
     note: 'Monthly credit banks up to 6 months if unused.',
@@ -128,7 +128,7 @@ const TIERS = [
     bestFor: 'Our most popular tier — built for regular lash and facial routines.',
     popular: true,
     perks: [
-      '½ off Lash Touch-Ups',
+      '½ off Lash Touch-Ups (5–7 days after your lash appointment)',
       '40% off Japanese Head Spa or Facial treatment + products during your birthday month',
     ],
     note: 'Monthly credit banks up to 6 months if unused.',
@@ -141,7 +141,7 @@ const TIERS = [
     discount: '15% off all services & products',
     bestFor: 'For guests who want maximum savings across every visit.',
     perks: [
-      '½ off Lash Touch-Ups',
+      '½ off Lash Touch-Ups (5–7 days after your lash appointment)',
       '50% off Japanese Head Spa or Facial treatment + products during your birthday month',
     ],
     note: 'Monthly credit banks up to 6 months if unused.',
