@@ -5,6 +5,8 @@ import FeaturedServiceTabs from '../sections/FeaturedServiceTabs';
 import MembershipTiers from '../sections/MembershipTiers';
 import PodiumWidget from "../components/WebchatWidget";
 import PodiumPopup from '../components/Popup';
+import UpdatesNotice from '../sections/UpdatesNotice';
+import BlackFridayBanner from '../sections/BlackFridayBanner';
 
 function SectionHeader({ title, desc }) {
   return (
@@ -125,6 +127,12 @@ export default function Home() {
 
       {/* CONSTRAINED CONTENT */}
       <main className="mx-auto w-[92%] max-w-7xl space-y-8 pt-6 pb-8 md:pt-8 md:pb-10">
+        {/* BLACK FRIDAY BANNER (auto-hides after end date) */}
+        <BlackFridayBanner />
+
+        {/* UPDATES NOTICE (pricing + booking/phone transition) */}
+        <UpdatesNotice />
+
         {/* INTRO */}
         <IntroCards />
 
