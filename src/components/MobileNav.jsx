@@ -158,9 +158,6 @@ export default function MobileNav() {
                   <RowLink to="/tbeautyacademy" onClick={() => setOpen(false)}>
                     T Beauty Academy
                   </RowLink>
-                  <RowLink to="/cherry" onClick={() => setOpen(false)}>
-                    Payment Plan with Cherry 🍒
-                  </RowLink>
                 </div>
               </div>
             </div>

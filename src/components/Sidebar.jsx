@@ -22,7 +22,6 @@ export const NAV_ITEMS = [
   { to: "/tbeautyacademy", label: "T Beauty Academy" },
   { to: "/faq", label: "FAQ" },
   { to: "/promo", label: "Promos", badge: "New" },
-  { to: "/cherry", label: "Payment Plan with Cherry 🍒" },
   { to: "/policy", label: "Policy" },
   { to: "/contactus", label: "Contact Us" },
 ];
@@ -159,7 +158,6 @@ export default function Sidebar() {
             </span>
           </Link>
 
-          <NavLink to="/cherry">Payment Plan with Cherry 🍒</NavLink>
           <NavLink to="/policy">Policy</NavLink>
           <NavLink to="/contactus">Contact Us</NavLink>
         </nav>
