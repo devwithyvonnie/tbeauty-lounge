@@ -3,8 +3,6 @@ import SocialProof from '../sections/SocialProof';
 import IntroCards from '../sections/IntroCard';
 import FeaturedServiceTabs from '../sections/FeaturedServiceTabs';
 import MembershipTiers from '../sections/MembershipTiers';
-import PodiumWidget from "../components/WebchatWidget";
-import PodiumPopup from '../components/Popup';
 import UpdatesNotice from '../sections/UpdatesNotice';
 import BlackFridayBanner from '../sections/BlackFridayBanner';
 
@@ -98,7 +96,7 @@ function Hero() {
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               {/* External booking link */}
               <a
-                href="https://www.vagaro.com/tbeautylounge/book-now"
+                href="https://booking.mangomint.com/532777"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full bg-brand-gold px-7 py-3 text-white font-semibold shadow-sm hover:brightness-95"
@@ -116,9 +114,6 @@ function Hero() {
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
-      <PodiumWidget />
-      <PodiumPopup />
-      
       {/* FULL-WIDTH HERO */}
       <Hero />
 

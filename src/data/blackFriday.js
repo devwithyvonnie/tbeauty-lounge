@@ -22,7 +22,7 @@ export const TBL_PHONE_DISPLAY = "(623) 213-8996";
 export const TBL_PHONE_TEL = "tel:+16232138996";
 export const TBL_SMS = "sms:+16232138996";
 export const TBL_GIFT_CARD_URL =
-  "https://www.vagaro.com/tbeautylounge/gift-certificates";
+  "https://clients.mangomint.com/gift-cards/tbeautylounge";
 
 /* ---------- T Beauty Lounge ---------- */
 

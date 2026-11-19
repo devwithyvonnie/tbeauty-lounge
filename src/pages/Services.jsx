@@ -1,4 +1,3 @@
-
 const SERVICE_CATS = [
   {
     id: 'lashes',
@@ -12,7 +11,7 @@ const SERVICE_CATS = [
       'Sensitive-safe adhesive options',
     ],
     image: '/images/services/eyelash.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/lashes',
   },
   {
@@ -20,14 +19,14 @@ const SERVICE_CATS = [
     eyebrow: 'FACIALS & SKIN',
     title: 'Result-driven, calming care',
     blurb:
-      'Signature Glow and HydroDiamond® facials in 60, 75, and 90-minute tiers, plus microneedling, built for your skin’s current needs.',
+      'Custom facials, dermaplane, enzyme or light peels, LED therapy and more—built for your skin’s current needs.',
     bullets: [
-      'Signature Glow tiers for every skin type',
-      'HydroDiamond® resurfacing & infusion',
-      'Microneedling & advanced collagen',
+      'Custom facials for every skin type',
+      'Dermaplaning & specialty add-ons',
+      'LED Light Therapy & targeted masks',
     ],
     image: '/images/services/facial.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/facials',
   },
   {
@@ -42,7 +41,7 @@ const SERVICE_CATS = [
       'Great add-on to lashes & facials',
     ],
     image: '/images/services/wax-tint.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/waxtint',
   },
   {
@@ -57,7 +56,7 @@ const SERVICE_CATS = [
       'Aftercare is key for best results',
     ],
     image: '/images/services/fibroblast.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/fibroblast',
   },
   {
@@ -88,7 +87,7 @@ const SERVICE_CATS = [
       'Shave 24 hours prior; no waxing',
     ],
     image: '/images/services/laser.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/laser',
   },
   {
@@ -103,7 +102,7 @@ const SERVICE_CATS = [
       'Lip Blush with follow-up',
     ],
     image: '/images/services/permanentmakeup.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/pmu',
   },
   {
@@ -118,11 +117,11 @@ const SERVICE_CATS = [
       'Add-on friendly with facials',
     ],
     image: '/images/services/headspa.png',
-    bookHref: 'https://www.vagaro.com/tbeautylounge/book-now',
+    bookHref: 'https://booking.mangomint.com/532777',
     menuHref: '/services/headspa',
   },
 ];
- 
+
 function Eyebrow({ children }) {
   return (
     <p className="text-[11px] tracking-[0.22em] text-brand-forest/60">
@@ -130,7 +129,7 @@ function Eyebrow({ children }) {
     </p>
   );
 }
- 
+
 function ServiceCard({ s }) {
   return (
     <article
@@ -146,7 +145,7 @@ function ServiceCard({ s }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
       </div>
- 
+
       <div className="p-5">
         <Eyebrow>{s.eyebrow}</Eyebrow>
         <h2 className="mt-2 text-lg md:text-xl font-semibold text-brand-forest">
@@ -155,7 +154,7 @@ function ServiceCard({ s }) {
         <p className="mt-2 text-sm text-brand-forest/80 leading-relaxed">
           {s.blurb}
         </p>
- 
+
         {!!s.bullets?.length && (
           <ul className="mt-3 space-y-2 text-sm text-brand-forest/85">
             {s.bullets.map((li) => (
@@ -166,7 +165,7 @@ function ServiceCard({ s }) {
             ))}
           </ul>
         )}
- 
+
         <div className="mt-4 flex flex-wrap gap-3">
           <a
             href={s.bookHref}
@@ -186,7 +185,7 @@ function ServiceCard({ s }) {
     </article>
   );
 }
- 
+
 export default function Services() {
   return (
     <div className="py-8">
@@ -201,25 +200,25 @@ export default function Services() {
           />
           <div className="absolute inset-0 bg-brand-cream/55" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/15" />
- 
+
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-[92%] max-w-3xl">
               <p className="text-[11px] tracking-[0.25em] text-brand-forest/70">
                 T BEAUTY LOUNGE • GOODYEAR, AZ
               </p>
- 
+
               <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-5xl">
                 Services designed around you
               </h1>
- 
+
               <p className="mt-4 max-w-2xl text-brand-forest/85">
                 Browse categories at a glance, then view the full menu and
                 pricing.
               </p>
- 
+
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://www.vagaro.com/tbeautylounge/book-now"
+                  href="https://booking.mangomint.com/532777"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full bg-brand-gold px-7 py-3 text-white font-semibold shadow-sm hover:brightness-95"
@@ -237,7 +236,7 @@ export default function Services() {
           </div>
         </div>
       </section>
- 
+
       {/* CARDS GRID */}
       <main className="mx-auto w-[92%] max-w-7xl py-6 md:py-8">
         <div className="grid gap-4 md:grid-cols-2">
@@ -249,4 +248,3 @@ export default function Services() {
     </div>
   );
 }
- 

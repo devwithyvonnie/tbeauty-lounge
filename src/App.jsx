@@ -5,6 +5,7 @@ import './index.css';
 import Sidebar from './components/Sidebar';
 import MobileNav from './components/MobileNav';
 import Footer from './components/Footer';
+import WebchatWidget from './components/WebchatWidget';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -54,6 +55,7 @@ function MainRoutes() {
 export default function App() {
   return (
       <div className="w-full bg-bg text-text">
+        <WebchatWidget />
         <MobileNav />
       <div className="w-full md:px-6 md:py-6">
         <div className="md:grid md:grid-cols-[260px_minmax(0,1fr)] md:gap-6">

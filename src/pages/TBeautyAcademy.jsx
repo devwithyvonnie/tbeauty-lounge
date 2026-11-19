@@ -1,7 +1,6 @@
-
 // src/pages/TBeautyAcademy.jsx
 import MiniFAQAccordion from '../components/MiniFAQ';
- 
+
 /* =========================
    DATA
 ========================= */
@@ -13,7 +12,7 @@ const CLASS_DATES = [
   { label: 'May 4–7, 2026', range: '5/4–5/7' },
   { label: 'Jun 1–4, 2026', range: '6/1–6/4' },
 ];
- 
+
 const SCHEDULE = [
   {
     day: 'Day 1',
@@ -119,7 +118,7 @@ const SCHEDULE = [
     ],
   },
 ];
- 
+
 const LEARNING_OUTCOMES = [
   {
     title: 'Core Lash Technique',
@@ -176,7 +175,7 @@ const LEARNING_OUTCOMES = [
     ],
   },
 ];
- 
+
 /* =========================
    SMALL UI HELPERS (match your other pages)
 ========================= */
@@ -201,7 +200,7 @@ function SectionHead({ eyebrow, title, desc }) {
     </div>
   );
 }
- 
+
 function Card({ children, accent = 'mint-gold' }) {
   const accentBar =
     accent === 'gold-mint'
@@ -209,7 +208,7 @@ function Card({ children, accent = 'mint-gold' }) {
       : accent === 'mint-gold'
         ? 'from-brand-mint via-brand-gold to-brand-mint'
         : 'from-brand-mint via-brand-gold to-brand-mint';
- 
+
   return (
     <article className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
       <div className={`h-1 bg-gradient-to-r ${accentBar}`} />
@@ -217,7 +216,7 @@ function Card({ children, accent = 'mint-gold' }) {
     </article>
   );
 }
- 
+
 function PillRow({ items }) {
   return (
     <div className="mt-4 flex flex-wrap gap-2 text-[11px] sm:text-xs">
@@ -232,7 +231,7 @@ function PillRow({ items }) {
     </div>
   );
 }
- 
+
 /* =========================
    ENHANCED SECTIONS
 ========================= */
@@ -263,7 +262,7 @@ function WhatYouLeaveWith() {
       desc: 'Questions after class? We’re here to help you refine technique.',
     },
   ];
- 
+
   return (
     <section className="mt-10">
       <SectionHead
@@ -271,7 +270,7 @@ function WhatYouLeaveWith() {
         title="What You’ll Leave With"
         desc="Not just a training—resources you’ll use immediately with real clients."
       />
- 
+
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         {items.map((it) => (
           <article
@@ -291,7 +290,7 @@ function WhatYouLeaveWith() {
     </section>
   );
 }
- 
+
 function EducatorsSection() {
   return (
     <section className="mt-10">
@@ -300,7 +299,7 @@ function EducatorsSection() {
         title="Meet Your Educators"
         desc="Hands-on guidance in a working med spa—focused on safe technique, retention, and real client workflow."
       />
- 
+
       <Card accent="gold-mint">
         <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] items-start">
           {/* Left */}
@@ -308,13 +307,13 @@ function EducatorsSection() {
             <h3 className="text-base md:text-lg font-semibold text-brand-forest">
               What makes this training different
             </h3>
- 
+
             <p className="mt-2 text-sm text-brand-forest/80 max-w-2xl">
               You won’t just practice—you’ll learn how to work like a
               professional: setup, consultation, mapping, application, aftercare
               scripting, and clean-up.
             </p>
- 
+
             <ul className="mt-4 space-y-2 text-sm text-brand-forest/85">
               <li>• Instructor-guided technique corrections in real time</li>
               <li>
@@ -324,12 +323,12 @@ function EducatorsSection() {
               <li>• Sanitation & safety standards emphasized every day</li>
               <li>• Live model support + troubleshooting throughout</li>
             </ul>
- 
+
             <p className="mt-4 text-xs text-brand-forest/65">
               Class size stays small so you receive personalized coaching.
             </p>
           </div>
- 
+
           {/* Right */}
           <div className="rounded-2xl bg-brand-cream/70 ring-1 ring-black/5 p-4">
             <p className="text-xs uppercase tracking-wide text-brand-forest/60">
@@ -338,7 +337,7 @@ function EducatorsSection() {
             <p className="mt-1 text-sm font-semibold text-brand-forest">
               Real working med spa
             </p>
- 
+
             <div className="mt-4 space-y-3">
               {[
                 { label: 'Guidance', value: '4–5 students only' },
@@ -356,9 +355,9 @@ function EducatorsSection() {
                 </div>
               ))}
             </div>
- 
+
             <div className="mt-4 h-px w-full bg-black/10" />
- 
+
             <p className="mt-3 text-xs text-brand-forest/70">
               Want to know who will be teaching your class? Contact us and we’ll
               share the current instructor lineup.
@@ -369,7 +368,7 @@ function EducatorsSection() {
     </section>
   );
 }
- 
+
 /* =========================
    PAGE
 ========================= */
@@ -386,23 +385,23 @@ function EducatorsSection() {
 //             loading="lazy"
 //           />
 //           <div className="absolute inset-0 bg-brand-cream/70" />
- 
+
 //           <div className="absolute inset-0 flex items-end sm:items-center">
 //             <div className="mx-auto w-11/12 max-w-3xl pb-6 sm:pb-0">
 //               <p className="text-sm tracking-[0.25em] text-brand-forest/70">
 //                 PROFESSIONAL TRAINING
 //               </p>
- 
+
 //               <h1 className="mt-2 text-3xl font-semibold leading-tight text-brand-forest sm:text-4xl md:text-5xl">
 //                 Lash Masterclass
 //               </h1>
- 
+
 //               <p className="mt-4 max-w-2xl text-brand-forest/85">
 //                 A 4-day immersive beginner lash training designed to build
 //                 confidence, technique, and professional standards - taught
 //                 inside a working med spa.
 //               </p>
- 
+
 //               {/* Pills row under hero (how your other pages do it) */}
 //               <PillRow
 //                 items={[
@@ -416,7 +415,7 @@ function EducatorsSection() {
 //           </div>
 //         </div>
 //       </section>
- 
+
 //       <main className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 pb-24 md:py-8 md:pb-0">
 //         {/* ===== OVERVIEW + CTA (same card language as other pages) ===== */}
 //         <section className="mt-8">
@@ -431,7 +430,7 @@ function EducatorsSection() {
 //                   application, eye mapping, retention, aftercare, sanitation &
 //                   safety standards, and Barbicide Certification preparation.
 //                 </p>
- 
+
 //                 <div className="mt-3 flex flex-wrap gap-2 text-xs">
 //                   {[
 //                     'Starter kit included',
@@ -448,7 +447,7 @@ function EducatorsSection() {
 //                   ))}
 //                 </div>
 //               </div>
- 
+
 //               <div className="shrink-0 md:text-right md:pl-6 md:border-l md:border-black/10">
 //                 <p className="text-2xl font-semibold text-brand-forest">
 //                   $2,100{' '}
@@ -462,7 +461,7 @@ function EducatorsSection() {
 //                 <p className="mt-1 text-xs text-brand-forest/70">
 //                   Balance due by 5:00 PM the Saturday before class
 //                 </p>
- 
+
 //                 <div className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-1">
 //                   <a
 //                     href="https://www.vagaro.com/tbeautylounge/classes"
@@ -486,7 +485,7 @@ function EducatorsSection() {
 //             </div>
 //           </Card>
 //         </section>
- 
+
 //         {/* ===== KIT PREVIEW (same card layout) ===== */}
 //         <section className="mt-10">
 //           <Card>
@@ -501,7 +500,7 @@ function EducatorsSection() {
 //                   />
 //                 </div>
 //               </div>
- 
+
 //               <div>
 //                 <h2 className="text-xl font-semibold text-brand-forest">
 //                   Starter Kit Included
@@ -510,14 +509,14 @@ function EducatorsSection() {
 //                   You’ll leave class with professional essentials so you can
 //                   continue practicing and start taking clients.
 //                 </p>
- 
+
 //                 <ul className="mt-3 space-y-2 text-sm text-brand-forest/85">
 //                   <li>• Tweezers + isolation tools</li>
 //                   <li>• Lashes + adhesive essentials</li>
 //                   <li>• Tapes, disposables & setup supplies</li>
 //                   <li>• Aftercare + cleansing guidance</li>
 //                 </ul>
- 
+
 //                 <p className="mt-3 text-xs text-brand-forest/65">
 //                   Kit contents may vary slightly based on availability.
 //                 </p>
@@ -525,10 +524,10 @@ function EducatorsSection() {
 //             </div>
 //           </Card>
 //         </section>
- 
+
 //         {/* ===== VALUE TAKEAWAYS ===== */}
 //         <WhatYouLeaveWith />
- 
+
 //         {/* ===== MINI GALLERY STRIP (match other pages: clean grid + caption) ===== */}
 //         {/* <section className="mt-10">
 //         <div className="grid gap-3 md:grid-cols-3">
@@ -558,13 +557,13 @@ function EducatorsSection() {
 //             </div>
 //           ))}
 //         </div>
- 
+
 //         <p className="mt-2 text-xs text-brand-forest/70">
 //           Photos shown are examples of training, kits, and student work at T
 //           Beauty Lounge.
 //         </p>
 //       </section> */}
- 
+
 //         {/* ===== WHAT YOU'LL LEARN (same as your “pizazz” section) ===== */}
 //         <section className="mt-10 relative overflow-hidden rounded-3xl ring-1 ring-black/5">
 //           <div className="absolute inset-0 opacity-[0.08] bg-[url('/images/academy/texture.png')] bg-cover bg-center" />
@@ -574,7 +573,7 @@ function EducatorsSection() {
 //               title="What You’ll Learn"
 //               desc="Technique + safety + real-world workflow—so you can confidently take paying clients after training."
 //             />
- 
+
 //             <div className="mt-4 grid gap-3 sm:gap-4 md:grid-cols-2">
 //               {LEARNING_OUTCOMES.map((card) => (
 //                 <article
@@ -591,7 +590,7 @@ function EducatorsSection() {
 //                         {card.badge}
 //                       </span>
 //                     </div>
- 
+
 //                     <div className="mt-3 flex flex-wrap gap-2">
 //                       {card.items.map((item) => (
 //                         <span
@@ -608,7 +607,7 @@ function EducatorsSection() {
 //             </div>
 //           </div>
 //         </section>
- 
+
 //         {/* ===== 4-DAY SCHEDULE (cards like your Service grids) ===== */}
 //         <section className="mt-10">
 //           <SectionHead
@@ -616,7 +615,7 @@ function EducatorsSection() {
 //             title="4-Day Schedule Breakdown"
 //             desc="Class runs approximately 8:30 AM – 4:30 PM each day. Timing may adjust slightly based on class flow."
 //           />
- 
+
 //           <div className="mt-4 grid gap-4 md:grid-cols-2">
 //             {SCHEDULE.map((d) => (
 //               <article
@@ -638,14 +637,14 @@ function EducatorsSection() {
 //                       8 hours
 //                     </span>
 //                   </div>
- 
+
 //                   <div className="mt-4 space-y-3">
 //                     {d.blocks.map((b) => {
 //                       const isBreak =
 //                         b.title.toLowerCase().includes('break') ||
 //                         b.title.toLowerCase().includes('lunch') ||
 //                         b.title.toLowerCase().includes('clean-up');
- 
+
 //                       return (
 //                         <div
 //                           key={b.time + b.title}
@@ -675,7 +674,7 @@ function EducatorsSection() {
 //             ))}
 //           </div>
 //         </section>
- 
+
 //         {/* ===== CLASS DATES (pill list like other pages) ===== */}
 //         <section className="mt-10">
 //           <SectionHead
@@ -683,7 +682,7 @@ function EducatorsSection() {
 //             title="Upcoming Class Dates"
 //             desc="Seats are limited to 4–5 students per class for personalized guidance."
 //           />
- 
+
 //           <div className="mt-4 flex flex-wrap gap-2 text-sm">
 //             {CLASS_DATES.map((d) => (
 //               <span
@@ -695,7 +694,7 @@ function EducatorsSection() {
 //             ))}
 //           </div>
 //         </section>
- 
+
 //         {/* ===== REQUIREMENTS & POLICIES (accordion matches site) ===== */}
 //         <MiniFAQAccordion
 //           title="Requirements & Policies"
@@ -722,10 +721,10 @@ function EducatorsSection() {
 //             },
 //           ]}
 //         />
- 
+
 //         {/* ===== INSTRUCTORS (cards) ===== */}
 //         <EducatorsSection />
- 
+
 //         {/* ===== STICKY CTA (Mobile) ===== */}
 //         <div className="fixed inset-x-0 bottom-0 z-40 bg-white/95 backdrop-blur border-t border-black/10 px-4 py-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:hidden">
 //           <div className="mx-auto flex max-w-md items-center justify-between gap-3">
@@ -735,7 +734,7 @@ function EducatorsSection() {
 //                 Reserve your seat
 //               </p>
 //             </div>
- 
+
 //             <div className="flex gap-2">
 //               <a
 //                 href="https://www.vagaro.com/tbeautylounge/classes"
@@ -752,7 +751,7 @@ function EducatorsSection() {
 //     </div>
 //   );
 // }
- 
+
 export default function TBeautyAcademy() {
   return (
     <div className="min-h-screen bg-brand-cream">
@@ -766,30 +765,30 @@ export default function TBeautyAcademy() {
           />
           <div className="absolute inset-0 bg-brand-cream/90 backdrop-blur-[2px]" />
         </div>
- 
+
         {/* Content */}
         <div className="relative mx-auto flex min-h-screen w-[92%] max-w-5xl flex-col items-center justify-center py-24 text-center">
           <p className="text-xs tracking-[0.35em] text-brand-forest/60">
             T BEAUTY LOUNGE ACADEMY
           </p>
- 
+
           <h1 className="mt-4 text-4xl font-semibold leading-tight text-brand-forest md:text-6xl">
             We’re Enhancing
             <br />
             the Learning Experience
           </h1>
- 
+
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-forest/80 md:text-lg">
             Our Lash Masterclass page is currently under maintenance while we
             refine and elevate the academy experience for future students.
           </p>
- 
+
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-forest/70">
             We’re updating curriculum details, student resources, training
             support, and enrollment information to create a more immersive and
             professional educational experience.
           </p>
- 
+
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
@@ -798,7 +797,7 @@ export default function TBeautyAcademy() {
             >
               Join the Interest List
             </a>
- 
+
             <a
               href="https://www.instagram.com/tbeautyacademy"
               target="_blank"
@@ -808,7 +807,7 @@ export default function TBeautyAcademy() {
               Follow for Updates
             </a>
           </div>
- 
+
           {/* Footer Note */}
           <p className="mt-10 text-xs text-brand-forest/50">
             Thank you for your patience while we prepare a more elevated academy
@@ -819,4 +818,3 @@ export default function TBeautyAcademy() {
     </div>
   );
 }
- 

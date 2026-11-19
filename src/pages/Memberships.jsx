@@ -761,7 +761,7 @@ function MembershipSavingsCalculator({ tiers }) {
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
-                href="https://www.vagaro.com/tbeautylounge/book-now"
+                href="https://booking.mangomint.com/532777"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-brand-forest px-6 py-3 text-center text-sm font-semibold text-white shadow-sm hover:brightness-110"

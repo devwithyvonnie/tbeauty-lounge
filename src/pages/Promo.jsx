@@ -388,6 +388,34 @@ const MONTHLY_PROMOS = [
   },
 ];
 
+const ONGOING_PROMOS = [
+  {
+    month: "Ongoing",
+    eyebrow: "ONGOING FAVORITE",
+    kicker: "Most requested",
+    title: "$575 Lip Filler Special",
+    highlight: "$575 per syringe",
+    description:
+      "Our most-requested filler special available year-round.",
+    note: "Cannot be combined with other offers. While supplies last.",
+  },
+  {
+    month: "Ongoing",
+    eyebrow: "NEW GUESTS",
+    kicker: "Best first visit",
+    title: "New Guest Facial — $99",
+    highlight: "$99",
+    description: "Luxury skincare without the guesswork.",
+    showIncludes: true,
+    perks: [
+      "Choose: Antiaging Facial, Goddess Facial, or HydroDiamond Glow Express",
+      "Includes 1 complimentary upgrade: Dermaplaning OR LED OR HydroJelly Mask",
+    ],
+    note: "New guests only. One upgrade per visit. Cannot be combined.",
+  },
+];
+
+
 function PromosHero() {
   const currentMonthName = MONTHS[new Date().getMonth()];
 
@@ -434,7 +462,9 @@ function PromosHero() {
 
             <div className="mt-3">
               <a
-                href="/booking"
+                href="https://booking.mangomint.com/532777"
+                  target="_blank"
+                  rel="noreferrer"
                 className="text-sm font-semibold text-brand-forest underline underline-offset-4"
               >
                 Prefer online booking? Book here →
@@ -564,6 +594,25 @@ export default function Promos() {
           {currentMonthPromos.map((p) => (
             <WowCard key={`${p.month}-${p.title}`} promo={p} />
           ))}
+        </div>
+
+        {/* Ongoing */}
+        <div className="mt-14">
+          <p className="text-[11px] tracking-[0.25em] text-brand-forest/60">
+            ALWAYS AVAILABLE
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold text-brand-forest">
+            Ongoing Favorites
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm text-brand-forest/80">
+            These offers stay available year-round (availability may vary).
+          </p>
+
+          <div className="mt-6 grid gap-5 lg:grid-cols-2 items-start">
+            {ONGOING_PROMOS.map((p) => (
+              <WowCard key={p.title} promo={p} />
+            ))}
+          </div>
         </div>
 
         <p className="mt-10 text-xs text-brand-forest/60">

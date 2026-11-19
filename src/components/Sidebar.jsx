@@ -195,7 +195,7 @@ export default function Sidebar() {
         </div>
 
         <a
-          href="https://www.vagaro.com/tbeautylounge/book-now"
+          href="https://booking.mangomint.com/532777"
           target="_blank"
           rel="noreferrer"
           className="block rounded-full bg-brand-forest px-4 py-3 text-center font-medium hover:brightness-110"
@@ -204,7 +204,7 @@ export default function Sidebar() {
         </a>
 
         <a
-          href="https://www.vagaro.com/tbeautylounge/gift-certificates"
+          href="https://clients.mangomint.com/gift-cards/tbeautylounge"
           target="_blank"
           rel="noreferrer"
           className="block rounded-full bg-white/15 px-4 py-3 text-center font-medium hover:bg-white/20"

@@ -1,10 +1,9 @@
-
 // src/sections/UpdatesNotice.jsx
 // Homepage notice about upcoming pricing + booking/phone system changes.
 // Set SHOW_NOTICE to false once the transition is done.
- 
+
 const SHOW_NOTICE = true;
- 
+
 const UPDATES = [
   {
     title: "Pricing updates coming soon",
@@ -15,17 +14,17 @@ const UPDATES = [
     body: "We're moving to a new booking and phone system. If a call or message slips through during the switch, please reach out again and we'll get right back to you.",
   },
 ];
- 
+
 export default function UpdatesNotice() {
   if (!SHOW_NOTICE) return null;
- 
+
   return (
     <section
       aria-labelledby="updates-notice-title"
       className="relative overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
     >
       <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
- 
+
       <div className="p-5 md:p-7">
         <div className="flex items-start gap-3">
           <span
@@ -46,7 +45,7 @@ export default function UpdatesNotice() {
             </h2>
           </div>
         </div>
- 
+
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {UPDATES.map((u) => (
             <div
@@ -62,13 +61,11 @@ export default function UpdatesNotice() {
             </div>
           ))}
         </div>
- 
+
         <p className="mt-4 text-xs text-brand-forest/60">
-          Online booking through Vagaro is the fastest way to schedule while we
-          transition.
+          Online booking is the fastest way to schedule while we transition.
         </p>
       </div>
     </section>
   );
 }
- 

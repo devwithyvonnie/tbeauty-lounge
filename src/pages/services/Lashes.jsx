@@ -7,7 +7,7 @@ const LASH_SETS = [
     details: ['1 extension per natural lash', 'Lightest, most natural look'],
     tagline: 'Soft, natural enhancement.',
     vibe: ['Natural', 'Everyday'],
-    prices: { full: 140, fill2: 70, fill3: 90 },
+    prices: { full: 130, fill2: 65, fill3: 80 },
     badge: 'Great for first-timers',
   },
   {
@@ -15,14 +15,14 @@ const LASH_SETS = [
     details: ['1 extension per natural lash', 'Two lengths for soft texture'],
     tagline: 'Classic lashes in two lengths for soft, natural texture.',
     vibe: ['Natural+', 'Date Night'],
-    prices: { full: 150, fill2: 75, fill3: 100 },
+    prices: { full: 140, fill2: 70, fill3: 85 },
   },
   {
     name: 'Volume',
     details: ['Lightweight fans on each lash', 'Fuller than classic'],
     tagline: 'Fluffy, full lash line with dimension.',
     vibe: ['Full', 'Fluffy'],
-    prices: { full: 150, fill2: 75, fill3: 100 },
+    prices: { full: 140, fill2: 70, fill3: 85 },
     badge: 'Most popular',
   },
   {
@@ -30,21 +30,21 @@ const LASH_SETS = [
     details: ['Classic + volume mix', 'Textured fullness'],
     tagline: 'Bold fullness with a wispy finish.',
     vibe: ['Glam', 'Photo Ready'],
-    prices: { full: 170, fill2: 85, fill3: 115 },
+    prices: { full: 160, fill2: 80, fill3: 95 },
   },
   {
     name: 'Extra Volume',
     details: ['Denser fans', 'Fuller than volume'],
     tagline: 'Bigger, denser, ultra-fluffy.',
     vibe: ['Full Glam'],
-    prices: { full: 165, fill2: 80, fill3: 105 },
+    prices: { full: 155, fill2: 77, fill3: 92 },
   },
   {
     name: 'Mega Volume',
     details: ['Densest fans we offer', 'Maximum fullness'],
     tagline: 'Maximum density and drama.',
     vibe: ['Ultra Glam'],
-    prices: { full: 180, fill2: 90, fill3: 120 },
+    prices: { full: 170, fill2: 90, fill3: 110 },
   },
   {
     id: 'wispy-volume',
@@ -54,9 +54,9 @@ const LASH_SETS = [
       'Soft, textured volume with wispy peaks for a dramatic yet airy finish.',
     vibe: ['Wispy', 'Ultra Glam'],
     prices: {
-      full: 180,
+      full: 150,
       fill2: 90,
-      fill3: 120,
+      fill3: 110,
     },
   },
 ];
@@ -157,7 +157,9 @@ export default function LashesPage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="/booking?service=lashes"
+                  href="https://booking.mangomint.com/532777"
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
                 >
                   Book Lashes

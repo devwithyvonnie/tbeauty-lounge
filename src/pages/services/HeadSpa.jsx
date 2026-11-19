@@ -167,7 +167,9 @@ export default function HeadSpaPage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="/booking?service=headspa"
+                  href="https://booking.mangomint.com/532777"
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
                 >
                   Book Head Spa

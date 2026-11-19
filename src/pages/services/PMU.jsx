@@ -60,29 +60,12 @@ const PMU_GROUPS = [
       "Restore soft color and shape to the lips with natural-looking tint that heals beautifully.",
     services: [
       {
-        id: "full-lip-blush",
-        name: "Full Lip Blush",
+        id: "full-lips",
+        name: "Full Lips",
         description:
-          "For new clients and outside work. Full lip color to enhance tone, define shape, and create an even, long-lasting look.",
+          "Full lip color to enhance tone, define shape, and create an even, long-lasting look.",
         price: 600,
         duration: "2 hrs",
-        priceNote:
-          "Initial perfection touch-up included (4–6 weeks after initial treatment).",
-      },
-      {
-        id: "lip-color-refresh",
-        name: "Lip Blush Color Refresh",
-        description:
-          "Refresh color and definition 6–18 months after your last completed treatment.",
-        price: 300,
-      },
-      {
-        id: "lip-after-18-months",
-        name: "Lip Blush After 18 Months",
-        description:
-          "Priced by artist assessment. Full price applies when a complete treatment is required.",
-        price: 600,
-        priceLabel: "Up to",
       },
     ],
   },
@@ -92,6 +75,14 @@ const PMU_GROUPS = [
     intro:
       "Most permanent makeup is a two-step process. Touch-ups help refine color, shape, and longevity.",
     services: [
+      {
+        id: "correction",
+        name: "Correction",
+        description:
+          "Adjustments to shape/tone for previous work before proceeding with a new PMU service.",
+        price: 150,
+        duration: "Varies",
+      },
       {
         id: "touch-up",
         name: "Touch Up",
@@ -240,7 +231,9 @@ export default function PMUPage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="/booking?service=pmu"
+                  href="https://booking.mangomint.com/532777"
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
                 >
                   Book PMU Consultation
@@ -360,8 +353,7 @@ function ServiceCard({ svc, accent = "mint" }) {
           {priceText ? (
             <div className="ml-2 shrink-0 text-right">
               <p className="text-[11px] uppercase tracking-wide text-brand-forest/60">
-                {svc.priceLabel ??
-                  (Array.isArray(svc.priceRange) ? "Range" : "Starting at")}
+                {Array.isArray(svc.priceRange) ? "Range" : "Starting at"}
               </p>
               <p className="text-base font-semibold text-brand-forest">
                 {priceText}

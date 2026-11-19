@@ -7,30 +7,30 @@ import MiniFAQAccordion from "../../components/MiniFAQ";
 
 // ✨ Waxing
 const WAXING_SERVICES = [
-  { id: "bikini", name: "Bikini", price: 42 },
-  { id: "brazilian", name: "Brazilian", price: 60 },
+  { id: "bikini", name: "Bikini", price: 39 },
+  { id: "brazilian", name: "Brazilian", price: 56 },
   { id: "buttocks", name: "Buttocks", price: 45 },
-  { id: "chest", name: "Chest", price: 50 },
-  { id: "chin-sideburns", name: "Chin/Sideburns", price: 15 },
+  { id: "chest", name: "Chest", price: 45 },
+  { id: "chin-sideburns", name: "Chin/Sideburns", price: 12 },
   { id: "eyebrow", name: "Eyebrow", price: 15 },
-  { id: "full-arms", name: "Full Arms", price: 42 },
-  { id: "full-back", name: "Full Back", price: 65 },
-  { id: "full-legs", name: "Full Legs", price: 85 },
-  { id: "lower-legs", name: "Lower Legs", price: 50 },
-  { id: "upper-legs", name: "Upper Legs", price: 40 },
+  { id: "full-arms", name: "Full Arms", price: 40 },
+  { id: "full-back", name: "Full Back", price: 63 },
+
+  { id: "lower-legs", name: "Lower Legs", price: 75 },
+  { id: "upper-legs", name: "Upper Legs", price: 42 },
   { id: "hands-feet", name: "Hands/Feet", price: 10 },
   { id: "lip", name: "Lip", price: 7 },
-  { id: "neck", name: "Neck", price: 10 },
-  { id: "underarms", name: "Underarms", price: 25 },
-  { id: "whole-face", name: "Whole Face", price: 62 },
+  { id: "neck", name: "Neck", price: 15 },
+  { id: "underarms", name: "Underarms", price: 22 },
+  { id: "whole-face", name: "Whole Face", price: 59 },
 ];
 
 // 🎨 Perm / Tint
 const ENHANCEMENTS_SERVICES = [
-  { id: "brow-lamination", name: "Brow Lamination", price: 80 },
+  { id: "brow-lamination", name: "Brow Lamination", price: 70 },
   { id: "eyebrow-tint", name: "Eyebrow Tint", price: 35 },
   { id: "henna-tint", name: "Henna Tint", price: 45 },
-  { id: "eyelash-perm", name: "Eyelash Perm", price: 90 },
+  { id: "eyelash-perm", name: "Eyelash Perm", price: 80 },
   { id: "eyelash-tint", name: "Eyelash Tint", price: 35 },
 ];
 
@@ -116,7 +116,9 @@ export default function WaxTintPage() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="/booking?service=wax-tint"
+                  href="https://booking.mangomint.com/532777"
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
                 >
                   Book Wax &amp; Tint
@@ -230,7 +232,9 @@ export default function WaxTintPage() {
             and we’ll help you choose the right combo.
           </p>
           <a
-            href="/booking?service=wax-tint"
+            href="https://booking.mangomint.com/532777"
+                  target="_blank"
+                  rel="noreferrer"
             className="rounded-full bg-brand-forest px-5 py-2 text-sm font-medium text-white hover:brightness-110"
           >
             Book Wax &amp; Tint

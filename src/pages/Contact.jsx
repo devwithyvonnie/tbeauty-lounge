@@ -85,7 +85,7 @@ export default function Contact() {
 
               <div className="mt-5 sm:mt-6 grid gap-3 sm:flex sm:flex-wrap">
                 <a
-                  href="https://www.vagaro.com/tbeautylounge/book-now"
+                  href="https://booking.mangomint.com/532777"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-brand-gold px-6 sm:px-7 py-3 text-white font-semibold shadow-sm hover:brightness-95"
@@ -174,7 +174,7 @@ export default function Contact() {
             </h2>
             <p className="mt-2 text-sm text-brand-forest/80">
               This form will open your email app and send your message to us. For
-              fastest booking, use Vagaro.
+              fastest booking, book online.
             </p>
 
             <div className="mt-5 sm:mt-6 grid gap-4">

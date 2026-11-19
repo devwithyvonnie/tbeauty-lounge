@@ -62,7 +62,7 @@ export default function Privacy() {
               <h2 className="section-title">Booking &amp; Payments</h2>
               <p className="section-body">
                 Appointments and payments may be handled through trusted third-party
-                providers (such as Vagaro and payment processors). We do not store
+                providers (such as Mangomint and payment processors). We do not store
                 full payment card information on our website.
               </p>
             </div>

@@ -1,130 +1,105 @@
-
 // src/pages/services/Facials.jsx
 import { useEffect, useMemo, useState } from "react";
 import MiniFAQAccordion from "../../components/MiniFAQ";
- 
-const BOOK_URL = "https://www.vagaro.com/tbeautylounge/book-now";
- 
+
 /* -------------------------
    DATA
 -------------------------- */
- 
-// 🌿 Signature Glow tiers (60 / 75 / 90)
-const SIGNATURE_TIERS = [
+
+// 🧴 Signature facials
+const SIGNATURE_FACIALS = [
   {
-    id: "sunlit-glow",
-    tier: "60 min",
-    name: "The Sunlit Glow Treatment",
-    tagline: "Gentle enzyme resurfacing and barrier-loving hydration.",
-    bestFor: "Maintenance, quick pick-me-ups, or simple skin goals.",
-    includes:
-      "Full double cleanse, custom enzyme, targeted extractions, and a specialized treatment mask.",
-    price: 99,
-  },
-  {
-    id: "velvet-glow",
-    tier: "75 min",
-    name: "The Velvet Glow Treatment",
-    tagline:
-      "Deep nourishment, custom modalities, and grounding facial massage.",
-    bestFor: "Specific concerns like acne, pigment, or dynamic aging.",
-    includes:
-      "Everything in the Sunlit Glow, plus dermaplaning and a targeted treatment mask (firming peptide or charcoal).",
-    price: 140,
-  },
-  {
-    id: "golden-hour",
-    tier: "90 min",
-    name: "The Golden Hour",
-    tagline:
-      "An all-inclusive, top-to-bottom skin ritual: customized exfoliation, extractions, targeted barrier care, a specialty mask, and extended neck, shoulder, and facial sculpting.",
-    bestFor:
-      "First-time clients needing a deep overhaul, premium skin revision, or maximum luxury and relaxation.",
-    includes:
-      "Your choice of our advanced protocols (Beyond Botox, Oxygen Rx, or Swich) paired with an extended facial, neck, and shoulder massage.",
-    price: 200,
-  },
-];
- 
-// 🧴 Specialty treatments (on the Signature tab, below the tiers)
-const SPECIALTY_TREATMENTS = [
-  {
-    id: "dewy-renewal",
-    name: "Dewy Renewal Facial",
-    tagline:
-      "Dermaplaning to remove peach fuzz and dull surface buildup for instant smoothness and glow.",
-    focus: ["Brightening", "Smoothing"],
+    id: "deluxe-refreshing",
+    name: "Deluxe Refreshing Facial",
+    tagline: "Deep cleanse, exfoliation, and relaxation for all skin types.",
+    focus: ["Balanced", "All Skin Types"],
     duration: "60 min",
-    price: 70,
+    price: 75,
   },
   {
-    id: "back-glow",
-    name: "Back Glow Treatment",
+    id: "deluxe-refresh-back",
+    name: "Deluxe Refreshing Back Facial",
     tagline: "Targets congestion and dryness on the back.",
     focus: ["Back Treatment"],
     duration: "60 min",
     price: 100,
   },
   {
-    id: "clarifying-back",
-    name: "Clarifying Back Treatment",
+    id: "acne",
+    name: "Acne Facial",
+    tagline: "Clarifying treatment focused on breakouts and congestion.",
+    focus: ["Clarifying", "Problem Skin"],
+    duration: "60 min",
+    price: 95,
+  },
+  {
+    id: "acne-back",
+    name: "Acne Back Facial",
     tagline: "Deep cleanse and extractions for the back.",
     focus: ["Clarifying", "Back"],
     duration: "60 min",
     price: 115,
   },
-];
- 
-// 💎 HydroDiamond tiers
-const HYDRODIAMOND_TIERS = [
   {
-    id: "glass-skin-express",
-    tier: "Tier 1 · 60 min",
-    name: "The Glass Skin Express",
-    tagline: "Quick diamond-tip polishing and deep pore flush.",
-    includes:
-      "HydroDiamond exfoliation and deep vacuum pore cleansing, followed by an immediate oxygen infusion of hydrating peptides.",
-    bestFor:
-      "Tight schedules, congestion, or a quick, zero-downtime skin reset before an event.",
+    id: "antiaging",
+    name: "Anti-Aging Facial",
+    tagline: "Hydrating, firming care to soften the look of fine lines.",
+    focus: ["Anti-Aging"],
+    duration: "60 min",
+    price: 95,
+  },
+  {
+    id: "dermaplaning",
+    name: "Dermaplaning Facial",
+    tagline:
+      "Blade exfoliation to remove peach fuzz and dull surface buildup for instant smoothness and glow.",
+    focus: ["Brightening", "Smoothing"],
+    duration: "60 min",
+    price: 60,
+  },
+  {
+    id: "proc-mini",
+    name: "Pro-C Mini Facial",
+    tagline: "Quick vitamin C pick-me-up with glow.",
+    focus: ["Brightening", "Express"],
+    duration: "30 min",
+    price: 55,
+  },
+  {
+    id: "goddess",
+    name: "Goddess Facial",
+    tagline: "Spa-forward ritual for deep relaxation and radiance.",
+    focus: ["Relaxing", "Glow"],
+    duration: "75 min",
+    price: 125,
+  },
+  {
+    id: "seasonal-enzyme",
+    name: "Seasonal Enzyme Facial",
+    tagline: "Seasonal enzyme blend to gently refine texture.",
+    focus: ["Enzyme", "Texture"],
+    duration: "60 min",
     price: 160,
   },
   {
-    id: "velvet-infusion",
-    tier: "Tier 2 · 75 min",
-    name: "The Velvet Infusion Treatment",
-    tagline:
-      "Full fluid exfoliation, targeted active infusion, and facial contouring.",
-    includes:
-      "The full HydroDiamond resurfacing and extraction sequence, layered with a firming mask and cold hammer or RF, finished with oxygen infusion.",
-    bestFor:
-      "Deep pore refinement, brighter-looking pigmentation, and smoother skin.",
-    price: 190,
+    id: "hydrafacial",
+    name: "HydraFacial",
+    tagline: "Hydra-dermabrasion treatment for deep cleanse and hydration.",
+    focus: ["Hydrating", "All Skin Types"],
+    duration: "60 min",
+    price: 199,
   },
   {
-    id: "lit-from-within",
-    tier: "Tier 3 · 90 min",
-    name: "The Lit From Within",
-    tagline:
-      "Maximum hydration, lifting modalities, and zero-downtime plumping.",
-    includes:
-      "Ninety minutes of uninterrupted skin renewal: the full Zemits diamond-tip hydro-resurfacing protocol, active infusions, and slow sculptural massage across the face, neck, and décolleté, finished with a collagen sheet mask. No add-ons or guesswork, just complete restoration and a soft velvet glow.",
-    bestFor:
-      "Maximum anti-aging results, deep relaxation, and total pampering.",
-    price: 220,
+    id: "beyond-botox",
+    name: "Beyond Botox Facial",
+    tagline: "Advanced facial designed to complement injectable treatments.",
+    focus: ["Advanced", "Firming"],
+    duration: "75 min",
+    price: 200,
   },
 ];
- 
-const GLOW_EXPRESS = {
-  id: "glow-express",
-  name: "HydroDiamond Glow Express",
-  tagline:
-    "Pairs HydroDiamond with Cold Therapy for instantly refreshed, smooth, and radiant skin.",
-  focus: ["Express", "Glow"],
-  duration: "30 min",
-  price: 80,
-};
- 
-// 💉 Microneedling / advanced block (unchanged)
+
+// 💉 Microneedling / advanced block
 const MICRONEEDLING_BLOCK = {
   id: "microneedling",
   name: "Microneedling & Advanced Collagen",
@@ -138,228 +113,266 @@ const MICRONEEDLING_BLOCK = {
     { label: "Nanoneedling", duration: "45–60 min", price: 200 },
   ],
 };
- 
-// ✨ Add-ons
+
+// 💎 HydraDiamond block
+const HYDRADIAMOND_BLOCK = {
+  id: "hydradiamond",
+  name: "HydraDiamond® Skin Renewal",
+  tagline:
+    "HydroDiamond® gently exfoliates and hydrates the skin by combining diamond microdermabrasion with serum infusion technology.",
+  focus: ["Hydration", "Glow", "Texture"],
+  variants: [
+    {
+      label: "Glow Express Facial",
+      duration: "30 min",
+      price: 120,
+      description:
+        "Pairs HydroDiamond® with Cold Therapy for instantly refreshed, smooth, and radiant skin.",
+    },
+    {
+      label: "Hydration Boost Facial",
+      duration: "45 min",
+      price: 150,
+      description:
+        "Combines DermeDrop serum infusion and Oxygen Spray to deliver intense hydration and restore glow.",
+    },
+    {
+      label: "Brightening Detox Facial",
+      duration: "50 min",
+      price: 170,
+      description:
+        "Uses Ultrasonic Scrubber and Serum Infusion to detoxify, brighten, and even skin tone.",
+    },
+    {
+      label: "Contour Renewal Facial",
+      duration: "60 min",
+      price: 185,
+      description:
+        "Incorporates RF therapy and Cold Therapy to tighten, tone, and rejuvenate facial contours.",
+    },
+    {
+      label: "Signature Meso Glow",
+      duration: "60 min",
+      price: 200,
+      description:
+        "Enhanced with DermeBoost mesotherapy, Cold Therapy, and Oxygen Infusion to deeply nourish and restore radiance.",
+    },
+    {
+      label: "Full Revive Protocol",
+      duration: "90 min",
+      price: 225,
+      description:
+        "Our most advanced protocol layering Meso infusion, RF therapy, Oxygen Spray, and Cold Therapy for complete rejuvenation.",
+    },
+  ],
+};
+
+// ✨ Facial add-ons
 const FACIAL_ADDONS = [
+  {
+    id: "gold-leaf",
+    name: "24K Treatment Gold Leaf Mask",
+    description: "Luxurious gold mask to brighten and firm.",
+    price: 49,
+  },
   {
     id: "hand-foot-scrub",
     name: "Hand / Foot Scrub",
     description: "Gentle exfoliation for hands or feet.",
-    price: 15,
+    price: 10,
   },
   {
     id: "hand-foot-paraffin",
     name: "Hand / Foot Paraffin",
     description: "Warm paraffin treatment for softness and hydration.",
-    price: 20,
+    price: 15,
+  },
+  {
+    id: "dermaplaning-addon",
+    name: "Dermaplaning Add-On",
+    description:
+      "Add dermaplaning to any facial for extra smoothness, brighter tone, and better product absorption.",
+    price: 30,
+  },
+  {
+    id: "carboxy",
+    name: "Carboxy CO₂ Add-On",
+    description: "Targets circulation and skin vitality.",
+    price: 58,
+  },
+  {
+    id: "glycolic-peel",
+    name: "Glycolic Peel",
+    description: "Chemical resurfacing to refine texture and brighten.",
+    price: 125,
+  },
+  {
+    id: "vitamin-c-peel",
+    name: "Vitamin C Peel",
+    description: "Brightening peel for dull or uneven tone.",
+    price: 125,
+  },
+  {
+    id: "hydrojelly",
+    name: "Hydrojelly Mask & Ice Globes",
+    description: "Soothing mask and cooling globes to calm and depuff.",
+    price: 35,
   },
 ];
- 
+
 /* -------------------------
    TABS
 -------------------------- */
- 
+
 const TABS = [
-  { id: "signature", label: "Signature Glow" },
-  { id: "hydrodiamond", label: "HydroDiamond" },
+  { id: "signature", label: "Signature Facials" },
+  { id: "hydradiamond", label: "HydraDiamond®" },
   { id: "microneedling", label: "Microneedling" },
   { id: "addons", label: "Add-Ons" },
 ];
- 
-/* -------------------------
-   SHARED CARDS
--------------------------- */
- 
-function TierCard({ item, accent = "mint" }) {
-  const bar =
-    accent === "gold"
-      ? "from-brand-gold via-brand-mint to-brand-gold"
-      : "from-brand-mint via-brand-gold to-brand-mint";
- 
-  return (
-    <article
-      className={`flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ${
-        item.badge ? "ring-2 ring-brand-gold/60" : "ring-black/5"
-      }`}
-    >
-      <div className={`h-1 bg-gradient-to-r ${bar}`} />
- 
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-center justify-between gap-2">
-          <span className="rounded-full bg-brand-cream px-2.5 py-0.5 text-[11px] font-medium text-brand-forest/90">
-            {item.tier}
-          </span>
-          {item.badge ? (
-            <span className="rounded-full bg-brand-gold/10 px-3 py-1 text-[11px] font-medium text-brand-forest whitespace-nowrap">
-              {item.badge}
-            </span>
-          ) : null}
-        </div>
- 
-        <h3 className="mt-3 text-lg font-semibold text-brand-forest">
-          {item.name}
-        </h3>
-        <p className="mt-1 text-2xl font-semibold text-brand-forest">
-          ${item.price}
-        </p>
- 
-        <p className="mt-2 text-sm text-brand-forest/80 leading-relaxed">
-          {item.tagline}
-        </p>
- 
-        <div className="mt-4 space-y-3 rounded-xl bg-brand-cream/70 p-3 text-sm">
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-forest/60">
-              Includes
-            </p>
-            <p className="mt-1 text-brand-forest/85 leading-relaxed">
-              {item.includes}
-            </p>
-          </div>
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-brand-forest/60">
-              Best for
-            </p>
-            <p className="mt-1 text-brand-forest/85 leading-relaxed">
-              {item.bestFor}
-            </p>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
- 
-function SimpleCard({ item }) {
-  return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
-      <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
- 
-      <div className="flex flex-1 flex-col p-4 md:p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="text-lg font-semibold text-brand-forest">
-              {item.name}
-            </h3>
- 
-            {item.tagline ? (
-              <p className="mt-1 text-sm text-brand-forest/80">
-                {item.tagline}
-              </p>
-            ) : null}
- 
-            <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
-              {item.duration ? (
-                <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
-                  {item.duration}
-                </span>
-              ) : null}
- 
-              {item.focus?.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-brand-mint/20 px-2 py-0.5 text-brand-forest/90"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
- 
-          <div className="ml-2 shrink-0 text-right">
-            <p className="text-xs uppercase tracking-wide text-brand-forest/60">
-              Price
-            </p>
-            <p className="text-base font-semibold text-brand-forest">
-              ${item.price}
-            </p>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
- 
+
 /* -------------------------
    SECTIONS
 -------------------------- */
- 
+
 function SignatureSection() {
   return (
     <section className="mt-6">
       <div>
         <h2 className="text-xl font-semibold text-brand-forest">
-          Signature Glow Treatments
+          Signature Facials
         </h2>
         <p className="mt-1 text-sm text-brand-forest/80">
-          Three tiers, each customized to your skin. Pick the time and depth
-          that fits your goals.
+          Relaxing, result-focused facials tailored to your skin’s current
+          needs.
         </p>
       </div>
- 
-      <div className="mt-4 grid gap-4 md:grid-cols-3">
-        {SIGNATURE_TIERS.map((item, idx) => (
-          <TierCard
+
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        {SIGNATURE_FACIALS.map((item) => (
+          <article
             key={item.id}
-            item={item}
-            accent={idx % 2 === 0 ? "mint" : "gold"}
-          />
-        ))}
-      </div>
- 
-      <div className="mt-10">
-        <h2 className="text-xl font-semibold text-brand-forest">
-          Specialty Treatments
-        </h2>
-        <p className="mt-1 text-sm text-brand-forest/80">
-          Focused services for smoothing and back care.
-        </p>
-      </div>
- 
-      <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {SPECIALTY_TREATMENTS.map((item) => (
-          <SimpleCard key={item.id} item={item} />
+            className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
+          >
+            <div className="h-1 bg-gradient-to-r from-brand-mint via-brand-gold to-brand-mint" />
+
+            <div className="flex flex-1 flex-col p-4 md:p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-lg font-semibold text-brand-forest">
+                    {item.name}
+                  </h3>
+
+                  {item.tagline ? (
+                    <p className="mt-1 text-sm text-brand-forest/80">
+                      {item.tagline}
+                    </p>
+                  ) : null}
+
+                  <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
+                    {item.duration ? (
+                      <span className="rounded-full bg-brand-cream px-2 py-0.5 text-brand-forest/90">
+                        {item.duration}
+                      </span>
+                    ) : null}
+
+                    {item.focus?.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-brand-mint/20 px-2 py-0.5 text-brand-forest/90"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="ml-2 shrink-0 text-right">
+                  <p className="text-xs uppercase tracking-wide text-brand-forest/60">
+                    Price
+                  </p>
+                  <p className="text-base font-semibold text-brand-forest">
+                    ${item.price}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
         ))}
       </div>
     </section>
   );
 }
- 
-function HydroDiamondSection() {
+
+function HydraDiamondSection() {
   return (
     <section className="mt-6">
       <div>
         <h2 className="text-xl font-semibold text-brand-forest">
-          HydroDiamond® Skin Renewal
+          {HYDRADIAMOND_BLOCK.name}
         </h2>
         <p className="mt-1 max-w-3xl text-sm text-brand-forest/80">
-          HydroDiamond® gently exfoliates and hydrates the skin by combining
-          diamond microdermabrasion with serum infusion technology.
+          {HYDRADIAMOND_BLOCK.tagline}
         </p>
-      </div>
- 
-      <div className="mt-4 grid gap-4 md:grid-cols-3">
-        {HYDRODIAMOND_TIERS.map((item, idx) => (
-          <TierCard
-            key={item.id}
-            item={item}
-            accent={idx % 2 === 0 ? "gold" : "mint"}
-          />
-        ))}
-      </div>
- 
-      <div className="mt-6">
-        <p className="text-sm font-semibold text-brand-forest">
-          Short on time?
-        </p>
-        <div className="mt-3 md:max-w-xl">
-          <SimpleCard item={GLOW_EXPRESS} />
+        <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
+          {HYDRADIAMOND_BLOCK.focus.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full bg-brand-mint/20 px-2 py-0.5 text-brand-forest/90"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
+
+      <article className="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
+        <div className="h-1 bg-gradient-to-r from-brand-gold via-brand-mint to-brand-gold" />
+        <div className="p-4 md:p-5">
+          <div className="rounded-xl bg-brand-cream/70 px-3 py-3">
+            <dl className="space-y-3 text-sm text-brand-forest/90">
+              {HYDRADIAMOND_BLOCK.variants.map((v) => (
+                <div
+                  key={v.label}
+                  className="flex flex-col gap-1 border-b border-brand-cream/80 pb-3 last:border-none last:pb-0"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <dt className="font-semibold text-brand-forest">
+                        {v.label}
+                      </dt>
+                      <div className="mt-0.5 flex flex-wrap gap-1 text-[11px] text-brand-forest/75">
+                        <span className="rounded-full bg-brand-cream px-2 py-0.5">
+                          {v.duration}
+                        </span>
+                      </div>
+                    </div>
+
+                    <dd className="shrink-0 text-sm font-semibold text-brand-forest">
+                      ${v.price}
+                    </dd>
+                  </div>
+
+                  {v.description ? (
+                    <p className="text-xs text-brand-forest/80">
+                      {v.description}
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <p className="mt-3 text-xs text-brand-forest/65">
+            All HydraDiamond® facials are customized for your skin type and can
+            be paired with add-ons for enhanced results.
+          </p>
+        </div>
+      </article>
     </section>
   );
 }
- 
+
 function MicroneedlingSection() {
   return (
     <section className="mt-6">
@@ -381,7 +394,7 @@ function MicroneedlingSection() {
           ))}
         </div>
       </div>
- 
+
       <article className="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
         <div className="h-1 bg-gradient-to-r from-brand-gold via-brand-mint to-brand-gold" />
         <div className="p-4 md:p-5">
@@ -400,7 +413,7 @@ function MicroneedlingSection() {
                       {v.duration}
                     </div>
                   </div>
- 
+
                   <dd className="shrink-0 text-sm font-semibold text-brand-forest">
                     ${v.price}
                   </dd>
@@ -408,7 +421,7 @@ function MicroneedlingSection() {
               ))}
             </dl>
           </div>
- 
+
           <p className="mt-3 text-xs text-brand-forest/65">
             A consultation is recommended prior to advanced treatments to review
             your skin history, expectations, and pre/post-care.
@@ -418,18 +431,18 @@ function MicroneedlingSection() {
     </section>
   );
 }
- 
+
 function AddOnsSection() {
   return (
     <section className="mt-6">
       <div>
-        <h2 className="text-xl font-semibold text-brand-forest">Add-Ons</h2>
+        <h2 className="text-xl font-semibold text-brand-forest">Facial Add-Ons</h2>
         <p className="mt-1 text-sm text-brand-forest/80">
-          Our tiered treatments already include their upgrades. These extras
-          pair with any facial.
+          Enhance any facial with targeted boosters for glow, texture, or
+          relaxation.
         </p>
       </div>
- 
+
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         {FACIAL_ADDONS.map((addon) => (
           <div
@@ -446,7 +459,7 @@ function AddOnsSection() {
                 </p>
               ) : null}
             </div>
- 
+
             <div className="ml-3 shrink-0 text-sm font-semibold text-brand-forest">
               ${addon.price}
             </div>
@@ -456,28 +469,28 @@ function AddOnsSection() {
     </section>
   );
 }
- 
+
 /* -------------------------
    PAGE
 -------------------------- */
- 
+
 export default function FacialsPage() {
   const defaultTab = TABS[0].id;
   const [active, setActive] = useState(defaultTab);
   const tabSet = useMemo(() => new Set(TABS.map((t) => t.id)), []);
- 
+
   // deep links like /services/facials#microneedling
   useEffect(() => {
     const hash = (window.location.hash || "").replace("#", "");
     if (hash && tabSet.has(hash)) setActive(hash);
   }, [tabSet]);
- 
+
   const onSelect = (id) => {
     setActive(id);
     // update hash without scroll jump
     window.history.replaceState(null, "", `#${id}`);
   };
- 
+
   return (
     <div className="py-8">
       {/* WIDE HERO (match Lashes page) */}
@@ -490,38 +503,38 @@ export default function FacialsPage() {
             loading="lazy"
           />
           <div className="absolute inset-0 bg-brand-cream/70" />
- 
+
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-11/12 max-w-4xl">
               <p className="text-sm tracking-[0.25em] text-brand-forest/70">
                 FACIALS &amp; SKIN
               </p>
- 
+
               <h1 className="mt-2 text-4xl font-semibold leading-tight text-brand-forest md:text-5xl">
                 Facials &amp; Skin Treatments
               </h1>
- 
+
               <p className="mt-4 max-w-2xl text-brand-forest/85">
-                From our Signature Glow treatments to advanced HydroDiamond® and
+                From calming spa facials to advanced HydraDiamond® and
                 microneedling, every treatment is customized to your skin type,
                 concerns, and goals.
               </p>
- 
+
               <div className="mt-5 flex flex-wrap gap-2 text-xs">
                 <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-                  60, 75 &amp; 90-minute tiers
+                  Sensitive-skin friendly options
                 </span>
                 <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
                   Custom plans by skin concern
                 </span>
                 <span className="rounded-full bg-brand-mint/30 px-3 py-1 text-brand-forest/90">
-                  Upgrades built into every tier
+                  Add-ons to boost results
                 </span>
               </div>
- 
+
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href={BOOK_URL}
+                  href="https://booking.mangomint.com/532777"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-brand-forest px-6 py-2.5 text-sm font-medium text-white hover:brightness-110"
@@ -539,7 +552,7 @@ export default function FacialsPage() {
           </div>
         </div>
       </section>
- 
+
       {/* WIDER CONTENT */}
       <div className="mx-auto w-[92%] max-w-7xl space-y-8 py-6 md:py-8">
         {/* Sticky tabs (same pattern as Lashes) */}
@@ -572,32 +585,28 @@ export default function FacialsPage() {
             </div>
           </div>
         </section>
- 
+
         {/* Active tab content only */}
         {active === "signature" ? <SignatureSection /> : null}
-        {active === "hydrodiamond" ? <HydroDiamondSection /> : null}
+        {active === "hydradiamond" ? <HydraDiamondSection /> : null}
         {active === "microneedling" ? <MicroneedlingSection /> : null}
         {active === "addons" ? <AddOnsSection /> : null}
- 
+
         {/* FAQ (at bottom like Lashes) */}
         <MiniFAQAccordion
           title="Facial & Skin Treatment FAQ"
           faqs={[
-            {
-              q: "Which facial should I choose?",
-              a: "The Sunlit Glow (60 min) is great for maintenance and simple goals. The Velvet Glow (75 min) adds dermaplaning and a targeted mask for concerns like acne, pigment, or aging. The Golden Hour (90 min) is our most complete ritual and a great choice for first-time clients. Prefer HydroDiamond? Those tiers follow the same 60/75/90 pattern.",
-            },
             {
               q: "Do I need to stop using retinol or active products before my facial?",
               a: "For most facials, we recommend pausing retinol, strong exfoliants, and acne prescriptions for 3–5 days before your visit. For advanced peels or microneedling, your provider may recommend a longer break.",
             },
             {
               q: "Is there downtime after a facial?",
-              a: "Most facials have little to no downtime—your skin may look slightly flushed but generally radiant. Advanced services like microneedling may involve temporary redness, dryness, or light flaking.",
+              a: "Most facials have little to no downtime—your skin may look slightly flushed but generally radiant. Advanced services like peels or microneedling may involve temporary redness, dryness, or light flaking.",
             },
             {
               q: "Can facials help with acne or dark spots?",
-              a: "Yes. The Velvet Glow and our HydroDiamond® tiers target concerns like breakouts and uneven tone, and microneedling can support smoother texture and more even tone over a series of treatments.",
+              a: "Yes. We offer targeted acne and brightening facials, plus HydraDiamond® and microneedling options that can support smoother texture and more even tone over a series of treatments.",
             },
             {
               q: "Can I wear makeup after my facial?",
@@ -609,4 +618,3 @@ export default function FacialsPage() {
     </div>
   );
 }
- 

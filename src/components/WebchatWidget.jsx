@@ -1,27 +1,25 @@
+// src/components/WebchatWidget.jsx
+// Loads the Mangomint web chat / booking script once for the whole site.
+// Mounted in App.jsx so it's available on every page.
 import { useEffect } from "react";
 
-export default function PodiumWidget() {
+const MANGOMINT_COMPANY_ID = 532777;
+const SCRIPT_ID = "mangomint-app";
+
+export default function WebchatWidget() {
   useEffect(() => {
+    // Config must exist before app.js loads
+    window.Mangomint = window.Mangomint || {};
+    window.Mangomint.CompanyId = MANGOMINT_COMPANY_ID;
+
     // Prevent duplicate script inserts
-    if (document.getElementById("podium-widget")) return;
+    if (document.getElementById(SCRIPT_ID)) return;
 
     const s = document.createElement("script");
-    s.defer = true;
-    s.src =
-      "https://connect.podium.com/widget.js#ORG_TOKEN=e40051f4-14c5-4426-8138-fee1aac2f5c4";
-    s.id = "podium-widget";
-    s.setAttribute(
-      "data-organization-api-token",
-      "e40051f4-14c5-4426-8138-fee1aac2f5c4"
-    );
-
+    s.id = SCRIPT_ID;
+    s.src = "https://booking.mangomint.com/app.js";
+    s.async = true;
     document.body.appendChild(s);
-
-    // Optional cleanup if you want it removed when leaving Home:
-    // return () => {
-    //   const el = document.getElementById("podium-widget");
-    //   if (el) el.remove();
-    // };
   }, []);
 
   return null;

@@ -33,7 +33,7 @@ export default function About() {
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://www.vagaro.com/tbeautylounge/book-now"
+                  href="https://booking.mangomint.com/532777"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full bg-brand-gold px-7 py-3 text-white font-semibold shadow-sm hover:brightness-95"
