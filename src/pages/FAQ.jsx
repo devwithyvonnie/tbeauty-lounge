@@ -207,7 +207,7 @@ export default function FAQ() {
       {
         categories: ['facials'],
         q: 'Can facials help with acne or dark spots?',
-        a: 'Yes. We offer targeted acne and brightening facials, plus HydraDiamond\u00ae and microneedling options that can support smoother texture and more even tone over a series of treatments.',
+        a: 'Yes. The Velvet Glow Treatment and our HydroDiamond\u00ae tiers target concerns like breakouts and uneven tone, and microneedling can support smoother texture and more even tone over a series of treatments.',
       },
       {
         categories: ['facials'],
@@ -217,12 +217,12 @@ export default function FAQ() {
       {
         categories: ['facials'],
         q: 'What\u2019s the difference between your facials?',
-        a: 'Our Deluxe facial is the most common starting point: double cleanse, exfoliation, light extractions, moisturizer, sunscreen, and toner. Acne and Anti-Aging facials follow the same steps using products targeted for those concerns. Dermaplaning includes a double cleanse and dermaplaning treatment to remove dead skin, followed by a mask, moisturizer, sunscreen, and toner. Goddess combines Deluxe + Dermaplaning + a mask for the most comprehensive option.',
+        a: 'Our Signature Glow facials come in three tiers. The Sunlit Glow (60 min) includes a double cleanse, custom enzyme, targeted extractions, and a treatment mask. The Velvet Glow (75 min) adds dermaplaning and a targeted mask for concerns like acne, pigment, or aging. The Golden Hour (90 min) is our most complete ritual, with advanced protocols and an extended facial, neck, and shoulder massage. Our HydroDiamond\u00ae facials follow the same 60/75/90-minute pattern: the Glass Skin Express, the Velvet Infusion, and the Lit From Within.',
       },
       {
         categories: ['facials'],
         q: 'How long does a facial take, and how do I know which one to pick?',
-        a: 'Facials range from about 1\u20132 hours depending on which one you choose. All first-time clients receive an in-depth consultation to help find the right fit for your skin and goals.',
+        a: 'Our tiered facials run 60, 75, or 90 minutes, and the HydroDiamond\u00ae Glow Express takes about 30 minutes. All first-time clients receive an in-depth consultation to help find the right fit for your skin and goals.',
       },
       {
         categories: ['facials'],
@@ -318,7 +318,7 @@ export default function FAQ() {
       {
         categories: ['pmu'],
         q: 'What areas can you do PMU on?',
-        a: 'Powder/Ombr\u00e9 Brows, Eyeliner (top, bottom, or both), and Lip Blush, plus correction services and tattoo removal for both face and body.',
+        a: 'Powder/Ombr\u00e9 Brows, Eyeliner (top, bottom, or both), and Lip Blush, plus tattoo removal for both face and body.',
       },
       {
         categories: ['pmu'],

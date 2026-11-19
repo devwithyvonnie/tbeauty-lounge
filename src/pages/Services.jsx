@@ -19,11 +19,11 @@ const SERVICE_CATS = [
     eyebrow: 'FACIALS & SKIN',
     title: 'Result-driven, calming care',
     blurb:
-      'Custom facials, dermaplane, enzyme or light peels, LED therapy and more—built for your skin’s current needs.',
+      'Signature Glow and HydroDiamond® facials in 60, 75, and 90-minute tiers, plus microneedling, built for your skin’s current needs.',
     bullets: [
-      'Custom facials for every skin type',
-      'Dermaplaning & specialty add-ons',
-      'LED Light Therapy & targeted masks',
+      'Signature Glow tiers for every skin type',
+      'HydroDiamond® resurfacing & infusion',
+      'Microneedling & advanced collagen',
     ],
     image: '/images/services/facial.png',
     bookHref: 'https://booking.mangomint.com/532777',

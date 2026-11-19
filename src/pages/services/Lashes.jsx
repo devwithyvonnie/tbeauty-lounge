@@ -7,7 +7,7 @@ const LASH_SETS = [
     details: ['1 extension per natural lash', 'Lightest, most natural look'],
     tagline: 'Soft, natural enhancement.',
     vibe: ['Natural', 'Everyday'],
-    prices: { full: 130, fill2: 65, fill3: 80 },
+    prices: { full: 140, fill2: 70, fill3: 90 },
     badge: 'Great for first-timers',
   },
   {
@@ -15,14 +15,14 @@ const LASH_SETS = [
     details: ['1 extension per natural lash', 'Two lengths for soft texture'],
     tagline: 'Classic lashes in two lengths for soft, natural texture.',
     vibe: ['Natural+', 'Date Night'],
-    prices: { full: 140, fill2: 70, fill3: 85 },
+    prices: { full: 150, fill2: 75, fill3: 100 },
   },
   {
     name: 'Volume',
     details: ['Lightweight fans on each lash', 'Fuller than classic'],
     tagline: 'Fluffy, full lash line with dimension.',
     vibe: ['Full', 'Fluffy'],
-    prices: { full: 140, fill2: 70, fill3: 85 },
+    prices: { full: 150, fill2: 75, fill3: 100 },
     badge: 'Most popular',
   },
   {
@@ -30,21 +30,21 @@ const LASH_SETS = [
     details: ['Classic + volume mix', 'Textured fullness'],
     tagline: 'Bold fullness with a wispy finish.',
     vibe: ['Glam', 'Photo Ready'],
-    prices: { full: 160, fill2: 80, fill3: 95 },
+    prices: { full: 170, fill2: 85, fill3: 115 },
   },
   {
     name: 'Extra Volume',
     details: ['Denser fans', 'Fuller than volume'],
     tagline: 'Bigger, denser, ultra-fluffy.',
     vibe: ['Full Glam'],
-    prices: { full: 155, fill2: 77, fill3: 92 },
+    prices: { full: 165, fill2: 80, fill3: 105 },
   },
   {
     name: 'Mega Volume',
     details: ['Densest fans we offer', 'Maximum fullness'],
     tagline: 'Maximum density and drama.',
     vibe: ['Ultra Glam'],
-    prices: { full: 170, fill2: 90, fill3: 110 },
+    prices: { full: 180, fill2: 90, fill3: 120 },
   },
   {
     id: 'wispy-volume',
@@ -54,9 +54,9 @@ const LASH_SETS = [
       'Soft, textured volume with wispy peaks for a dramatic yet airy finish.',
     vibe: ['Wispy', 'Ultra Glam'],
     prices: {
-      full: 150,
+      full: 180,
       fill2: 90,
-      fill3: 110,
+      fill3: 120,
     },
   },
 ];
